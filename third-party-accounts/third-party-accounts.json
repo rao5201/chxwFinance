@@ -1,0 +1,147 @@
+{
+  "apiServices": {
+    "openai": {
+      "service": "OpenAI",
+      "description": "AI模型服务",
+      "apiKey": "sk-YourOpenAIKeyHere",
+      "endpoint": "https://api.openai.com/v1",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    },
+    "anthropic": {
+      "service": "Anthropic",
+      "description": "Claude AI服务",
+      "apiKey": "sk-ant-api03-YourAnthropicKeyHere",
+      "endpoint": "https://api.anthropic.com/v1",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    },
+    "alphaVantage": {
+      "service": "Alpha Vantage",
+      "description": "股票数据API",
+      "apiKey": "YourAlphaVantageKeyHere",
+      "endpoint": "https://www.alphavantage.co/query",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    },
+    "binance": {
+      "service": "Binance",
+      "description": "加密货币交易API",
+      "apiKey": "YourBinanceAPIKeyHere",
+      "secretKey": "YourBinanceSecretKeyHere",
+      "endpoint": "https://api.binance.com/api",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    },
+    "coinbase": {
+      "service": "Coinbase",
+      "description": "加密货币交易API",
+      "apiKey": "YourCoinbaseAPIKeyHere",
+      "secretKey": "YourCoinbaseSecretKeyHere",
+      "endpoint": "https://api.coinbase.com/v2",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    }
+  },
+  "cloudServices": {
+    "aws": {
+      "service": "AWS",
+      "description": "亚马逊云服务",
+      "accessKeyId": "YourAWSAccessKeyId",
+      "secretAccessKey": "YourAWSSecretAccessKey",
+      "region": "us-east-1",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    },
+    "googleCloud": {
+      "service": "Google Cloud",
+      "description": "谷歌云服务",
+      "projectId": "your-project-id",
+      "credentials": "path/to/credentials.json",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    },
+    "azure": {
+      "service": "Azure",
+      "description": "微软云服务",
+      "clientId": "YourAzureClientId",
+      "clientSecret": "YourAzureClientSecret",
+      "tenantId": "YourAzureTenantId",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    }
+  },
+  "paymentServices": {
+    "stripe": {
+      "service": "Stripe",
+      "description": "支付处理服务",
+      "secretKey": "sk_live_YourStripeSecretKeyHere",
+      "publishableKey": "pk_live_YourStripePublishableKeyHere",
+      "endpoint": "https://api.stripe.com/v1",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    },
+    "paypal": {
+      "service": "PayPal",
+      "description": "支付处理服务",
+      "clientId": "YourPayPalClientId",
+      "clientSecret": "YourPayPalClientSecret",
+      "endpoint": "https://api.paypal.com/v1",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    }
+  },
+  "monitoringServices": {
+    "sentry": {
+      "service": "Sentry",
+      "description": "错误监控服务",
+      "dsn": "https://your-sentry-dsn@sentry.io/123456",
+      "projectId": "123456",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    },
+    "datadog": {
+      "service": "Datadog",
+      "description": "监控服务",
+      "apiKey": "YourDatadogAPIKey",
+      "appKey": "YourDatadogAppKey",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    }
+  },
+  "socialMedia": {
+    "twitter": {
+      "service": "Twitter",
+      "description": "社交媒体API",
+      "apiKey": "YourTwitterAPIKey",
+      "apiSecret": "YourTwitterAPISecret",
+      "accessToken": "YourTwitterAccessToken",
+      "accessTokenSecret": "YourTwitterAccessTokenSecret",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    },
+    "facebook": {
+      "service": "Facebook",
+      "description": "社交媒体API",
+      "appId": "YourFacebookAppId",
+      "appSecret": "YourFacebookAppSecret",
+      "accessToken": "YourFacebookAccessToken",
+      "status": "active",
+      "createdAt": "2026-04-03T00:00:00Z",
+      "lastUsed": "2026-04-03T00:00:00Z"
+    }
+  }
+}

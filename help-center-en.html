@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tea Sea Shrimp King @ Financial Exchange Bulletin Board Platform - Help Center</title>
+  <meta name="description" content="Tea Sea Shrimp King @ Financial Exchange Bulletin Board Platform - Help Center">
+  <!-- Chinese Name -->
+  <meta name="application-name" content="茶海虾王@金融交易所看板平台 - 帮助中心">
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://cdn.jsdelivr.net; style-src 'self' https://cdn.tailwindcss.com https://fonts.googleapis.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+  <meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Configure Tailwind Custom Colors and Fonts -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-blue': '#0A192F',
+            'dark-blue': '#112240',
+            'navy': '#172A45',
+            'gold': '#E6AF2E',
+            'gold-light': '#F4D35E',
+            'cyan': '#64FFDA',
+            'gray-light': '#CCD6F6',
+            'gray-dark': '#8892B0'
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'orbitron': ['Orbitron', 'sans-serif']
+          },
+          boxShadow: {
+            'glow': '0 0 15px rgba(230, 175, 46, 0.4)',
+            'glow-blue': '0 0 15px rgba(100, 255, 218, 0.3)'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 0 10px rgba(230, 175, 46, 0.5);
+      }
+      .text-shadow-blue {
+        text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+      }
+      .bg-grid {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
+      .scrollbar-gold::-webkit-scrollbar {
+        width: 6px;
+      }
+      .scrollbar-gold::-webkit-scrollbar-track {
+        background: rgba(17, 34, 64, 0.5);
+      }
+      .scrollbar-gold::-webkit-scrollbar-thumb {
+        background: rgba(230, 175, 46, 0.5);
+        border-radius: 3px;
+      }
+      .scrollbar-gold::-webkit-scrollbar-thumb:hover {
+        background: rgba(230, 175, 46, 0.8);
+      }
+    }
+  </style>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-deep-blue text-gray-light min-h-screen overflow-x-hidden scrollbar-gold bg-grid">
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 bg-deep-blue/90 backdrop-blur-md border-b border-navy/50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Left Logo -->
+      <div class="flex items-center space-x-2">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold to-gold-light flex items-center justify-center shadow-glow">
+          <i class="fa fa-exchange text-deep-blue text-xl"></i>
+        </div>
+        <h1 class="text-[clamp(1.25rem,3vw,1.75rem)] font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-gold to-gold-light text-shadow">
+          Tea Sea Shrimp King @ Financial Exchange Bulletin Board Platform
+        </h1>
+      </div>
+      
+      <!-- Right Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index-en.html" class="text-gray-light hover:text-gold transition-colors duration-300">Home</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">Market</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">Trade</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">Assets</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">AI Analysis</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">CHXW-V5.3</a>
+        <a href="help-center-en.html" class="text-gold font-medium">Help Center</a>
+        <a href="help-center.html" class="text-gray-light hover:text-gold transition-colors duration-300">中文</a>
+      </nav>
+      
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center space-x-4">
+        <a href="help-center.html" class="text-gray-light hover:text-gold transition-colors duration-300 md:hidden">
+          <i class="fa fa-language"></i>
+        </a>
+        <button class="md:hidden text-gray-light hover:text-gold transition-colors duration-300">
+          <i class="fa fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- Help Center Title -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-gold to-gold-light text-shadow mb-4">
+        Help Center
+      </h1>
+      <p class="text-gray-dark max-w-2xl mx-auto">
+        Here you can find detailed guides and frequently asked questions about using the platform
+      </p>
+    </div>
+
+    <!-- Search Box -->
+    <div class="max-w-2xl mx-auto mb-12">
+      <div class="relative">
+        <input 
+          type="text" 
+          placeholder="Search help documents..." 
+          class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-3 pl-12 focus:outline-none focus:border-gold/50 transition-colors duration-300"
+        >
+        <i class="fa fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-dark"></i>
+      </div>
+    </div>
+
+    <!-- Document Categories -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <!-- Quick Start -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-rocket text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">Quick Start</h3>
+        <p class="text-gray-dark mb-4">Learn about the platform's basic features and usage</p>
+        <a href="#quickstart" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          View Documents <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- Account Management -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-user text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">Account Management</h3>
+        <p class="text-gray-dark mb-4">About account registration, login and security settings</p>
+        <a href="#account" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          View Documents <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- Trading Guide -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-exchange text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">Trading Guide</h3>
+        <p class="text-gray-dark mb-4">Learn how to trade assets and manage investments</p>
+        <a href="#trading" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          View Documents <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- Asset Management -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-database text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">Asset Management</h3>
+        <p class="text-gray-dark mb-4">Learn how to manage and upload your assets</p>
+        <a href="#assets" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          View Documents <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- AI Analysis -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-lightbulb-o text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">AI Analysis</h3>
+        <p class="text-gray-dark mb-4">Use AI intelligent analysis to get investment advice</p>
+        <a href="#ai" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          View Documents <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- Security Center -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-shield text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">Security Center</h3>
+        <p class="text-gray-dark mb-4">Learn about platform security measures and anti-fraud knowledge</p>
+        <a href="#security" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          View Documents <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Document List -->
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-orbitron font-bold text-gold mb-6">User Manuals</h2>
+      
+      <div class="space-y-4">
+        <!-- User Operation Manual -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">User Operation Manual</h3>
+              <p class="text-gray-dark text-sm">Detailed platform usage guide</p>
+            </div>
+            <a href="docs/06-用户文档/用户操作使用说明.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              View Document
+            </a>
+          </div>
+        </div>
+
+        <!-- Customer Service Manual -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">Customer Service Manual</h3>
+              <p class="text-gray-dark text-sm">Customer service team operation guide</p>
+            </div>
+            <a href="docs/07-客服文档/客服操作使用说明.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              View Document
+            </a>
+          </div>
+        </div>
+
+        <!-- Admin Operation Manual -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">Admin Operation Manual</h3>
+              <p class="text-gray-dark text-sm">Admin backend operation guide</p>
+            </div>
+            <a href="docs/08-管理员文档/管理员操作使用说明.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              View Document
+            </a>
+          </div>
+        </div>
+
+        <!-- Third-party Access Manual -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">Third-party Access Manual</h3>
+              <p class="text-gray-dark text-sm">Third-party access guide</p>
+            </div>
+            <a href="docs/09-第三方接入/第三方接入操作规定和说明书.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              View Document
+            </a>
+          </div>
+        </div>
+
+        <!-- Third-party Platform Integration Guide -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">Third-party Platform Integration Guide</h3>
+              <p class="text-gray-dark text-sm">Detailed guide for third-party company integration</p>
+            </div>
+            <a href="docs/09-第三方接入/第三方兼容平台公司接入指南.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              View Document
+            </a>
+          </div>
+        </div>
+
+        <!-- Brand Standard Specification -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">Brand Standard Specification</h3>
+              <p class="text-gray-dark text-sm">Brand usage guidelines</p>
+            </div>
+            <a href="docs/10-品牌规范/品牌标准规范文档.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              View Document
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Help Resources -->
+    <div class="max-w-4xl mx-auto mt-12">
+      <h2 class="text-2xl font-orbitron font-bold text-gold mb-6">Other Help Resources</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="#" class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300 flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+            <i class="fa fa-video-camera text-gold"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-light">Video Tutorials</h3>
+            <p class="text-gray-dark text-sm">Watch platform usage video tutorials</p>
+          </div>
+        </a>
+        
+        <a href="#" class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300 flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+            <i class="fa fa-comments text-gold"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-light">Community Forum</h3>
+            <p class="text-gray-dark text-sm">Exchange experience with other users</p>
+          </div>
+        </a>
+        
+        <a href="#" class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300 flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+            <i class="fa fa-headphones text-gold"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-light">Online Customer Service</h3>
+            <p class="text-gray-dark text-sm">Contact customer service for help</p>
+          </div>
+        </a>
+        
+        <a href="#" class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300 flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+            <i class="fa fa-envelope text-gold"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-light">Feedback</h3>
+            <p class="text-gray-dark text-sm">Submit your suggestions</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-deep-blue border-t border-navy/50 mt-16">
+    <div class="container mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-gold font-semibold mb-4">About Us</h3>
+          <p class="text-gray-dark text-sm">
+            Tea Sea Shrimp King @ Financial Exchange Bulletin Board Platform is a professional financial trading platform that provides memory asset trading, AI intelligent analysis, and other services.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-gold font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index-en.html" class="text-gray-dark hover:text-gold transition-colors duration-300">Home</a></li>
+            <li><a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300">Market</a></li>
+            <li><a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300">Trade</a></li>
+            <li><a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300">Assets</a></li>
+            <li><a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300">AI Analysis</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-gold font-semibold mb-4">Help Center</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#quickstart" class="text-gray-dark hover:text-gold transition-colors duration-300">Quick Start</a></li>
+            <li><a href="#account" class="text-gray-dark hover:text-gold transition-colors duration-300">Account Management</a></li>
+            <li><a href="#trading" class="text-gray-dark hover:text-gold transition-colors duration-300">Trading Guide</a></li>
+            <li><a href="#assets" class="text-gray-dark hover:text-gold transition-colors duration-300">Asset Management</a></li>
+            <li><a href="#security" class="text-gray-dark hover:text-gold transition-colors duration-300">Security Center</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-gold font-semibold mb-4">Contact Us</h3>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center space-x-2">
+              <i class="fa fa-envelope text-gold"></i>
+              <span class="text-gray-dark">rao5201@126.com</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i class="fa fa-phone text-gold"></i>
+              <span class="text-gray-dark">400-123-4567</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i class="fa fa-map-marker text-gold"></i>
+              <span class="text-gray-dark">Financial Street, Chaoyang District, Beijing</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-navy/50 mt-8 pt-8 flex flex-col md:flex-row md:items-center justify-between">
+        <div class="mb-4 md:mb-0">
+          <p class="text-gray-dark text-sm">
+            &copy; 2026 Hainan Tea Sea Shrimp King Management Co., Ltd. All rights reserved.
+          </p>
+          <p class="text-gray-dark text-sm mt-1">
+            Technical support: rao5201@126.com
+          </p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300 text-sm">Privacy Policy</a>
+          <a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300 text-sm">Terms of Service</a>
+          <a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300 text-sm">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Search Function
+    document.querySelector('input[placeholder="Search help documents..."]').addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') {
+        const searchTerm = this.value.trim();
+        if (searchTerm) {
+          alert(`Search: ${searchTerm}`);
+          // In a real project, this would redirect to search results
+        }
+      }
+    });
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

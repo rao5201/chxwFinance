@@ -1,0 +1,32 @@
+{
+  "admin": {
+    "username": "admin",
+    "email": "admin@chxw.com",
+    "password": "$2a$10$YourHashedPasswordHere",
+    "role": "admin",
+    "status": "active",
+    "createdAt": "2026-04-03T00:00:00Z",
+    "lastLogin": "2026-04-03T00:00:00Z",
+    "permissions": ["all"]
+  },
+  "client": {
+    "username": "client",
+    "email": "client@chxw.com",
+    "password": "$2a$10$YourHashedPasswordHere",
+    "role": "user",
+    "status": "active",
+    "createdAt": "2026-04-03T00:00:00Z",
+    "lastLogin": "2026-04-03T00:00:00Z",
+    "permissions": ["read", "trade"]
+  },
+  "finance": {
+    "username": "finance",
+    "email": "finance@chxw.com",
+    "password": "$2a$10$YourHashedPasswordHere",
+    "role": "finance",
+    "status": "active",
+    "createdAt": "2026-04-03T00:00:00Z",
+    "lastLogin": "2026-04-03T00:00:00Z",
+    "permissions": ["read", "report"]
+  }
+}

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI金融即时K线图 - 茶海虾王金融交易所</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+        }
+        .signal-buy {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .signal-sell {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+        .signal-neutral {
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+        }
+        .indicator-badge {
+            transition: all 0.2s ease;
+        }
+        .indicator-badge:hover {
+            transform: scale(1.05);
+        }
+        .timeframe-btn {
+            transition: all 0.2s ease;
+        }
+        .timeframe-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- 导航栏 -->
+    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">茶海虾王</a>
+                    <span class="mx-3 text-gray-600">|</span>
+                    <span class="text-gray-400">AI金融K线图</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-400 hover:text-white transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-400 hover:text-white transition">AI新闻</a>
+                    <a href="trading-chart.html" class="text-indigo-400 font-semibold">K线图</a>
+                    <a href="trading-chart-en.html" class="text-gray-400 hover:text-white transition">English</a>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+                        <i class="fas fa-robot mr-2"></i>机器人
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="flex h-screen">
+        <!-- 左侧：市场列表 -->
+        <aside class="w-64 bg-gray-800 border-r border-gray-700 overflow-y-auto">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-list mr-2 text-indigo-400"></i>市场列表
+                </h3>
+                
+                <!-- A股 -->
+                <div class="mb-4">
+                    <h4 class="text-sm text-gray-500 mb-2">A股</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>贵州茅台</span>
+                            <span class="text-green-400">+2.35%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>宁德时代</span>
+                            <span class="text-red-400">-1.20%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>比亚迪</span>
+                            <span class="text-green-400">+3.15%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 美股 -->
+                <div class="mb-4">
+                    <h4 class="text-sm text-gray-500 mb-2">美股</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>AAPL</span>
+                            <span class="text-green-400">+1.85%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>NVDA</span>
+                            <span class="text-green-400">+4.20%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>TSLA</span>
+                            <span class="text-red-400">-2.10%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 加密货币 -->
+                <div class="mb-4">
+                    <h4 class="text-sm text-gray-500 mb-2">加密货币</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>BTC/USDT</span>
+                            <span class="text-green-400">+5.30%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>ETH/USDT</span>
+                            <span class="text-green-400">+3.80%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 中间：K线图区域 -->
+        <main class="flex-1 flex flex-col">
+            <!-- 顶部工具栏 -->
+            <div class="bg-gray-800 border-b border-gray-700 p-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <h2 class="text-xl font-bold">BTC/USDT</h2>
+                        <span class="text-2xl font-bold text-green-400">$67,245.00</span>
+                        <span class="text-green-400">+5.30%</span>
+                    </div>
+                    
+                    <!-- 时间周期选择 -->
+                    <div class="flex space-x-2">
+                        <button class="timeframe-btn px-3 py-1 rounded text-sm bg-gray-700 hover:bg-gray-600">1分</button>
+                        <button class="timeframe-btn px-3 py-1 rounded text-sm bg-gray-700 hover:bg-gray-600">5分</button>
+                        <button class="timeframe-btn px-3 py-1 rounded text-sm bg-gray-700 hover:bg-gray-600">15分</button>
+                        <button class="timeframe-btn px-3 py-1 rounded text-sm bg-gray-700 hover:bg-gray-600">1小时</button>
+                        <button class="timeframe-btn active px-3 py-1 rounded text-sm">日线</button>
+                        <button class="timeframe-btn px-3 py-1 rounded text-sm bg-gray-700 hover:bg-gray-600">周线</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 图表区域 -->
+            <div class="flex-1 p-4">
+                <div id="chart" class="chart-container bg-gray-800 rounded-lg"></div>
+            </div>
+
+            <!-- 底部指标栏 -->
+            <div class="bg-gray-800 border-t border-gray-700 p-4">
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-400">技术指标：</span>
+                    <button class="indicator-badge px-3 py-1 bg-indigo-600 rounded-full text-sm">MA</button>
+                    <button class="indicator-badge px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gray-600">MACD</button>
+                    <button class="indicator-badge px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gray-600">RSI</button>
+                    <button class="indicator-badge px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gray-600">布林带</button>
+                    <button class="indicator-badge px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gray-600">KDJ</button>
+                    <button class="indicator-badge px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gray-600">成交量</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 右侧：AI分析和信号 -->
+        <aside class="w-80 bg-gray-800 border-l border-gray-700 overflow-y-auto">
+            <!-- AI交易信号 -->
+            <div class="p-4 border-b border-gray-700">
+                <h3 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-robot mr-2 text-indigo-400"></i>AI交易信号
+                </h3>
+                
+                <div class="signal-buy rounded-lg p-4 mb-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm opacity-90">买入信号</p>
+                            <p class="text-2xl font-bold">强烈建议</p>
+                        </div>
+                        <i class="fas fa-arrow-up text-3xl"></i>
+                    </div>
+                    <p class="text-sm mt-2 opacity-90">置信度: 87%</p>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                        <span class="text-sm">趋势预测</span>
+                        <span class="text-green-400 font-semibold">上涨</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                        <span class="text-sm">支撑位</span>
+                        <span class="text-white font-semibold">$65,200</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                        <span class="text-sm">阻力位</span>
+                        <span class="text-white font-semibold">$68,500</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                        <span class="text-sm">目标价位</span>
+                        <span class="text-green-400 font-semibold">$70,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技术指标分析 -->
+            <div class="p-4 border-b border-gray-700">
+                <h3 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-chart-line mr-2 text-indigo-400"></i>技术指标
+                </h3>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                        <div>
+                            <p class="text-sm font-semibold">MA(5,10,20)</p>
+                            <p class="text-xs text-gray-400">多头排列</p>
+                        </div>
+                        <span class="text-green-400"><i class="fas fa-check-circle"></i></span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                        <div>
+                            <p class="text-sm font-semibold">MACD</p>
+                            <p class="text-xs text-gray-400">金叉形成</p>
+                        </div>
+                        <span class="text-green-400"><i class="fas fa-check-circle"></i></span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                        <div>
+                            <p class="text-sm font-semibold">RSI(14)</p>
+                            <p class="text-xs text-gray-400">62.5 - 强势区</p>
+                        </div>
+                        <span class="text-yellow-400"><i class="fas fa-exclamation-circle"></i></span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                        <div>
+                            <p class="text-sm font-semibold">布林带</p>
+                            <p class="text-xs text-gray-400">突破上轨</p>
+                        </div>
+                        <span class="text-green-400"><i class="fas fa-check-circle"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 形态识别 -->
+            <div class="p-4 border-b border-gray-700">
+                <h3 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-search mr-2 text-indigo-400"></i>形态识别
+                </h3>
+                
+                <div class="space-y-2">
+                    <div class="flex items-center p-3 bg-green-900 bg-opacity-30 border border-green-700 rounded">
+                        <i class="fas fa-chart-candlestick text-green-400 mr-3"></i>
+                        <div>
+                            <p class="text-sm font-semibold">看涨吞没</p>
+                            <p class="text-xs text-gray-400">置信度: 85%</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-3 bg-blue-900 bg-opacity-30 border border-blue-700 rounded">
+                        <i class="fas fa-chart-line text-blue-400 mr-3"></i>
+                        <div>
+                            <p class="text-sm font-semibold">上升通道</p>
+                            <p class="text-xs text-gray-400">趋势延续</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新闻情绪 -->
+            <div class="p-4">
+                <h3 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-newspaper mr-2 text-indigo-400"></i>新闻情绪
+                </h3>
+                
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-sm">市场情绪</span>
+                    <span class="text-green-400 font-semibold">贪婪 75</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+                    <div class="bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 h-2 rounded-full" style="width: 75%"></div>
+                </div>
+                
+                <div class="space-y-2 text-sm">
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-arrow-up mr-2"></i>
+                        <span>ETF资金流入创新高</span>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-arrow-up mr-2"></i>
+                        <span>机构增持BTC</span>
+                    </div>
+                    <div class="flex items-center text-gray-400">
+                        <i class="fas fa-minus mr-2"></i>
+                        <span>监管政策稳定</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // 初始化K线图
+        const chartContainer = document.getElementById('chart');
+        const chart = LightweightCharts.createChart(chartContainer, {
+            layout: {
+                background: { color: '#1f2937' },
+                textColor: '#d1d5db',
+            },
+            grid: {
+                vertLines: { color: '#374151' },
+                horzLines: { color: '#374151' },
+            },
+            crosshair: {
+                mode: LightweightCharts.CrosshairMode.Normal,
+            },
+            rightPriceScale: {
+                borderColor: '#374151',
+            },
+            timeScale: {
+                borderColor: '#374151',
+            },
+        });
+
+        // 添加K线系列
+        const candlestickSeries = chart.addCandlestickSeries({
+            upColor: '#10b981',
+            downColor: '#ef4444',
+            borderUpColor: '#10b981',
+            borderDownColor: '#ef4444',
+            wickUpColor: '#10b981',
+            wickDownColor: '#ef4444',
+        });
+
+        // 模拟数据
+        const data = [
+            { time: '2024-01-01', open: 65000, high: 66500, low: 64800, close: 66200 },
+            { time: '2024-01-02', open: 66200, high: 67800, low: 65800, close: 67500 },
+            { time: '2024-01-03', open: 67500, high: 68200, low: 66800, close: 67000 },
+            { time: '2024-01-04', open: 67000, high: 68500, low: 66500, close: 68200 },
+            { time: '2024-01-05', open: 68200, high: 69500, low: 67800, close: 69200 },
+            { time: '2024-01-08', open: 69200, high: 70500, low: 68800, close: 70200 },
+            { time: '2024-01-09', open: 70200, high: 71200, low: 69500, close: 69800 },
+            { time: '2024-01-10', open: 69800, high: 71500, low: 69200, close: 70800 },
+            { time: '2024-01-11', open: 70800, high: 72500, low: 70200, close: 72200 },
+            { time: '2024-01-12', open: 72200, high: 73500, low: 71500, close: 72800 },
+            { time: '2024-01-15', open: 72800, high: 74200, low: 72000, close: 73800 },
+            { time: '2024-01-16', open: 73800, high: 75500, low: 73200, close: 74800 },
+            { time: '2024-01-17', open: 74800, high: 76200, low: 74200, close: 75800 },
+            { time: '2024-01-18', open: 75800, high: 76800, low: 75200, close: 76500 },
+            { time: '2024-01-19', open: 76500, high: 77800, low: 75800, close: 77200 },
+            { time: '2024-01-22', open: 77200, high: 78500, low: 76500, close: 78200 },
+            { time: '2024-01-23', open: 78200, high: 79500, low: 77500, close: 78800 },
+            { time: '2024-01-24', open: 78800, high: 80200, low: 78200, close: 79800 },
+            { time: '2024-01-25', open: 79800, high: 81500, low: 79200, close: 80800 },
+            { time: '2024-01-26', open: 80800, high: 82500, low: 80200, close: 81800 },
+            { time: '2024-01-29', open: 81800, high: 83200, low: 81200, close: 82800 },
+            { time: '2024-01-30', open: 82800, high: 84500, low: 82200, close: 83800 },
+            { time: '2024-01-31', open: 83800, high: 85200, low: 83200, close: 84800 },
+            { time: '2024-02-01', open: 84800, high: 86500, low: 84200, close: 85800 },
+            { time: '2024-02-02', open: 85800, high: 87200, low: 85200, close: 86800 },
+            { time: '2024-02-05', open: 86800, high: 88500, low: 86200, close: 87800 },
+            { time: '2024-02-06', open: 87800, high: 89200, low: 87200, close: 88800 },
+            { time: '2024-02-07', open: 88800, high: 90500, low: 88200, close: 89800 },
+            { time: '2024-02-08', open: 89800, high: 91200, low: 89200, close: 90800 },
+            { time: '2024-02-09', open: 90800, high: 92500, low: 90200, close: 91800 },
+        ];
+
+        candlestickSeries.setData(data);
+
+        // 添加成交量
+        const volumeSeries = chart.addHistogramSeries({
+            color: '#26a69a',
+            priceFormat: {
+                type: 'volume',
+            },
+            priceScaleId: '',
+        });
+
+        const volumeData = data.map(d => ({
+            time: d.time,
+            value: Math.floor(Math.random() * 100000) + 50000,
+            color: d.close > d.open ? '#10b981' : '#ef4444'
+        }));
+
+        volumeSeries.setData(volumeData);
+
+        // 添加移动平均线
+        const ma5Series = chart.addLineSeries({
+            color: '#f59e0b',
+            lineWidth: 2,
+            title: 'MA5',
+        });
+
+        const ma10Series = chart.addLineSeries({
+            color: '#3b82f6',
+            lineWidth: 2,
+            title: 'MA10',
+        });
+
+        const ma20Series = chart.addLineSeries({
+            color: '#8b5cf6',
+            lineWidth: 2,
+            title: 'MA20',
+        });
+
+        // 计算MA数据
+        function calculateMA(data, period) {
+            const maData = [];
+            for (let i = 0; i < data.length; i++) {
+                if (i < period - 1) {
+                    maData.push({ time: data[i].time, value: null });
+                    continue;
+                }
+                let sum = 0;
+                for (let j = 0; j < period; j++) {
+                    sum += data[i - j].close;
+                }
+                maData.push({ time: data[i].time, value: sum / period });
+            }
+            return maData;
+        }
+
+        ma5Series.setData(calculateMA(data, 5));
+        ma10Series.setData(calculateMA(data, 10));
+        ma20Series.setData(calculateMA(data, 20));
+
+        // 自适应图表大小
+        chart.timeScale().fitContent();
+
+        window.addEventListener('resize', () => {
+            chart.applyOptions({
+                width: chartContainer.clientWidth,
+                height: chartContainer.clientHeight,
+            });
+        });
+
+        // 时间周期切换
+        document.querySelectorAll('.timeframe-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.timeframe-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.classList.add('bg-gray-700');
+                });
+                this.classList.add('active');
+                this.classList.remove('bg-gray-700');
+            });
+        });
+    </script>
+</body>
+</html>

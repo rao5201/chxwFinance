@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云产品定价 - 茶海虾王@金融交易所看板平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .category-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .product-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .product-item:last-child {
+            border-bottom: none;
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .tag-free { background: #dcfce7; color: #166534; }
+        .tag-paid { background: #dbeafe; color: #1e40af; }
+        .tag-deploy { background: #fef3c7; color: #92400e; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold gradient-text">茶海虾王</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-700 hover:text-indigo-600 transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-700 hover:text-indigo-600 transition">AI新闻</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-indigo-600 transition">定价</a>
+                    <a href="cloud-pricing.html" class="text-indigo-600 font-semibold">云产品</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">关于我们</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login.html" class="text-gray-700 hover:text-indigo-600 transition">登录</a>
+                    <a href="/register.html" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">免费试用</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">云产品定价与计费</h1>
+            <p class="text-xl text-indigo-100 max-w-3xl mx-auto">人工智能、云计算、存储、网络、数据库等全栈云产品，灵活计费，按需使用</p>
+        </div>
+    </section>
+
+    <!-- 产品分类 -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 人工智能 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-brain text-indigo-600 mr-3"></i>人工智能·机器学习
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">百度千帆·大模型服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">以Agent为核心的一站式企业级大模型服务平台</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-free">免费试用</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">计费说明</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">零门槛AI开发平台 EasyDL</h3>
+                        <p class="text-gray-600 text-sm mb-4">零算法基础定制高精度AI模型</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-free">免费试用</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">计费说明</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">全功能AI开发平台 BML</h3>
+                        <p class="text-gray-600 text-sm mb-4">满足个人开发者与企业客户不同需求</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-free">免费试用</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">计费说明</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">大模型内容安全平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">构建AIGC文本与多模态场景的大模型内容安全产品矩阵</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-free">免费试用</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">计费说明</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">大模型语音合成</h3>
+                        <p class="text-gray-600 text-sm mb-4">大模型升级语音合成，音色自然，智能预测情绪语调</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">语音识别</h3>
+                        <p class="text-gray-600 text-sm mb-4">国际领先的流式端到端语音语言一体化建模算法</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 计算 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-server text-blue-600 mr-3"></i>计算
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">GPU云服务器</h3>
+                        <p class="text-gray-600 text-sm mb-4">既可提供弹性的GPU云服务器，也可提供高性能的GPU裸金属服务器</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即部署</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云服务器 BCC</h3>
+                        <p class="text-gray-600 text-sm mb-4">构建可弹性伸缩云计算服务，提供超高效费比的高性能云服务器</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即部署</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">轻量应用服务器</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供官网搭建、web应用搭建、云上学习和测试等场景的服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即部署</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">弹性裸金属服务器</h3>
+                        <p class="text-gray-600 text-sm mb-4">助力企业在高性能计算、大数据、AI应用等场景轻松构建多元化业务系统</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即部署</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">百舸异构计算平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">面向运维开发人员和AI应用开发者，提供大规模、高性能、稳定易用的企业级基础服务平台</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即部署</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云高性能计算平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">集成高性能计算调度系统与集群管理，提供快捷、弹性、易运维的HPC平台服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 存储 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-hdd text-green-600 mr-3"></i>存储
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">对象存储 BOS</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供稳定、安全、高效、高可拓展的云存储服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即部署</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云磁盘 CDS</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供的低时延、持久性、高可靠和高弹性的块存储服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即部署</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">文件存储 CFS</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供无限扩展、高可靠、全球共享的文件存储能力</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数据库 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-database text-orange-600 mr-3"></i>数据库
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云原生数据库 GaiaDB</h3>
+                        <p class="text-gray-600 text-sm mb-4">100%兼容MySQL语法，容量最高可达128TB，单库最多可扩展到16个节点</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云数据库 RDS MySQL</h3>
+                        <p class="text-gray-600 text-sm mb-4">便捷的 Web 界面管理、可靠的数据备份和恢复、完备的安全管理和监控服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即部署</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">向量数据库 VectorDB</h3>
+                        <p class="text-gray-600 text-sm mb-4">纯自研高性能、高性价比、生态丰富且即开即用的向量数据库服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云数据库 Redis</h3>
+                        <p class="text-gray-600 text-sm mb-4">高性能、高可用的分布式缓存服务，支持主从、集群和读写分离架构</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云数据库 MongoDB</h3>
+                        <p class="text-gray-600 text-sm mb-4">基于MongoDB 打造的高性能 NoSQL 数据库，100% 兼容 MongoDB 协议</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 网络 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-network-wired text-purple-600 mr-3"></i>网络
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">弹性公网IP EIP</h3>
+                        <p class="text-gray-600 text-sm mb-4">为用户访问公网提供IP地址和公网带宽，增加用户使用弹性</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即部署</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">负载均衡 BLB</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供高可用的流量分发服务，轻松应对海量访问请求，实现业务水平扩展</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">私有网络 VPC</h3>
+                        <p class="text-gray-600 text-sm mb-4">灵活、自定义设置网络地址空间，实现私有网络安全隔离</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 大数据 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-chart-bar text-red-600 mr-3"></i>大数据
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">数据可视化 Sugar BI</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供丰富的图表组件，开箱即用、零代码操作、无需SQL</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">Elasticsearch</h3>
+                        <p class="text-gray-600 text-sm mb-4">开源的全文检索和分析引擎Elasticsearch的托管服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">数据仓库 Palo</h3>
+                        <p class="text-gray-600 text-sm mb-4">帮助企业快速且低成本地构建极速易用的云上数据分析平台</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 容器 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-box text-cyan-600 mr-3"></i>容器
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">容器实例</h3>
+                        <p class="text-gray-600 text-sm mb-4">助力系统架构微服务化、DevOps运维、AI应用深度学习容器化等场景</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">容器镜像服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">面向容器镜像、Helm Chart等云原生制品安全托管以及高效分发平台</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">函数计算 CFC</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供弹性、高可用、扩展性好、极速响应的云端无服务器计算能力</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 安全 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-shield-alt text-red-600 mr-3"></i>安全
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">DDoS防护服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">能够全面防护各种网络层和应用层的DDoS攻击</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">应用防火墙</h3>
+                        <p class="text-gray-600 text-sm mb-4">可拦截SQL注入、XSS、文件上传等黑客攻击，并自定义防护策略</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云堡垒机</h3>
+                        <p class="text-gray-600 text-sm mb-4">帮助企业实现生产服务器等IT环境的安全运维</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云安全中心</h3>
+                        <p class="text-gray-600 text-sm mb-4">为客户的各类云资产提供全方位安全防护的一站式运营中心</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">大模型安全护栏</h3>
+                        <p class="text-gray-600 text-sm mb-4">根植于AIGC场景，构建功能完备、服务全面的大模型内容安全产品矩阵</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">号码安全服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">为企业号码提供认证，提供号码安全标签查询</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">应用加固与安全检测</h3>
+                        <p class="text-gray-600 text-sm mb-4">提高智能终端应用的安全指数，满足工信部及各地方监管部门的合规需求</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">内容审核</h3>
+                        <p class="text-gray-600 text-sm mb-4">5分钟即可完成规则配置，高效便捷</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">OTA远程升级服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">整合百度安全与云加速技术，为智能设备厂商提供高速、稳定、安全的物联网OTA解决方案</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CDN与边缘 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-globe text-cyan-600 mr-3"></i>CDN与边缘
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">内容分发网络 CDN</h3>
+                        <p class="text-gray-600 text-sm mb-4">源站内容分发至全球节点，用户请求由最近节点响应，提升访问速度</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">海外CDN</h3>
+                        <p class="text-gray-600 text-sm mb-4">全球的优质加速节点200+，提高用户访问网站的响应速度与网站的可用性</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">动态加速</h3>
+                        <p class="text-gray-600 text-sm mb-4">针对动静态内容混合站点提供安全、稳定的加速服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">音视频直播</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供稳定流畅、低延迟、支持高并发的一站式智能直播云服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云导播台</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供简单易用的云端导播服务，助力用户打造更好的直播体验</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">边缘计算节点</h3>
+                        <p class="text-gray-600 text-sm mb-4">一站式地提供靠近终端用户的弹性计算资源</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 管理运维 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-cogs text-gray-600 mr-3"></i>管理运维
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">云监控</h3>
+                        <p class="text-gray-600 text-sm mb-4">为您提供7*24小时的实时监控服务，为您的系统保驾护航</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">日志服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">一站式实时日志分析服务，提供日志数据采集传输、检索分析、实时消费与转储等功能</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">运维编排</h3>
+                        <p class="text-gray-600 text-sm mb-4">具备运维任务管理与执行能力，支持批量操作、事件运维、定时运维及跨产品地域编排</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">Prometheus 监控服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">针对云原生场景提供的全托管、高可用、可扩展的 Prometheus 监控服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 智能应用 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-magic text-pink-600 mr-3"></i>智能应用
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能文档分析平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">基于百度文心大模型4.0打造的一站式文档处理智能助手</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">文心快码智能代码助手</h3>
+                        <p class="text-gray-600 text-sm mb-4">基于文心大模型，为你生成更符合实际研发场景的优质代码</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">百度智能云一见·视觉大模型平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">帮助企业和行业伙伴零门槛、低成本建设专业级视觉AI应用</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">申请试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能客服</h3>
+                        <p class="text-gray-600 text-sm mb-4">大模型重构企业客服平台，高效搭建任务对话、知识问答、人设闲聊等AI原生客服功能</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能外呼</h3>
+                        <p class="text-gray-600 text-sm mb-4">依托精准定位数据，自动外呼，提供拟人对话交互及全链路运营服务，优化用户体验</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能搜推引擎</h3>
+                        <p class="text-gray-600 text-sm mb-4">智能搜推引擎，为金融、互联网、传媒提供个性化内容推荐，提升用户活跃度与收益</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能创作平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">将AI赋能创意设计，助力媒体、金融、汽车等行业实现高效内容创作</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能通信</h3>
+                        <p class="text-gray-600 text-sm mb-4">为用户或企业分配隐私号码，保证通话过程中号码信息不被泄露</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">数字员工-营销内容创作</h3>
+                        <p class="text-gray-600 text-sm mb-4">仅需一句话，即可生产高质量数字人视频，无需布景、拍摄、剪辑的专业团队，开箱即用</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">数字员工-组件开放平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">面向企业及个人开发者，提供高性能、易集成和多样化的数字人组件能力</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 视频云平台 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-video text-purple-600 mr-3"></i>视频云平台
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">播放器SDK</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供流畅、稳定、高品质的直播拉流服务，帮助您在各类终端设备上快速实现媒体播放功能</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">实时音视频</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供稳定高质量的实时音视频服务，快速搭建多平台实时音视频应用</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">移动直播SDK</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供稳定流畅、高可靠、高并发的直播推流服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">音视频处理</h3>
+                        <p class="text-gray-600 text-sm mb-4">针对海量媒资提供高效、智能、稳定的音视频处理服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能点播平台视频生成</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供文生视频、图生视频、参考生视频功能，输入的文本、图像或主体数据自动生成视频</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">媒体内容分析</h3>
+                        <p class="text-gray-600 text-sm mb-4">实现个性化内容推荐，提升用户检索体验，促使业务有效转化</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">媒体内容审核</h3>
+                        <p class="text-gray-600 text-sm mb-4">基于图像、文本、语音技术，精准过滤视频中的色情、广告、恶心、违禁等违规内容</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">视频质量检测</h3>
+                        <p class="text-gray-600 text-sm mb-4">通过智能算法，对画面模糊、花屏、噪声等问题的视频画面进行批量分析、评估、得出结论</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">多模媒资搜索</h3>
+                        <p class="text-gray-600 text-sm mb-4">提升用户的检索体验和效率，维护平台内容生态，探索新的业务增长点</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能点播平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">以媒资管理+工作流处理为核心，提供端到端一站式解决方案</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能赛事直播平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">面向各类体育赛事提供无人值守的一站式云转播服务，助力大众体育赛事高品质传播</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">申请试用</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 企业服务 -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-building text-teal-600 mr-3"></i>企业服务
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">移动域名解析</h3>
+                        <p class="text-gray-600 text-sm mb-4">可避免使用DNS所带来的域名劫持、解析不精准等问题</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">SSL证书服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供国内外多个知名品牌的DV、OV、EV证书</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">智能门户</h3>
+                        <p class="text-gray-600 text-sm mb-4">独家享有多项百度搜索优势权益</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">短网址服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">专业的网址缩短和营销数据分析平台</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-paid">定价详情</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">免费试用</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">短信服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">覆盖国内及国际/港澳台200+国家/地区，业快速获取用户、构建服务闭环</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">5G消息服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">借助RCS技术对传统短信的全面升级，为用户带来云服务与轻应用一体的服务体验，实现消息即服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">号码认证服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">提供号码安全标签查询，一站式解决号码营销安全问题</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">号码隐私保护服务</h3>
+                        <p class="text-gray-600 text-sm mb-4">为用户或企业分配隐私号码，提升服务安全性及服务质量</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">语音通知</h3>
+                        <p class="text-gray-600 text-sm mb-4">面向具备平台开发能力的企业客户，提供即时语音通信能力的PAAS产品</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">数字藏品SAAS平台</h3>
+                        <p class="text-gray-600 text-sm mb-4">基于区块链能力搭建的、利用区块链技术实现数字商品的发行与管理的平台</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <h3 class="font-bold text-lg mb-2">超级链可信存证</h3>
+                        <p class="text-gray-600 text-sm mb-4">百度超级链技术提供低成本、易维权、司法公信力的电子签约服务</p>
+                        <div class="flex justify-between items-center">
+                            <span class="tag tag-deploy">计费说明</span>
+                            <a href="#" class="text-indigo-600 text-sm font-semibold">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">开始使用云产品</h2>
+            <p class="text-xl text-indigo-100 mb-8">新用户注册即享免费试用，助力业务快速上云</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/register.html" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">免费注册</a>
+                <a href="/contact.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition">联系销售</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">专业的金融交易所看板平台，集成AI工具与实时数据分析。</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="ai-tools.html" class="hover:text-white transition">AI工具</a></li>
+                        <li><a href="ai-news.html" class="hover:text-white transition">AI新闻</a></li>
+                        <li><a href="cloud-pricing.html" class="hover:text-white transition">云产品</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>rao5201@126.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 茶海虾王@金融交易所看板平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

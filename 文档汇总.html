@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>茶海虾王@金融交易所看板平台 - 文档汇总</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #0A192F;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+      border-bottom: 2px solid #E6AF2E;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #112240;
+      font-size: 1.8rem;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #E6AF2E;
+      padding-bottom: 5px;
+    }
+    h3 {
+      color: #172A45;
+      font-size: 1.4rem;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    h4 {
+      color: #172A45;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      display: block;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin-bottom: 15px;
+    }
+    pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+    .toc {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+    }
+    .toc h2 {
+      margin-top: 0;
+      border-bottom: none;
+    }
+    .toc ul {
+      list-style-type: none;
+      margin-left: 0;
+    }
+    .toc li {
+      margin-bottom: 10px;
+    }
+    .toc a {
+      color: #112240;
+      text-decoration: none;
+    }
+    .toc a:hover {
+      color: #E6AF2E;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>茶海虾王@金融交易所看板平台 - 文档汇总</h1>
+    
+    <div class="toc">
+      <h2>目录</h2>
+      <ul>
+        <li><a href="#系统设计">1. 系统设计</a></li>
+        <li><a href="#实现计划">2. 实现计划</a></li>
+        <li><a href="#安全合规">3. 安全合规</a></li>
+        <li><a href="#上线部署">4. 上线部署</a></li>
+        <li><a href="#维护运营">5. 维护运营</a></li>
+        <li><a href="#用户文档">6. 用户文档</a></li>
+        <li><a href="#客服文档">7. 客服文档</a></li>
+        <li><a href="#管理员文档">8. 管理员文档</a></li>
+        <li><a href="#第三方接入">9. 第三方接入</a></li>
+        <li><a href="#品牌规范">10. 品牌规范</a></li>
+      </ul>
+    </div>
+
+    <h2 id="系统设计">系统设计</h2>
+    <h3>系统设计文档</h3>
+    <h1>茶海虾王@金融交易所看板平台</h1>
+    <h2>系统设计文档</h2>
+
+    <h2>一、技术栈选择</h2>
+
+    <h3>1.1 前端技术栈</h3>
+
+    <table>
+      <tr>
+        <th>技术/框架</th>
+        <th>版本</th>
+        <th>用途</th>
+        <th>选型理由</th>
+      </tr>
+      <tr>
+        <td>HTML5</td>
+        <td>最新</td>
+        <td>页面结构</td>
+        <td>标准Web技术，支持PWA</td>
+      </tr>
+      <tr>
+        <td>CSS3</td>
+        <td>最新</td>
+        <td>样式设计</td>
+        <td>支持现代样式特性</td>
+      </tr>
+      <tr>
+        <td>JavaScript</td>
+        <td>ES6+</td>
+        <td>客户端逻辑</td>
+        <td>标准脚本语言</td>
+      </tr>
+      <tr>
+        <td>Tailwind CSS</td>
+        <td>v3</td>
+        <td>样式框架</td>
+        <td>实用优先，快速开发，响应式设计</td>
+      </tr>
+      <tr>
+        <td>Chart.js</td>
+        <td>v4.4.8</td>
+        <td>数据可视化</td>
+        <td>轻量级，功能丰富，适合金融数据展示</td>
+      </tr>
+      <tr>
+        <td>Font Awesome</td>
+        <td>v4.7.0</td>
+        <td>图标库</td>
+        <td>丰富的图标资源，易于集成</td>
+      </tr>
+      <tr>
+        <td>PWA</td>
+        <td>-</td>
+        <td>应用化</td>
+        <td>支持离线访问，本地安装</td>
+      </tr>
+    </table>
+
+    <h3>1.2 后端技术栈</h3>
+
+    <table>
+      <tr>
+        <th>技术/框架</th>
+        <th>版本</th>
+        <th>用途</th>
+        <th>选型理由</th>
+      </tr>
+      <tr>
+        <td>Node.js</td>
+        <td>v18+</td>
+        <td>运行环境</td>
+        <td>高性能，适合实时应用</td>
+      </tr>
+      <tr>
+        <td>Express.js</td>
+        <td>v4+</td>
+        <td>Web框架</td>
+        <td>轻量级，灵活，适合REST API开发</td>
+      </tr>
+      <tr>
+        <td>MongoDB</td>
+        <td>v6+</td>
+        <td>数据库</td>
+        <td>文档型数据库，适合存储复杂金融数据</td>
+      </tr>
+      <tr>
+        <td>Redis</td>
+        <td>v7+</td>
+        <td>缓存</td>
+        <td>用于会话管理和实时数据缓存</td>
+      </tr>
+      <tr>
+        <td>Socket.io</td>
+        <td>v4+</td>
+        <td>实时通信</td>
+        <td>支持WebSocket，实现实时数据同步</td>
+      </tr>
+      <tr>
+        <td>JWT</td>
+        <td>-</td>
+        <td>身份认证</td>
+        <td>无状态认证，适合前后端分离架构</td>
+      </tr>
+      <tr>
+        <td>Passport.js</td>
+        <td>v0.6+</td>
+        <td>认证中间件</td>
+        <td>灵活的认证策略</td>
+      </tr>
+    </table>
+
+    <h3>1.3 部署与运维</h3>
+
+    <table>
+      <tr>
+        <th>技术/工具</th>
+        <th>版本</th>
+        <th>用途</th>
+        <th>选型理由</th>
+      </tr>
+      <tr>
+        <td>Docker</td>
+        <td>最新</td>
+        <td>容器化</td>
+        <td>环境一致性，易于部署</td>
+      </tr>
+      <tr>
+        <td>Nginx</td>
+        <td>最新</td>
+        <td>反向代理</td>
+        <td>高性能，负载均衡</td>
+      </tr>
+      <tr>
+        <td>PM2</td>
+        <td>最新</td>
+        <td>进程管理</td>
+        <td>确保应用持续运行</td>
+      </tr>
+      <tr>
+        <td>GitHub Actions</td>
+        <td>最新</td>
+        <td>CI/CD</td>
+        <td>自动化部署流程</td>
+      </tr>
+      <tr>
+        <td>AWS/Azure</td>
+        <td>-</td>
+        <td>云服务</td>
+        <td>可扩展性，高可用性</td>
+      </tr>
+    </table>
+
+    <h2>二、系统架构设计</h2>
+
+    <h3>2.1 架构类型</h3>
+
+    <p><strong>采用微服务架构</strong>，将系统拆分为多个独立服务，每个服务负责特定功能，通过API进行通信。</p>
+
+    <h3>2.2 架构组件</h3>
+
+    <pre><code>flowchart TD
+    Client[前端应用
+    PWA/网站] --> APIGateway[API网关
+    Nginx]
+    
+    APIGateway --> AuthService[认证服务
+    用户注册/登录]
+    APIGateway --> UserService[用户服务
+    用户信息管理]
+    APIGateway --> MarketService[市场服务
+    市场数据管理]
+    APIGateway --> TransactionService[交易服务
+    交易处理]
+    APIGateway --> AssetService[资产服务
+    资产管理]
+    APIGateway --> AIService[AI分析服务
+    智能分析]
+    
+    AuthService --> MongoDB[(MongoDB
+    用户数据)]
+    UserService --> MongoDB
+    MarketService --> MongoDB
+    TransactionService --> MongoDB
+    AssetService --> MongoDB
+    AIService --> MongoDB
+    
+    MarketService --> Redis[(Redis
+    市场数据缓存)]
+    AIService --> Redis
+    
+    TransactionService --> SocketIO[Socket.io
+    实时通知]
+    SocketIO --> Client
+    
+    AIService --> AI[AI模型
+    金融分析]</code></pre>
+
+    <h3>2.3 核心流程</h3>
+
+    <h4>2.3.1 用户认证流程</h4>
+    <ol>
+      <li>用户通过PWA应用或网站发起注册/登录请求</li>
+      <li>API网关将请求转发到认证服务</li>
+      <li>认证服务验证用户信息，生成JWT令牌</li>
+      <li>令牌返回给前端，前端存储令牌用于后续请求</li>
+      <li>前端每次请求携带令牌，API网关验证令牌有效性</li>
+    </ol>
+
+    <h4>2.3.2 数据同步流程</h4>
+    <ol>
+      <li>前端操作触发数据变更（如交易）</li>
+      <li>前端发送请求到对应服务</li>
+      <li>服务处理请求并更新数据库</li>
+      <li>服务通过Socket.io向前端推送更新通知</li>
+      <li>前端接收通知并更新本地状态</li>
+      <li>离线状态下，前端缓存操作，网络恢复后自动同步</li>
+    </ol>
+
+    <h4>2.3.3 AI分析流程</h4>
+    <ol>
+      <li>用户通过前端发起分析请求</li>
+      <li>前端将请求发送到AI服务</li>
+      <li>AI服务处理请求，调用AI模型进行分析</li>
+      <li>分析结果返回给前端显示</li>
+      <li>分析历史存储到数据库，支持后续查询</li>
+    </ol>
+
+    <h3>2.4 技术架构优势</h3>
+
+    <ul>
+      <li><strong>微服务架构</strong>：各服务独立部署，便于维护和扩展</li>
+      <li><strong>实时通信</strong>：使用Socket.io实现实时数据同步</li>
+      <li><strong>缓存机制</strong>：Redis缓存热点数据，提高性能</li>
+      <li><strong>PWA支持</strong>：前端支持离线访问和本地安装</li>
+      <li><strong>安全性</strong>：JWT认证，数据加密传输</li>
+    </ul>
+
+    <h2>三、数据库设计</h2>
+
+    <h3>3.1 数据模型</h3>
+
+    <h4>3.1.1 用户表 (users)</h4>
+
+    <table>
+      <tr>
+        <th>字段名</th>
+        <th>数据类型</th>
+        <th>描述</th>
+        <th>约束</th>
+      </tr>
+      <tr>
+        <td>_id</td>
+        <td>ObjectId</td>
+        <td>用户ID</td>
+        <td>主键</td>
+      </tr>
+      <tr>
+        <td>username</td>
+        <td>String</td>
+        <td>用户名</td>
+        <td>唯一，必填</td>
+      </tr>
+      <tr>
+        <td>email</td>
+        <td>String</td>
+        <td>邮箱</td>
+        <td>唯一，必填</td>
+      </tr>
+      <tr>
+        <td>password</td>
+        <td>String</td>
+        <td>密码哈希</td>
+        <td>必填</td>
+      </tr>
+      <tr>
+        <td>balance</td>
+        <td>Number</td>
+        <td>钱包余额</td>
+        <td>默认0</td>
+      </tr>
+      <tr>
+        <td>created_at</td>
+        <td>Date</td>
+        <td>创建时间</td>
+        <td>自动生成</td>
+      </tr>
+      <tr>
+        <td>updated_at</td>
+        <td>Date</td>
+        <td>更新时间</td>
+        <td>自动生成</td>
+      </tr>
+      <tr>
+        <td>last_login</td>
+        <td>Date</td>
+        <td>最后登录时间</td>
+        <td>-</td>
+      </tr>
+    </table>
+
+    <h4>3.1.2 记忆资产表 (memory_assets)</h4>
+
+    <table>
+      <tr>
+        <th>字段名</th>
+        <th>数据类型</th>
+        <th>描述</th>
+        <th>约束</th>
+      </tr>
+      <tr>
+        <td>_id</td>
+        <td>ObjectId</td>
+        <td>资产ID</td>
+        <td>主键</td>
+      </tr>
+      <tr>
+        <td>name</td>
+        <td>String</td>
+        <td>资产名称</td>
+        <td>必填</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>String</td>
+        <td>资产类型</td>
+        <td>必填 (情感类/体验类/思想类)</td>
+      </tr>
+      <tr>
+        <td>description</td>
+        <td>String</td>
+        <td>资产描述</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>price</td>
+        <td>Number</td>
+        <td>当前价格</td>
+        <td>必填</td>
+      </tr>
+      <tr>
+        <td>market_cap</td>
+        <td>Number</td>
+        <td>市值</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>volume_24h</td>
+        <td>Number</td>
+        <td>24小时成交量</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>change_24h</td>
+        <td>Number</td>
+        <td>24小时涨跌幅</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>created_at</td>
+        <td>Date</td>
+        <td>创建时间</td>
+        <td>自动生成</td>
+      </tr>
+      <tr>
+        <td>updated_at</td>
+        <td>Date</td>
+        <td>更新时间</td>
+        <td>自动生成</td>
+      </tr>
+    </table>
+
+    <h4>3.1.3 交易表 (transactions)</h4>
+
+    <table>
+      <tr>
+        <th>字段名</th>
+        <th>数据类型</th>
+        <th>描述</th>
+        <th>约束</th>
+      </tr>
+      <tr>
+        <td>_id</td>
+        <td>ObjectId</td>
+        <td>交易ID</td>
+        <td>主键</td>
+      </tr>
+      <tr>
+        <td>user_id</td>
+        <td>ObjectId</td>
+        <td>用户ID</td>
+        <td>外键(users)</td>
+      </tr>
+      <tr>
+        <td>asset_id</td>
+        <td>ObjectId</td>
+        <td>资产ID</td>
+        <td>外键(memory_assets)</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>String</td>
+        <td>交易类型</td>
+        <td>必填 (买入/卖出)</td>
+      </tr>
+      <tr>
+        <td>price</td>
+        <td>Number</td>
+        <td>交易价格</td>
+        <td>必填</td>
+      </tr>
+      <tr>
+        <td>quantity</td>
+        <td>Number</td>
+        <td>交易数量</td>
+        <td>必填</td>
+      </tr>
+      <tr>
+        <td>total</td>
+        <td>Number</td>
+        <td>交易总额</td>
+        <td>必填</td>
+      </tr>
+      <tr>
+        <td>fee</td>
+        <td>Number</td>
+        <td>手续费</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>status</td>
+        <td>String</td>
+        <td>交易状态</td>
+        <td>必填 (待处理/完成/失败)</td>
+      </tr>
+      <tr>
+        <td>created_at</td>
+        <td>Date</td>
+        <td>创建时间</td>
+        <td>自动生成</td>
+      </tr>
+      <tr>
+        <td>updated_at</td>
+        <td>Date</td>
+        <td>更新时间</td>
+        <td>自动生成</td>
+      </tr>
+    </table>
+
+    <h4>3.1.4 用户资产表 (user_assets)</h4>
+
+    <table>
+      <tr>
+        <th>字段名</th>
+        <th>数据类型</th>
+        <th>描述</th>
+        <th>约束</th>
+      </tr>
+      <tr>
+        <td>_id</td>
+        <td>ObjectId</td>
+        <td>记录ID</td>
+        <td>主键</td>
+      </tr>
+      <tr>
+        <td>user_id</td>
+        <td>ObjectId</td>
+        <td>用户ID</td>
+        <td>外键(users)</td>
+      </tr>
+      <tr>
+        <td>asset_id</td>
+        <td>ObjectId</td>
+        <td>资产ID</td>
+        <td>外键(memory_assets)</td>
+      </tr>
+      <tr>
+        <td>quantity</td>
+        <td>Number</td>
+        <td>持有数量</td>
+        <td>必填</td>
+      </tr>
+      <tr>
+        <td>avg_price</td>
+        <td>Number</td>
+        <td>平均成本</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>created_at</td>
+        <td>Date</td>
+        <td>创建时间</td>
+        <td>自动生成</td>
+      </tr>
+      <tr>
+        <td>updated_at</td>
+        <td>Date</td>
+        <td>更新时间</td>
+        <td>自动生成</td>
+      </tr>
+    </table>
+
+    <h4>3.1.5 AI分析记录表 (ai_analyses)</h4>
+
+    <table>
+      <tr>
+        <th>字段名</th>
+        <th>数据类型</th>
+        <th>描述</th>
+        <th>约束</th>
+      </tr>
+      <tr>
+        <td>_id</td>
+        <td>ObjectId</td>
+        <td>分析ID</td>
+        <td>主键</td>
+      </tr>
+      <tr>
+        <td>user_id</td>
+        <td>ObjectId</td>
+        <td>用户ID</td>
+        <td>外键(users)</td>
+      </tr>
+      <tr>
+        <td>prompt</td>
+        <td>String</td>
+        <td>分析请求</td>
+        <td>必填</td>
+      </tr>
+      <tr>
+        <td>result</td>
+        <td>String</td>
+        <td>分析结果</td>
+        <td>必填</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>String</td>
+        <td>分析类型</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>created_at</td>
+        <td>Date</td>
+        <td>创建时间</td>
+        <td>自动生成</td>
+      </tr>
+    </table>
+
+    <h3>3.2 数据库关系</h3>
+
+    <pre><code>erDiagram
+    USERS ||--o{ TRANSACTIONS : makes
+    USERS ||--o{ USER_ASSETS : owns
+    USERS ||--o{ AI_ANALYSES : requests
+    MEMORY_ASSETS ||--o{ TRANSACTIONS : involved_in
+    MEMORY_ASSETS ||--o{ USER_ASSETS : held_as</code></pre>
+
+    <h3>3.3 数据索引</h3>
+
+    <table>
+      <tr>
+        <th>表名</th>
+        <th>索引字段</th>
+        <th>索引类型</th>
+        <th>用途</th>
+      </tr>
+      <tr>
+        <td>users</td>
+        <td>username, email</td>
+        <td>唯一索引</td>
+        <td>加速用户查找</td>
+      </tr>
+      <tr>
+        <td>memory_assets</td>
+        <td>type, price</td>
+        <td>复合索引</td>
+        <td>加速市场数据查询</td>
+      </tr>
+      <tr>
+        <td>transactions</td>
+        <td>user_id, created_at</td>
+        <td>复合索引</td>
+        <td>加速用户交易历史查询</td>
+      </tr>
+      <tr>
+        <td>user_assets</td>
+        <td>user_id, asset_id</td>
+        <td>复合索引</td>
+        <td>加速用户资产查询</td>
+      </tr>
+      <tr>
+        <td>ai_analyses</td>
+        <td>user_id, created_at</td>
+        <td>复合索引</td>
+        <td>加速用户分析历史查询</td>
+      </tr>
+    </table>
+
+    <h2>四、API接口设计</h2>
+
+    <h3>4.1 认证接口</h3>
+
+    <table>
+      <tr>
+        <th>API路径</th>
+        <th>方法</th>
+        <th>模块</th>
+        <th>功能描述</th>
+        <th>请求体 (JSON)</th>
+        <th>成功响应 (200 OK)</th>
+      </tr>
+      <tr>
+        <td>/api/auth/register</td>
+        <td>POST</td>
+        <td>认证服务</td>
+        <td>用户注册</td>
+        <td><code>{"username": "...", "email": "...", "password": "..."}</code></td>
+        <td><code>{"token": "...", "user": {...}}</code></td>
+      </tr>
+      <tr>
+        <td>/api/auth/login</td>
+        <td>POST</td>
+        <td>认证服务</td>
+        <td>用户登录</td>
+        <td><code>{"username": "...", "password": "..."}</code></td>
+        <td><code>{"token": "...", "user": {...}}</code></td>
+      </tr>
+      <tr>
+        <td>/api/auth/refresh</td>
+        <td>POST</td>
+        <td>认证服务</td>
+        <td>刷新令牌</td>
+        <td><code>{"token": "..."}</code></td>
+        <td><code>{"token": "..."}</code></td>
+      </tr>
+      <tr>
+        <td>/api/auth/logout</td>
+        <td>POST</td>
+        <td>认证服务</td>
+        <td>用户登出</td>
+        <td>N/A</td>
+        <td><code>{"message": "Logout successful"}</code></td>
+      </tr>
+    </table>
+
+    <h3>4.2 用户接口</h3>
+
+    <table>
+      <tr>
+        <th>API路径</th>
+        <th>方法</th>
+        <th>模块</th>
+        <th>功能描述</th>
+        <th>请求体 (JSON)</th>
+        <th>成功响应 (200 OK)</th>
+      </tr>
+      <tr>
+        <td>/api/users/profile</td>
+        <td>GET</td>
+        <td>用户服务</td>
+        <td>获取用户信息</td>
+        <td>N/A</td>
+        <td><code>{"user": {...}}</code></td>
+      </tr>
+      <tr>
+        <td>/api/users/profile</td>
+        <td>PUT</td>
+        <td>用户服务</td>
+        <td>更新用户信息</td>
+        <td><code>{"email": "...", "password": "..."}</code></td>
+        <td><code>{"user": {...}}</code></td>
+      </tr>
+      <tr>
+        <td>/api/users/balance</td>
+        <td>GET</td>
+        <td>用户服务</td>
+        <td>获取钱包余额</td>
+        <td>N/A</td>
+        <td><code>{"balance": 248.50}</code></td>
+      </tr>
+      <tr>
+        <td>/api/users/balance</td>
+        <td>POST</td>
+        <td>用户服务</td>
+        <td>充值/提现</td>
+        <td><code>{"amount": 100, "type": "deposit"}</code></td>
+        <td><code>{"balance": 348.50}</code></td>
+      </tr>
+    </table>
+
+    <h3>4.3 市场接口</h3>
+
+    <table>
+      <tr>
+        <th>API路径</th>
+        <th>方法</th>
+        <th>模块</th>
+        <th>功能描述</th>
+        <th>请求体 (JSON)</th>
+        <th>成功响应 (200 OK)</th>
+      </tr>
+      <tr>
+        <td>/api/market/assets</td>
+        <td>GET</td>
+        <td>市场服务</td>
+        <td>获取资产列表</td>
+        <td>N/A</td>
+        <td><code>{"assets": [...]}</code></td>
+      </tr>
+      <tr>
+        <td>/api/market/assets/:id</td>
+        <td>GET</td>
+        <td>市场服务</td>
+        <td>获取资产详情</td>
+        <td>N/A</td>
+        <td><code>{"asset": {...}}</code></td>
+      </tr>
+      <tr>
+        <td>/api/market/trends</td>
+        <td>GET</td>
+        <td>市场服务</td>
+        <td>获取市场趋势</td>
+        <td>N/A</td>
+        <td><code>{"trends": {...}}</code></td>
+      </tr>
+      <tr>
+        <td>/api/market/history/:id</td>
+        <td>GET</td>
+        <td>市场服务</td>
+        <td>获取资产历史数据</td>
+        <td>N/A</td>
+        <td><code>{"history": [...]}</code></td>
+      </tr>
+    </table>
+
+    <h3>4.4 交易接口</h3>
+
+    <table>
+      <tr>
+        <th>API路径</th>
+        <th>方法</th>
+        <th>模块</th>
+        <th>功能描述</th>
+        <th>请求体 (JSON)</th>
+        <th>成功响应 (200 OK)</th>
+      </tr>
+      <tr>
+        <td>/api/transactions</td>
+        <td>POST</td>
+        <td>交易服务</td>
+        <td>创建交易</td>
+        <td><code>{"asset_id": "...", "type": "buy", "quantity": 1, "price": 128.50}</code></td>
+        <td><code>{"transaction": {...}}</code></td>
+      </tr>
+      <tr>
+        <td>/api/transactions</td>
+        <td>GET</td>
+        <td>交易服务</td>
+        <td>获取交易历史</td>
+        <td>N/A</td>
+        <td><code>{"transactions": [...]}</code></td>
+      </tr>
+      <tr>
+        <td>/api/transactions/:id</td>
+        <td>GET</td>
+        <td>交易服务</td>
+        <td>获取交易详情</td>
+        <td>N/A</td>
+        <td><code>{"transaction": {...}}</code></td>
+      </tr>
+    </table>
+
+    <h3>4.5 资产接口</h3>
+
+    <table>
+      <tr>
+        <th>API路径</th>
+        <th>方法</th>
+        <th>模块</th>
+        <th>功能描述</th>
+        <th>请求体 (JSON)</th>
+        <th>成功响应 (200 OK)</th>
+      </tr>
+      <tr>
+        <td>/api/assets</td>
+        <td>GET</td>
+        <td>资产服务</td>
+        <td>获取用户资产</td>
+        <td>N/A</td>
+        <td><code>{"assets": [...]}</code></td>
+      </tr>
+      <tr>
+        <td>/api/assets/upload</td>
+        <td>POST</td>
+        <td>资产服务</td>
+        <td>上传记忆资产</td>
+        <td><code>{"name": "...", "type": "...", "description": "..."}</code></td>
+        <td><code>{"asset": {...}}</code></td>
+      </tr>
+      <tr>
+        <td>/api/assets/:id</td>
+        <td>GET</td>
+        <td>资产服务</td>
+        <td>获取资产详情</td>
+        <td>N/A</td>
+        <td><code>{"asset": {...}}</code></td>
+      </tr>
+    </table>
+
+    <h3>4.6 AI分析接口</h3>
+
+    <table>
+      <tr>
+        <th>API路径</th>
+        <th>方法</th>
+        <th>模块</th>
+        <th>功能描述</th>
+        <th>请求体 (JSON)</th>
+        <th>成功响应 (200 OK)</th>
+      </tr>
+      <tr>
+        <td>/api/ai/analyze</td>
+        <td>POST</td>
+        <td>AI服务</td>
+        <td>分析请求</td>
+        <td><code>{"prompt": "分析当前市场趋势", "type": "market_trend"}</code></td>
+        <td><code>{"result": "..."}</code></td>
+      </tr>
+      <tr>
+        <td>/api/ai/history</td>
+        <td>GET</td>
+        <td>AI服务</td>
+        <td>获取分析历史</td>
+        <td>N/A</td>
+        <td><code>{"analyses": [...]}</code></td>
+      </tr>
+      <tr>
+        <td>/api/ai/suggestions</td>
+        <td>GET</td>
+        <td>AI服务</td>
+        <td>获取分析建议</td>
+        <td>N/A</td>
+        <td><code>{"suggestions": [...]}</code></td>
+      </tr>
+    </table>
+
+    <h3>4.7 WebSocket接口</h3>
+
+    <table>
+      <tr>
+        <th>事件名称</th>
+        <th>方向</th>
+        <th>数据结构</th>
+        <th>描述</th>
+      </tr>
+      <tr>
+        <td>market:update</td>
+        <td>服务器→客户端</td>
+        <td><code>{"asset_id": "...", "price": 128.50, "change": 2.5}</code></td>
+        <td>市场数据更新</td>
+      </tr>
+      <tr>
+        <td>transaction:status</td>
+        <td>服务器→客户端</td>
+        <td><code>{"transaction_id": "...", "status": "completed"}</code></td>
+        <td>交易状态更新</td>
+      </tr>
+      <tr>
+        <td>balance:update</td>
+        <td>服务器→客户端</td>
+        <td><code>{"balance": 248.50}</code></td>
+        <td>余额更新</td>
+      </tr>
+      <tr>
+        <td>notification</td>
+        <td>服务器→客户端</td>
+        <td><code>{"type": "info", "message": "..."}</code></td>
+        <td>系统通知</td>
+      </tr>
+    </table>
+
+    <h2>五、UI/UX设计</h2>
+
+    <h3>5.1 设计理念</h3>
+
+    <ul>
+      <li><strong>现代金融风格</strong>：深色背景，金色和蓝色为主色调，体现专业金融感</li>
+      <li><strong>响应式设计</strong>：适配桌面、平板和移动设备</li>
+      <li><strong>直观易用</strong>：清晰的信息层次，简化操作流程</li>
+      <li><strong>实时反馈</strong>：操作后立即显示结果，提供视觉反馈</li>
+      <li><strong>个性化体验</strong>：根据用户行为和偏好调整界面</li>
+    </ul>
+
+    <h3>5.2 页面结构</h3>
+
+    <h4>5.2.1 桌面端布局</h4>
+
+    <pre><code>+-----------------------------------------------+
+| 顶部导航栏 (Logo, 菜单, 用户信息)              |
++-----------------------------------------------+
+|                                               |
+| 市场概览区域 (资产卡片, 总市值, 成交额)        |
+|                                               |
++---------------------------+-------------------+
+|                           |                   |
+| 市场K线图和交易面板       | AI分析模块        |
+|                           |                   |
++---------------------------+-------------------+
+|                                               |
+| 市场新闻和个人资产区域                         |
+|                                               |
++-----------------------------------------------+
+| 页脚 (版权信息, 链接)                         |
++-----------------------------------------------+</code></pre>
+
+    <h4>5.2.2 移动端布局</h4>
+
+    <pre><code>+-----------------------------+
+| 顶部导航栏 (Logo, 菜单按钮)  |
++-----------------------------+
+|                             |
+| 市场概览区域 (资产卡片)      |
+|                             |
++-----------------------------+
+|                             |
+| 市场K线图和交易面板          |
+|                             |
++-----------------------------+
+|                             |
+| AI分析模块                   |
+|                             |
++-----------------------------+
+|                             |
+| 市场新闻区域                 |
+|                             |
++-----------------------------+
+|                             |
+| 个人资产区域                 |
+|                             |
++-----------------------------+
+| 页脚 (版权信息)             |
++-----------------------------+</code></pre>
+
+    <h3>5.3 核心页面设计</h3>
+
+    <h4>5.3.1 首页/市场概览</h4>
+    <ul>
+      <li><strong>功能</strong>：展示市场总览、热门资产、市场趋势</li>
+      <li><strong>布局</strong>：网格布局展示资产卡片，顶部显示市场总数据</li>
+      <li><strong>交互</strong>：资产卡片悬停效果，点击进入详情页</li>
+      <li><strong>响应式</strong>：桌面端4列网格，移动端1列</li>
+    </ul>
+
+    <h4>5.3.2 交易页面</h4>
+    <ul>
+      <li><strong>功能</strong>：资产K线图、交易表单、订单簿</li>
+      <li><strong>布局</strong>：左侧K线图，右侧交易面板</li>
+      <li><strong>交互</strong>：实时价格更新，交易确认弹窗</li>
+      <li><strong>响应式</strong>：移动端垂直布局，K线图在上，交易面板在下</li>
+    </ul>
+
+    <h4>5.3.3 AI分析页面</h4>
+    <ul>
+      <li><strong>功能</strong>：分析请求输入、快捷分析选项、分析结果展示</li>
+      <li><strong>布局</strong>：左侧输入区，右侧结果区</li>
+      <li><strong>交互</strong>：加载动画，分析结果滚动展示</li>
+      <li><strong>响应式</strong>：移动端垂直布局，输入区在上，结果区在下</li>
+    </ul>
+
+    <h4>5.3.4 个人资产页面</h4>
+    <ul>
+      <li><strong>功能</strong>：资产列表、余额信息、资产详情</li>
+      <li><strong>布局</strong>：顶部余额信息，下方资产列表</li>
+      <li><strong>交互</strong>：资产卡片点击进入详情，支持排序和筛选</li>
+      <li><strong>响应式</strong>：适配各种屏幕尺寸</li>
+    </ul>
+
+    <h4>5.3.5 登录/注册页面</h4>
+    <ul>
+      <li><strong>功能</strong>：用户认证、密码找回</li>
+      <li><strong>布局</strong>：居中表单，简洁设计</li>
+      <li><strong>交互</strong>：表单验证，错误提示</li>
+      <li><strong>响应式</strong>：适配各种屏幕尺寸</li>
+    </ul>
+
+    <h3>5.4 设计规范</h3>
+
+    <h4>5.4.1 颜色方案</h4>
+
+    <table>
+      <tr>
+        <th>颜色名称</th>
+        <th>色值</th>
+        <th>用途</th>
+      </tr>
+      <tr>
+        <td>主背景色</td>
+        <td>#0A192F</td>
+        <td>页面背景</td>
+      </tr>
+      <tr>
+        <td>卡片背景</td>
+        <td>#112240</td>
+        <td>卡片、面板背景</td>
+      </tr>
+      <tr>
+        <td>导航背景</td>
+        <td>#172A45</td>
+        <td>导航栏背景</td>
+      </tr>
+      <tr>
+        <td>主色调</td>
+        <td>#E6AF2E</td>
+        <td>强调色、按钮</td>
+      </tr>
+      <tr>
+        <td>辅助色</td>
+        <td>#64FFDA</td>
+        <td>次要强调色</td>
+      </tr>
+      <tr>
+        <td>文本主色</td>
+        <td>#CCD6F6</td>
+        <td>主要文本</td>
+      </tr>
+      <tr>
+        <td>文本次要色</td>
+        <td>#8892B0</td>
+        <td>次要文本</td>
+      </tr>
+      <tr>
+        <td>成功色</td>
+        <td>#66FF99</td>
+        <td>成功状态</td>
+      </tr>
+      <tr>
+        <td>警告色</td>
+        <td>#FFCC66</td>
+        <td>警告状态</td>
+      </tr>
+      <tr>
+        <td>错误色</td>
+        <td>#FF6666</td>
+        <td>错误状态</td>
+      </tr>
+    </table>
+
+    <h4>5.4.2 字体方案</h4>
+
+    <table>
+      <tr>
+        <th>字体名称</th>
+        <th>用途</th>
+        <th>大小范围</th>
+      </tr>
+      <tr>
+        <td>Orbitron</td>
+        <td>标题、金融数据</td>
+        <td>16px - 32px</td>
+      </tr>
+      <tr>
+        <td>Inter</td>
+        <td>正文、表单</td>
+        <td>14px - 18px</td>
+      </tr>
+    </table>
+
+    <h4>5.4.3 组件规范</h4>
+
+    <ul>
+      <li><strong>按钮</strong>：圆角设计，悬停效果，渐变背景</li>
+      <li><strong>卡片</strong>：轻微阴影，悬停时阴影增强</li>
+      <li><strong>表单</strong>：简洁设计，实时验证</li>
+      <li><strong>图表</strong>：深色背景，金色线条，交互提示</li>
+      <li><strong>模态框</strong>：半透明背景，居中显示</li>
+    </ul>
+
+    <h2>六、App与网站对接同步设计</h2>
+
+    <h3>6.1 同步架构</h3>
+
+    <pre><code>flowchart LR
+    PWA[PWA应用] <--> SyncService[同步服务]
+    Website[网站] <--> SyncService
+    SyncService <--> Database[(数据库)]
+    SyncService <--> Cache[(本地缓存)]
+    PWA <--> Cache
+    Website <--> Cache</code></pre>
+
+    <h3>6.2 同步机制</h3>
+
+    <h4>6.2.1 实时同步</h4>
+    <ul>
+      <li><strong>WebSocket连接</strong>：前端与后端建立持久连接</li>
+      <li><strong>事件推送</strong>：服务器主动推送数据更新</li>
+      <li><strong>双向通信</strong>：前端操作实时同步到后端</li>
+    </ul>
+
+    <h4>6.2.2 离线同步</h4>
+    <ul>
+      <li><strong>本地缓存</strong>：使用localStorage或IndexedDB缓存数据</li>
+      <li><strong>操作队列</strong>：离线操作加入队列</li>
+      <li><strong>网络恢复</strong>：网络恢复后自动同步队列中的操作</li>
+    </ul>
+
+    <h4>6.2.3 冲突处理</h4>
+    <ul>
+      <li><strong>时间戳机制</strong>：使用时间戳标记数据版本</li>
+      <li><strong>乐观锁</strong>：防止并发更新冲突</li>
+      <li><strong>冲突解决策略</strong>：用户选择或自动合并</li>
+    </ul>
+
+    <h3>6.3 数据同步策略</h3>
+
+    <table>
+      <tr>
+        <th>数据类型</th>
+        <th>同步策略</th>
+        <th>优先级</th>
+        <th>冲突处理</th>
+      </tr>
+      <tr>
+        <td>用户认证</td>
+        <td>实时同步</td>
+        <td>高</td>
+        <td>强制覆盖</td>
+      </tr>
+      <tr>
+        <td>钱包余额</td>
+        <td>实时同步</td>
+        <td>高</td>
+        <td>服务器为准</td>
+      </tr>
+      <tr>
+        <td>交易记录</td>
+        <td>实时同步</td>
+        <td>高</td>
+        <td>服务器为准</td>
+      </tr>
+      <tr>
+        <td>个人资产</td>
+        <td>实时同步</td>
+        <td>中</td>
+        <td>服务器为准</td>
+      </tr>
+      <tr>
+        <td>市场数据</td>
+        <td>定时同步</td>
+        <td>中</td>
+        <td>服务器为准</td>
+      </tr>
+      <tr>
+        <td>AI分析结果</td>
+        <td>实时同步</td>
+        <td>低</td>
+        <td>服务器为准</td>
+      </tr>
+      <tr>
+        <td>用户设置</td>
+        <td>离线优先</td>
+        <td>低</td>
+        <td>合并策略</td>
+      </tr>
+    </table>
+
+    <h3>6.4 同步状态管理</h3>
+
+    <h4>6.4.1 状态类型</h4>
+    <ul>
+      <li><strong>在线</strong>：实时同步，数据最新</li>
+      <li><strong>同步中</strong>：正在与服务器同步数据</li>
+      <li><strong>离线</strong>：使用本地缓存数据</li>
+      <li><strong>同步错误</strong>：同步失败，显示错误提示</li>
+    </ul>
+
+    <h4>6.4.2 状态指示</h4>
+    <ul>
+      <li><strong>视觉反馈</strong>：顶部状态栏显示同步状态</li>
+      <li><strong>通知机制</strong>：同步完成或失败时通知用户</li>
+      <li><strong>手动同步</strong>：提供手动触发同步的选项</li>
+    </ul>
+
+    <h3>6.5 性能优化</h3>
+
+    <ul>
+      <li><strong>增量同步</strong>：只同步变更的数据</li>
+      <li><strong>批量操作</strong>：合并多个操作一次同步</li>
+      <li><strong>缓存策略</strong>：合理设置缓存过期时间</li>
+      <li><strong>网络检测</strong>：根据网络状况调整同步频率</li>
+      <li><strong>后台同步</strong>：在后台进行非紧急数据同步</li>
+    </ul>
+
+    <h2>七、安全性设计</h2>
+
+    <h3>7.1 前端安全</h3>
+
+    <ul>
+      <li><strong>XSS防护</strong>：输入验证，转义特殊字符</li>
+      <li><strong>CSRF防护</strong>：使用CSRF令牌</li>
+      <li><strong>数据加密</strong>：敏感数据本地加密存储</li>
+      <li><strong>安全头部</strong>：设置适当的安全HTTP头部</li>
+      <li><strong>内容安全策略</strong>：限制资源加载来源</li>
+    </ul>
+
+    <h3>7.2 后端安全</h3>
+
+    <ul>
+      <li><strong>认证授权</strong>：JWT认证，基于角色的权限控制</li>
+      <li><strong>输入验证</strong>：服务端验证所有输入</li>
+      <li><strong>密码安全</strong>：使用bcrypt加密存储密码</li>
+      <li><strong>API限流</strong>：防止暴力攻击</li>
+      <li><strong>日志审计</strong>：记录关键操作和异常</li>
+    </ul>
+
+    <h3>7.3 数据安全</h3>
+
+    <ul>
+      <li><strong>传输加密</strong>：使用HTTPS协议</li>
+      <li><strong>数据库加密</strong>：敏感数据加密存储</li>
+      <li><strong>备份策略</strong>：定期数据备份</li>
+      <li><strong>访问控制</strong>：严格的数据库访问权限</li>
+      <li><strong>数据脱敏</strong>：敏感信息脱敏处理</li>
+    </ul>
+
+    <h2>八、扩展性设计</h2>
+
+    <h3>8.1 功能扩展</h3>
+
+    <ul>
+      <li><strong>模块化设计</strong>：功能模块独立，便于扩展</li>
+      <li><strong>插件系统</strong>：支持第三方插件集成</li>
+      <li><strong>API版本控制</strong>：支持多个API版本共存</li>
+      <li><strong>配置管理</strong>：集中式配置管理</li>
+    </ul>
+
+    <h3>8.2 性能扩展</h3>
+
+    <ul>
+      <li><strong>负载均衡</strong>：多服务器负载均衡</li>
+      <li><strong>水平扩展</strong>：服务实例动态扩容</li>
+      <li><strong>缓存策略</strong>：多级缓存架构</li>
+      <li><strong>异步处理</strong>：非实时任务异步处理</li>
+    </ul>
+
+    <h3>8.3 技术扩展</h3>
+
+    <ul>
+      <li><strong>容器化部署</strong>：Docker容器化</li>
+      <li><strong>微服务架构</strong>：服务独立部署和扩展</li>
+      <li><strong>云服务集成</strong>：利用云服务弹性扩展</li>
+      <li><strong>自动化运维</strong>：CI/CD流程</li>
+    </ul>
+
+    <h2>九、总结</h2>
+
+    <p>茶海虾王@金融交易所看板平台系统设计采用了现代微服务架构，结合PWA技术实现了Web应用的移动化。系统通过实时数据同步和离线功能，为用户提供了流畅、一致的跨设备体验。</p>
+
+    <p>核心优势包括：</p>
+    <ul>
+      <li><strong>技术先进性</strong>：采用最新的前端和后端技术栈</li>
+      <li><strong>架构灵活性</strong>：微服务架构便于扩展和维护</li>
+      <li><strong>用户体验</strong>：响应式设计，实时数据更新，离线支持</li>
+      <li><strong>安全性</strong>：多层次安全防护机制</li>
+      <li><strong>可扩展性</strong>：模块化设计，支持功能和性能扩展</li>
+    </ul>
+
+    <p>系统设计充分考虑了未来的发展需求，为平台的持续迭代和功能扩展奠定了坚实的基础。通过PWA技术和实时同步机制，实现了App与网站的无缝对接，为用户提供了统一、高效的金融分析和交易体验。</p>
+
+    <hr>
+
+    <p><strong>茶海虾王@金融交易所看板平台</strong></p>
+    <p>© 2026 海南茶海虾王管理有限责任公司 保留所有权利。</p>
+    <p>技术支持服务联系：rao5201@126.com</p>
+
+    <h2 id="实现计划">实现计划</h2>
+    <h2 id="安全合规">安全合规</h2>
+    <h2 id="上线部署">上线部署</h2>
+    <h2 id="维护运营">维护运营</h2>
+    <h2 id="用户文档">用户文档</h2>
+    <h2 id="客服文档">客服文档</h2>
+    <h2 id="管理员文档">管理员文档</h2>
+    <h2 id="第三方接入">第三方接入</h2>
+    <h2 id="品牌规范">品牌规范</h2>
+  </div>
+</body>
+</html>

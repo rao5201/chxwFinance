@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能云健康看板 - 茶海虾王@金融交易所看板平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .status-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .status-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .status-normal { color: #10b981; }
+        .status-info { color: #3b82f6; }
+        .status-warning { color: #f59e0b; }
+        .status-error { color: #ef4444; }
+        .region-tab {
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .region-tab:hover {
+            background: #f3f4f6;
+        }
+        .region-tab.active {
+            background: #4f46e5;
+            color: white;
+        }
+        .service-row {
+            display: grid;
+            grid-template-columns: 2fr repeat(8, 1fr);
+            gap: 8px;
+            padding: 12px;
+            border-bottom: 1px solid #f3f4f6;
+            align-items: center;
+        }
+        .service-row:hover {
+            background: #f9fafb;
+        }
+        .service-name {
+            font-weight: 500;
+            color: #374151;
+        }
+        .status-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .support-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 24px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .support-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        .update-time {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        .history-item {
+            padding: 12px 16px;
+            border-left: 3px solid transparent;
+            margin-bottom: 8px;
+            background: white;
+            border-radius: 0 8px 8px 0;
+        }
+        .history-item.normal { border-left-color: #10b981; }
+        .history-item.info { border-left-color: #3b82f6; }
+        .history-item.warning { border-left-color: #f59e0b; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold gradient-text">茶海虾王</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-700 hover:text-indigo-600 transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-700 hover:text-indigo-600 transition">AI新闻</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-indigo-600 transition">定价</a>
+                    <a href="cloud-pricing.html" class="text-gray-700 hover:text-indigo-600 transition">云产品</a>
+                    <a href="cloud-health.html" class="text-indigo-600 font-semibold">健康看板</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">关于我们</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login.html" class="text-gray-700 hover:text-indigo-600 transition">登录</a>
+                    <a href="/register.html" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">免费试用</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-12 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2">智能云健康看板</h1>
+                    <p class="text-indigo-100">实时监控云服务状态，保障业务稳定运行</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-right">
+                    <p class="text-sm text-indigo-200">上次更新时间</p>
+                    <p class="font-mono text-lg">2026-04-03 03:06</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 状态概览 -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="status-card border-l-4 border-green-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm mb-1">正常服务</p>
+                            <p class="text-4xl font-bold text-green-600">24</p>
+                        </div>
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check-circle text-3xl text-green-600"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="status-card border-l-4 border-blue-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm mb-1">提示信息</p>
+                            <p class="text-4xl font-bold text-blue-600">0</p>
+                        </div>
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-info-circle text-3xl text-blue-600"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="status-card border-l-4 border-red-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm mb-1">异常服务</p>
+                            <p class="text-4xl font-bold text-red-600">0</p>
+                        </div>
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exclamation-circle text-3xl text-red-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 区域选择 -->
+    <section class="py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">选择区域</h2>
+            <div class="flex flex-wrap gap-2">
+                <div class="region-tab active">华北-北京</div>
+                <div class="region-tab">华北-保定</div>
+                <div class="region-tab">华南-广州</div>
+                <div class="region-tab">华东-苏州</div>
+                <div class="region-tab">华东-上海</div>
+                <div class="region-tab">华东-南京</div>
+                <div class="region-tab">西南-成都</div>
+                <div class="region-tab">金融华中-武汉</div>
+                <div class="region-tab">中国香港</div>
+                <div class="region-tab">非区域性</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务状态表格 -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-gray-100">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-bold text-gray-900">产品服务状态</h2>
+                        <div class="flex items-center space-x-4 text-sm">
+                            <span class="flex items-center"><i class="fas fa-circle text-green-500 mr-2"></i>正常</span>
+                            <span class="flex items-center"><i class="fas fa-circle text-blue-500 mr-2"></i>提示</span>
+                            <span class="flex items-center"><i class="fas fa-circle text-yellow-500 mr-2"></i>警告</span>
+                            <span class="flex items-center"><i class="fas fa-circle text-red-500 mr-2"></i>异常</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <div class="min-w-max">
+                        <div class="service-row bg-gray-50 font-semibold text-gray-600">
+                            <div>产品名称</div>
+                            <div class="text-center">当前状态</div>
+                            <div class="text-center">04/03</div>
+                            <div class="text-center">04/02</div>
+                            <div class="text-center">04/01</div>
+                            <div class="text-center">03/31</div>
+                            <div class="text-center">03/30</div>
+                            <div class="text-center">03/29</div>
+                            <div class="text-center">03/28</div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">云服务器</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">轻量应用服务器</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">专属服务器</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">百度太行·弹性裸金属服务器</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">云磁盘</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">容器引擎</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">服务网卡</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">对等连接</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">对象存储</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">应用引擎</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">私有网络</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">弹性公网IP</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">负载均衡</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">云数据库RDS</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">云数据库Redis</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">云原生数据库GaiaDB</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">流量突发服务包</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">共享带宽</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">弹性伸缩</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">IPv6公网网关</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">NAT网关</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">VPN网关</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">WEB应用防火墙</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                        <div class="service-row">
+                            <div class="service-name">函数计算</div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                            <div class="status-icon"><i class="fas fa-check-circle text-green-500"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 重大活动保障服务 -->
+    <section class="py-12 bg-gradient-to-br from-amber-50 to-orange-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">重大活动保障服务</h2>
+                <p class="text-gray-600">全方位保障您的关键业务活动稳定运行</p>
+            </div>
+            
+            <!-- 服务流程 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+                <!-- 重保前 -->
+                <div class="bg-white rounded-2xl shadow-sm p-6 border-t-4 border-blue-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-clipboard-check text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">重保前</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 text-xs font-bold text-blue-600">1</span>
+                            <span>活动目标确认 - 调研客户重保需求背景，明确预期目标</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 text-xs font-bold text-blue-600">2</span>
+                            <span>活动范围确认 - 确定云产品和保障业务范围</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 text-xs font-bold text-blue-600">3</span>
+                            <span>活动干系人确认 - 明确客户侧和平台侧关键人</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 text-xs font-bold text-blue-600">4</span>
+                            <span>活动前巡检 - 从可用性、安全、性能、容量维度巡检</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 text-xs font-bold text-blue-600">5</span>
+                            <span>活动前系统加固 - 优化改进建议，确保性能容量满足需求</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 text-xs font-bold text-blue-600">6</span>
+                            <span>活动前压测 - 200万VUM、5万VU高并发业务压测</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 text-xs font-bold text-blue-600">7</span>
+                            <span>活动前演练 - 模拟重保活动，验证业务系统稳定性</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 重保中 -->
+                <div class="bg-white rounded-2xl shadow-sm p-6 border-t-4 border-green-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">重保中</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span>7×24小时实时监控与告警响应</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span>专业技术团队现场/远程支持</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span>快速故障定位与应急处理</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span>资源弹性扩容保障</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span>安全态势实时感知</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                            <span>业务连续性保障</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-green-50 rounded-lg">
+                        <p class="text-xs text-green-700"><i class="fas fa-info-circle mr-1"></i>驻场服务可选，确保第一时间响应</p>
+                    </div>
+                </div>
+
+                <!-- 重保后 -->
+                <div class="bg-white rounded-2xl shadow-sm p-6 border-t-4 border-purple-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-file-alt text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">重保后</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-500 mr-3 mt-1"></i>
+                            <span>服务总结与复盘分析</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-500 mr-3 mt-1"></i>
+                            <span>输出《重大活动保障服务验收报告》</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-500 mr-3 mt-1"></i>
+                            <span>优化建议与改进方案</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-500 mr-3 mt-1"></i>
+                            <span>知识沉淀与经验传承</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-semibold text-gray-900 mb-2">交付文档</h4>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• 《重大活动保障服务计划书》</li>
+                            <li>• 《巡检报告》</li>
+                            <li>• 《重大活动保障服务验收报告》</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 定价信息 -->
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">服务定价</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-700">基础定价</span>
+                                <span class="text-2xl font-bold text-indigo-600">¥70,000</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-700">每增加一天重保</span>
+                                <span class="text-xl font-bold text-indigo-600">+¥10,000</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-700">驻场服务（每日）</span>
+                                <span class="text-xl font-bold text-indigo-600">+¥10,000</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-3"><i class="fas fa-info-circle mr-1"></i>驻场服务天数不超过重保服务天数</p>
+                    </div>
+                    <div class="text-center p-6 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl text-white">
+                        <p class="text-indigo-200 mb-2">预估总价</p>
+                        <p class="text-5xl font-bold mb-2">¥100,000</p>
+                        <p class="text-indigo-200">元起</p>
+                        <a href="#" class="inline-block mt-6 bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">立即咨询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 支持服务 -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">服务与支持</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="support-card">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">大模型增值服务</h3>
+                            <p class="text-indigo-100 text-sm">全站式专家服务助力业务快速落地</p>
+                        </div>
+                        <i class="fas fa-brain text-3xl opacity-50"></i>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-white hover:text-indigo-200 transition">
+                        了解更多 <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="support-card">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">优选专家服务</h3>
+                            <p class="text-indigo-100 text-sm">定制化1v1专家服务助您轻松用云</p>
+                        </div>
+                        <i class="fas fa-user-tie text-3xl opacity-50"></i>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-white hover:text-indigo-200 transition">
+                        了解更多 <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="support-card">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">自助工具</h3>
+                            <p class="text-indigo-100 text-sm">丰富的大模型/AI/云计算自助工具</p>
+                        </div>
+                        <i class="fas fa-tools text-3xl opacity-50"></i>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-white hover:text-indigo-200 transition">
+                        了解更多 <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 bg-white rounded-2xl shadow-sm p-8 text-center">
+                <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-headset text-3xl text-indigo-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">24×7 技术支持</h3>
+                <p class="text-gray-600 mb-4">工程师团队提供全天候技术服务支持，随时为您解决云产品使用问题</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">联系技术支持</a>
+                    <a href="docs.html" class="border border-gray-300 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-50 transition">查看文档</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">专业的金融交易所看板平台，集成AI工具与实时数据分析。</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="ai-tools.html" class="hover:text-white transition">AI工具</a></li>
+                        <li><a href="ai-news.html" class="hover:text-white transition">AI新闻</a></li>
+                        <li><a href="cloud-pricing.html" class="hover:text-white transition">云产品</a></li>
+                        <li><a href="cloud-health.html" class="hover:text-white transition">健康看板</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>rao5201@126.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 茶海虾王@金融交易所看板平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 区域切换功能
+        document.querySelectorAll('.region-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 自动刷新时间
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.getFullYear() + '-' + 
+                String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                String(now.getDate()).padStart(2, '0') + ' ' + 
+                String(now.getHours()).padStart(2, '0') + ':' + 
+                String(now.getMinutes()).padStart(2, '0');
+            document.querySelector('.font-mono').textContent = timeString;
+        }
+        setInterval(updateTime, 60000);
+    </script>
+</body>
+</html>

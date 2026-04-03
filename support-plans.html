@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业支持计划 - 茶海虾王@金融交易所看板平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+        .plan-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .plan-card.featured {
+            border-color: #4f46e5;
+            box-shadow: 0 10px 40px rgba(79, 70, 229, 0.2);
+        }
+        .plan-card.featured:hover {
+            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.3);
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .case-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            border-left: 4px solid #4f46e5;
+            transition: all 0.3s ease;
+        }
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .badge-hot { background: #fee2e2; color: #dc2626; }
+        .badge-recommended { background: #dbeafe; color: #1e40af; }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold gradient-text">茶海虾王</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-700 hover:text-indigo-600 transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-700 hover:text-indigo-600 transition">AI新闻</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-indigo-600 transition">定价</a>
+                    <a href="cloud-pricing.html" class="text-gray-700 hover:text-indigo-600 transition">云产品</a>
+                    <a href="cloud-health.html" class="text-gray-700 hover:text-indigo-600 transition">健康看板</a>
+                    <a href="support-plans.html" class="text-indigo-600 font-semibold">支持计划</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">关于我们</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login.html" class="text-gray-700 hover:text-indigo-600 transition">登录</a>
+                    <a href="/register.html" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">免费试用</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">企业支持计划</h1>
+            <p class="text-xl text-indigo-100 max-w-3xl mx-auto">专业级技术支持服务，为您的业务保驾护航，助力企业数字化转型</p>
+            <div class="mt-8 flex justify-center">
+                <a href="#plans" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition inline-flex items-center">
+                    <i class="fas fa-arrow-down mr-2"></i> 查看支持计划
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 支持计划 -->
+    <section id="plans" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">选择适合您的支持计划</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">三种支持计划等级，满足不同规模企业的技术支持需求</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- 商业级 -->
+                <div class="plan-card">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">商业级</h3>
+                        <div class="mb-4">
+                            <span class="text-5xl font-bold text-gray-900">¥25,000</span>
+                            <span class="text-gray-500">/月</span>
+                        </div>
+                        <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-800 transition inline-flex items-center">
+                            查看支持计划详情 <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="feature-item">
+                            <i class="fas fa-headset text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">技术支持</p>
+                                <p class="text-sm text-gray-600">7x24小时云产品支持，提供工单和电话联系渠道</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">30分钟内响应</p>
+                                <p class="text-sm text-gray-600">业务不可用&lt;30分钟；业务受损&lt;2小时；系统异常&lt;6小时；使用咨询&lt;12小时</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-puzzle-piece text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">第三方软件支持</p>
+                                <p class="text-sm text-gray-600">提供第三方软件配置指导及故障排除协助</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-graduation-cap text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">在线课程</p>
+                                <p class="text-sm text-gray-600">通过专业课程帮助客户技术人员熟练运用百度智能云产品、技术、服务与解决方案</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full mt-8 bg-gray-100 text-gray-900 py-3 rounded-xl font-semibold hover:bg-gray-200 transition">
+                        了解详情
+                    </button>
+                </div>
+
+                <!-- 企业级 -->
+                <div class="plan-card featured relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="badge badge-recommended">推荐</span>
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">企业级</h3>
+                        <div class="mb-4">
+                            <span class="text-5xl font-bold text-indigo-600">¥50,000</span>
+                            <span class="text-gray-500">/月</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt text-indigo-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">最快8分钟响应</p>
+                                <p class="text-sm text-gray-600">核心业务不可用&lt;8分钟；业务不可用&lt;30分钟；业务受损&lt;2小时；系统异常&lt;6小时；使用咨询&lt;12小时</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-user-tie text-indigo-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">技术服务经理</p>
+                                <p class="text-sm text-gray-600">提供建议和指导，帮助客户按照最佳实践进行规划和制定解决方案，保障日常问题和工单高效解决，需求优先评估跟进直至落地</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt text-indigo-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">重大活动保障服务</p>
+                                <p class="text-sm text-gray-600">在客户重大项目或技术活动期间，调研重保业务目标，制定重保方案，提供云专家7x24小时全程保驾护航，提前规避风险，快速响应问题，保障企业客户活动平稳进行</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full mt-8 bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
+                        了解详情
+                    </button>
+                </div>
+
+                <!-- 尊享级 -->
+                <div class="plan-card">
+                    <div class="text-center mb-8">
+                        <div class="flex justify-center mb-4">
+                            <span class="badge badge-hot">尊享</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">尊享级</h3>
+                        <div class="mb-4">
+                            <span class="text-5xl font-bold text-gray-900">¥80,000</span>
+                            <span class="text-gray-500">/月</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt text-purple-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">最快8分钟响应</p>
+                                <p class="text-sm text-gray-600">核心业务不可用&lt;8分钟；业务不可用&lt;30分钟；业务受损&lt;2小时；系统异常&lt;6小时；使用咨询&lt;12小时</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-crown text-purple-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">专属技术服务经理</p>
+                                <p class="text-sm text-gray-600">保障日常问题和工单高效解决，需求优先评估跟进直至落地，根据内部监控提供主动式风险预警，定期现场技术交流，提供月度及年度深度服务报告及总结</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-project-diagram text-purple-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-900">架构优化服务</p>
+                                <p class="text-sm text-gray-600">基于客户业务系统和应用架构现状，通过技术调研，并结合客户的业务需求，对客户业务架构进行深度的架构分析并给出架构优化报告，帮助客户规避业务连续性风险，助力实现业务增长</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full mt-8 bg-gray-900 text-white py-3 rounded-xl font-semibold hover:bg-gray-800 transition">
+                        了解详情
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- 专家服务 -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">专家服务</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">百度智能云联合数千家合作伙伴，为您打造符合您业务战略的专家服务</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="service-card">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-migration text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">上云迁移服务</h3>
+                    <p class="text-gray-600 text-sm mb-4">根据客户的需求提供专业的原厂迁移方案，平滑迁移业务系统，缩短业务云化周期，聚焦业务发展。</p>
+                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-cogs text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">运维服务</h3>
+                    <p class="text-gray-600 text-sm mb-4">利用百度的积累与实践，帮助客户做好云上资源管理。远程或驻场式运维服务形式，满足不同客户的专业服务要求。</p>
+                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">重大活动保障服务</h3>
+                    <p class="text-gray-600 text-sm mb-4">在客户重大项目或技术活动期间，向客户提供云专家7x24小时全程保驾护航，提前规避风险，快速响应问题，保障企业客户活动平稳进行。</p>
+                    <a href="cloud-health.html" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-sitemap text-orange-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">架构优化服务</h3>
+                    <p class="text-gray-600 text-sm mb-4">深入客户业务架构，制定优化方案，排除单点故障，通过优化云上架构瓶颈，应对业务的突增和高并发情况产生。</p>
+                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-exchange-alt text-pink-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">数据转换服务</h3>
+                    <p class="text-gray-600 text-sm mb-4">在大批量证照票据的文字识别、会议会谈记录归档、通知新闻播报等场景，提供图片、音频、文本文件的数据转换服务，支持多种类型格式文件的混合转换。</p>
+                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-rocket text-cyan-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">CDN优化服务</h3>
+                    <p class="text-gray-600 text-sm mb-4">通过配置优化服务对潜在加速问题进行优化，使网站获得更好的访问速度及稳定性。通过边缘计算服务帮助客户快速定制化业务。</p>
+                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-database text-teal-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">云上MySQL设计部署服务</h3>
+                    <p class="text-gray-600 text-sm mb-4">针对在百度智能云上使用云服务器搭建MySQL数据库的场景，提供数据库设计、上机安装配置和基础安全加固、主从部署、灾备配置等服务。</p>
+                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-user-graduate text-yellow-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">优选专家服务</h3>
+                    <p class="text-gray-600 text-sm mb-4">一对一定制化支持服务，提供实时、专业的指导，协助解决第三方产品安装、环境部署和涉及第三方软件、业务环境异常问题排查等问题。</p>
+                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">了解详情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- 培训与认证 -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">培训与认证</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">百度智能云技术和产品赋能，云生态数智化人才认证</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- 云智学院 -->
+                <div class="service-card">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-university text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">云智学院</h3>
+                    <p class="text-gray-600 mb-6">借助百度在人工智能领域的巨大优势，云智学院为学员推荐多门前沿技术课程，旨在提高学员就业竞争力和合作企业研发能力。</p>
+                    <div class="space-y-3">
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            在线实验室 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            Live公开课 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            企业培训 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            考试认证 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="inline-block mt-6 bg-indigo-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-indigo-700 transition">
+                        前往百度云智学院
+                    </a>
+                </div>
+
+                <!-- 百度开发者中心 -->
+                <div class="service-card">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-green-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度开发者中心</h3>
+                    <p class="text-gray-600 mb-6">百度智能云官方开发者社区，大量专家，全方位互动，共探云计算、大数据、AI、物联网、5G等技术。</p>
+                    <div class="space-y-3">
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            文章专栏 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            开源项目 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            技术问答 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            大数据竞赛 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="inline-block mt-6 bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">
+                        前往百度开发者中心
+                    </a>
+                </div>
+
+                <!-- AI专项赋能 -->
+                <div class="service-card">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-purple-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">AI专项赋能</h3>
+                    <p class="text-gray-600 mb-6">专业的体系化课程和教学服务，助力企业快速学习和落地AI，让深度学习技术的应用更加简单。</p>
+                    <div class="space-y-3">
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            AI课程 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            AI快车道 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            政企内训 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="block text-indigo-600 font-semibold hover:text-indigo-800 transition flex items-center">
+                            AI产业赛 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="inline-block mt-6 bg-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-purple-700 transition">
+                        前往AI Studio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- 服务案例 -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">服务案例</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">成功客户案例，见证我们的服务品质</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- 度小满 -->
+                <div class="case-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-yen-sign text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">度小满</h3>
+                            <span class="badge badge-hot">上云迁移</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">百度智能云针对度小满的核心诉求，结合金融行业客户的特性，为度小满设计了针对性的迁移上云方案，实现了整个迁移的快速交付。同时通过启动与度小满的稳定性共建工作，大大提高了客户维度的可用性，促进了度小满与百度智能云更深入的合作。</p>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用服务：</p>
+                            <p class="text-indigo-600">上云迁移服务</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用产品：</p>
+                            <p class="text-gray-600">BBC MapReduce BOS RDS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 知乎 -->
+                <div class="case-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-comments text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">知乎</h3>
+                            <span class="badge badge-recommended">上云迁移</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">百度智能云为知乎提供定制化容器上云方案，极大提高了客户业务的可用性和可扩展性，并协助知乎在5个月时间内完成了近千台服务器的迁移，顺利保障了基础组件业务的整体迁移上云。</p>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用服务：</p>
+                            <p class="text-indigo-600">上云迁移服务</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用产品：</p>
+                            <p class="text-gray-600">BBC 容器引擎服务CCE 云数据库RDS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 蝴蝶互动 -->
+                <div class="case-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-gamepad text-purple-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">蝴蝶互动</h3>
+                            <span class="badge badge-hot">上云迁移</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">作为游戏行业领军企业，蝴蝶互动对于业务可用性以及上云成本有严格要求，自接入上云迁移服务以来，6个月时间完成迁移500+ 服务器。管家级的迁移服务，优化了客户云上的架构和成本，助力蝴蝶互动实现业务新的突破。</p>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用服务：</p>
+                            <p class="text-indigo-600">上云迁移服务</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用产品：</p>
+                            <p class="text-gray-600">BCC CDN RDS BES</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 百信银行 -->
+                <div class="case-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-university text-indigo-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">百信银行</h3>
+                            <span class="badge badge-hot">驻场运维服务</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">百信银行定位为AI驱动的数字普惠银行，承载着中国银行业转型发展试验田的使命。2017年开始，百度为百信银行建设了私有云系统，并提供7*24响应和5*8驻场运维服务，确保百信银行IT底层架构安全稳定。</p>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用服务：</p>
+                            <p class="text-indigo-600">驻场运维服务</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用产品：</p>
+                            <p class="text-gray-600">专有云ABC_STACK</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 银联商务 -->
+                <div class="case-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-credit-card text-teal-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">银联商务</h3>
+                            <span class="badge badge-recommended">驻场运维服务</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">银联商务是线下第三方支付领导者，业务涵盖POS机，预付卡等线下支付业务。2017年9月，银联商务和百度签署全面战略合作协议，共建金融云及银联商务私有云已在2018年顺利落地武汉。</p>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用服务：</p>
+                            <p class="text-indigo-600">远程运维服务 驻场运维服务</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用产品：</p>
+                            <p class="text-gray-600">金融云 专有云ABC_STACK</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 宇信科技 -->
+                <div class="case-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-building text-orange-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">宇信科技</h3>
+                            <span class="badge badge-hot">远程运维服务</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">宇信科技是国内领先的金融科技赋能者，为金融机构提供IT咨询规划、软件产品、解决方案和实施、运维与测试、系统集成、业务运营等形态丰富的金融科技服务和产品。2020年百度战略投资宇信，为宇信金融云提供7*24远程运维服务。</p>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用服务：</p>
+                            <p class="text-indigo-600">远程运维服务</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-700">使用产品：</p>
+                            <p class="text-gray-600">专有云ABC_STACK</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- 千行百业客户故事 -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">与客户同行 创新突破</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">来自千行百业的客户故事，见证智能云服务的价值</p>
+                <div class="mt-6 flex justify-center space-x-4">
+                    <a href="#" class="bg-indigo-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-indigo-700 transition inline-flex items-center">
+                        <i class="fas fa-download mr-2"></i> 下载全部精彩案例集
+                    </a>
+                </div>
+            </div>
+
+            <!-- 行业筛选标签 -->
+            <div class="mb-10">
+                <div class="flex flex-wrap justify-center gap-3 mb-6">
+                    <span class="font-semibold text-gray-700">行业：</span>
+                    <button class="px-4 py-2 bg-indigo-600 text-white rounded-full text-sm">全部行业</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">具身智能</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">成长伙伴</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">政务服务</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">智慧城市</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">智慧工业</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">智慧教育</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">智慧金融</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">智能交通</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">智能汽车</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">智能终端</button>
+                </div>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="font-semibold text-gray-700">场景：</span>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">人工智能</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">专属云</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">数据标注</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">安全生产</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">物联网</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">协同办公</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition">能源</button>
+                </div>
+            </div>
+
+            <!-- 精选客户案例网格 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 智慧工业 -->
+                <div class="service-card">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-industry text-blue-600"></i>
+                    </div>
+                    <span class="badge badge-recommended text-xs mb-2 inline-block">智慧工业 · 人工智能</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">大模型支撑中国钢研重构行业流程感知</h3>
+                    <p class="text-gray-600 text-sm">百度文心大模型助力中国中车实现"AI+工业"战略落地</p>
+                </div>
+
+                <!-- 更多行业 -->
+                <div class="service-card">
+                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-headset text-purple-600"></i>
+                    </div>
+                    <span class="badge badge-hot text-xs mb-2 inline-block">更多行业 · 人工智能</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">百度客悦助圆心外呼增效</h3>
+                    <p class="text-gray-600 text-sm">智能客服，大模型重构企业客服平台</p>
+                </div>
+
+                <!-- 智能交通 -->
+                <div class="service-card">
+                    <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-truck text-teal-600"></i>
+                    </div>
+                    <span class="badge badge-recommended text-xs mb-2 inline-block">智能交通 · 人工智能</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">德邦快递在线客服项目</h3>
+                    <p class="text-gray-600 text-sm">AI信控SaaS助力海口智能交通快速恢复</p>
+                </div>
+
+                <!-- 智能终端 -->
+                <div class="service-card">
+                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-orange-600"></i>
+                    </div>
+                    <span class="badge badge-hot text-xs mb-2 inline-block">智能终端 · 人工智能</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">大模型技术赋能百胜中国AI客服系统</h3>
+                    <p class="text-gray-600 text-sm">大模型赋能荣耀YOYO，打造手机智能应用新体验</p>
+                </div>
+
+                <!-- 具身智能 -->
+                <div class="service-card">
+                    <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-cyan-600"></i>
+                    </div>
+                    <span class="badge badge-recommended text-xs mb-2 inline-block">具身智能 · 人工智能</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">百度百舸+数据飞轮 加速具身智能新业态协同进化</h3>
+                    <p class="text-gray-600 text-sm">"领航者"机器人化身高价值"新劳动力"</p>
+                </div>
+
+                <!-- 智能汽车 -->
+                <div class="service-card">
+                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-car text-red-600"></i>
+                    </div>
+                    <span class="badge badge-hot text-xs mb-2 inline-block">智能汽车 · 专属云</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">梅赛德斯-奔驰集团股份公司</h3>
+                    <p class="text-gray-600 text-sm">超大规模算力集群助力地平线智能辅助驾驶方案加速量产</p>
+                </div>
+
+                <!-- 智慧教育 -->
+                <div class="service-card">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-green-600"></i>
+                    </div>
+                    <span class="badge badge-recommended text-xs mb-2 inline-block">智慧教育 · 人工智能</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">基于昆仑芯P800的AI4S创新发展模式</h3>
+                    <p class="text-gray-600 text-sm">国内首例生成式AI大模型重构科研范式应用</p>
+                </div>
+
+                <!-- 政务服务 -->
+                <div class="service-card">
+                    <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-building text-yellow-600"></i>
+                    </div>
+                    <span class="badge badge-hot text-xs mb-2 inline-block">政务服务 · 人工智能</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">打造大模型创新应用聚集高地</h3>
+                    <p class="text-gray-600 text-sm">打造"千家万户水管家"智能体，重塑水务服务新范式</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">立即开始您的企业支持之旅</h2>
+            <p class="text-xl text-indigo-100 mb-8">选择适合的支持计划，让专业团队为您的业务保驾护航</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/register.html" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">免费注册</a>
+                <a href="/contact.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition">联系销售</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">专业的金融交易所看板平台，集成AI工具与实时数据分析。</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="ai-tools.html" class="hover:text-white transition">AI工具</a></li>
+                        <li><a href="ai-news.html" class="hover:text-white transition">AI新闻</a></li>
+                        <li><a href="cloud-pricing.html" class="hover:text-white transition">云产品</a></li>
+                        <li><a href="cloud-health.html" class="hover:text-white transition">健康看板</a></li>
+                        <li><a href="support-plans.html" class="hover:text-white transition">支持计划</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>rao5201@126.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 茶海虾王@金融交易所看板平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沙盒预览 - 茶海虾王@金融AI工具</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .chat-message {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .message-user {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .message-bot {
+            background: #374151;
+        }
+        .trade-card {
+            transition: all 0.3s ease;
+        }
+        .trade-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .status-indicator {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- 导航栏 -->
+    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">茶海虾王</a>
+                    <span class="mx-3 text-gray-600">|</span>
+                    <span class="text-gray-400">沙盒预览</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-400 hover:text-white transition">AI工具</a>
+                    <a href="docs.html" class="text-gray-400 hover:text-white transition">文档</a>
+                    <a href="sandbox.html" class="text-indigo-400 font-semibold">沙盒</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex h-screen pt-16">
+        <!-- 左侧：控制面板 -->
+        <aside class="w-80 bg-gray-800 border-r border-gray-700 overflow-y-auto">
+            <div class="p-6">
+                <!-- 运行状态 -->
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">
+                            <i class="fas fa-server mr-2 text-indigo-400"></i>运行状态
+                        </h3>
+                        <span class="status-indicator w-3 h-3 bg-green-500 rounded-full"></span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
+                            <span class="text-sm text-gray-400">状态</span>
+                            <span class="text-green-400 text-sm font-semibold">运行中</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
+                            <span class="text-sm text-gray-400">运行时间</span>
+                            <span class="text-white text-sm font-semibold">00:15:32</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
+                            <span class="text-sm text-gray-400">内存使用</span>
+                            <span class="text-white text-sm font-semibold">128 MB</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
+                            <span class="text-sm text-gray-400">消息处理</span>
+                            <span class="text-white text-sm font-semibold">1,234 msg/s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 插件列表 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">
+                        <i class="fas fa-plug mr-2 text-indigo-400"></i>已加载插件
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-chart-line text-green-400"></i>
+                                <span class="text-sm">stock-query</span>
+                            </div>
+                            <span class="text-xs text-green-400">运行中</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-robot text-blue-400"></i>
+                                <span class="text-sm">ai-chat</span>
+                            </div>
+                            <span class="text-xs text-green-400">运行中</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-bell text-yellow-400"></i>
+                                <span class="text-sm">price-alert</span>
+                            </div>
+                            <span class="text-xs text-yellow-400">配置中</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模拟设置 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4">
+                        <i class="fas fa-cog mr-2 text-indigo-400"></i>模拟设置
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">平台</label>
+                            <select class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                                <option>QQ</option>
+                                <option>微信</option>
+                                <option>Discord</option>
+                                <option>Telegram</option>
+                                <option>Slack</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">用户ID</label>
+                            <input type="text" value="user_12345" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">群聊/频道</label>
+                            <input type="text" value="test_group" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div class="space-y-2">
+                    <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition text-sm">
+                        <i class="fas fa-sync-alt mr-2"></i>热重载
+                    </button>
+                    <button class="w-full bg-gray-700 text-white py-2 rounded-lg hover:bg-gray-600 transition text-sm">
+                        <i class="fas fa-redo mr-2"></i>重置会话
+                    </button>
+                    <button class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition text-sm">
+                        <i class="fas fa-stop mr-2"></i>停止运行
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 中间：聊天模拟 -->
+        <main class="flex-1 flex flex-col">
+            <!-- 聊天头部 -->
+            <div class="bg-gray-800 border-b border-gray-700 p-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">茶海虾王机器人</h3>
+                            <p class="text-xs text-green-400">● 在线</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="p-2 text-gray-400 hover:text-white transition">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <button class="p-2 text-gray-400 hover:text-white transition">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 聊天消息区域 -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4">
+                <!-- 欢迎消息 -->
+                <div class="chat-message flex items-start gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="message-bot rounded-lg p-3 max-w-md">
+                        <p class="text-sm">欢迎使用茶海虾王金融AI机器人！🎉</p>
+                        <p class="text-sm mt-2">我可以帮你：</p>
+                        <ul class="text-sm mt-1 space-y-1 text-gray-300">
+                            <li>• 查询股票价格 /stock AAPL</li>
+                            <li>• 查看K线图 /chart BTC</li>
+                            <li>• AI分析 /analyze 茅台</li>
+                            <li>• 设置价格预警 /alert BTC 70000</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 用户消息示例 -->
+                <div class="chat-message flex items-start gap-3 justify-end">
+                    <div class="message-user rounded-lg p-3 max-w-md">
+                        <p class="text-sm">/stock AAPL</p>
+                    </div>
+                </div>
+
+                <!-- 机器人回复示例 -->
+                <div class="chat-message flex items-start gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="message-bot rounded-lg p-3 max-w-md">
+                        <p class="text-sm font-semibold mb-2">📈 Apple Inc. (AAPL)</p>
+                        <div class="space-y-1 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">当前价格:</span>
+                                <span class="text-green-400 font-semibold">$178.50</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">涨跌:</span>
+                                <span class="text-green-400">+2.35 (+1.33%)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">今日最高:</span>
+                                <span class="text-white">$179.20</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">今日最低:</span>
+                                <span class="text-white">$176.80</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">成交量:</span>
+                                <span class="text-white">52.3M</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 用户消息示例2 -->
+                <div class="chat-message flex items-start gap-3 justify-end">
+                    <div class="message-user rounded-lg p-3 max-w-md">
+                        <p class="text-sm">/analyze 贵州茅台</p>
+                    </div>
+                </div>
+
+                <!-- AI分析回复 -->
+                <div class="chat-message flex items-start gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="message-bot rounded-lg p-3 max-w-md">
+                        <p class="text-sm font-semibold mb-2">🤖 AI分析：贵州茅台 (600519)</p>
+                        <div class="space-y-2 text-sm">
+                            <div class="bg-gray-600 bg-opacity-50 rounded p-2">
+                                <p class="text-green-400 font-semibold">买入信号 (置信度: 87%)</p>
+                                <ul class="text-gray-300 mt-1 space-y-1 text-xs">
+                                    <li>• 技术指标：MACD金叉形成</li>
+                                    <li>• 趋势：突破上升通道上轨</li>
+                                    <li>• 成交量：放量上涨，资金流入</li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-400">目标价位:</span>
+                                <span class="text-green-400 font-semibold">¥1,850</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-400">止损价位:</span>
+                                <span class="text-red-400 font-semibold">¥1,680</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 输入框 -->
+            <div class="bg-gray-800 border-t border-gray-700 p-4">
+                <div class="flex items-center gap-3">
+                    <button class="p-2 text-gray-400 hover:text-white transition">
+                        <i class="fas fa-plus-circle"></i>
+                    </button>
+                    <input type="text" id="message-input" placeholder="输入消息或命令..." 
+                        class="flex-1 bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-indigo-500">
+                    <button class="p-2 text-gray-400 hover:text-white transition">
+                        <i class="fas fa-image"></i>
+                    </button>
+                    <button onclick="sendMessage()" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="flex items-center gap-4 mt-2 text-xs text-gray-500">
+                    <span>快捷命令:</span>
+                    <button onclick="quickCommand('/stock ')" class="hover:text-indigo-400 transition">/stock</button>
+                    <button onclick="quickCommand('/chart ')" class="hover:text-indigo-400 transition">/chart</button>
+                    <button onclick="quickCommand('/analyze ')" class="hover:text-indigo-400 transition">/analyze</button>
+                    <button onclick="quickCommand('/alert ')" class="hover:text-indigo-400 transition">/alert</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 右侧：交易预览 -->
+        <aside class="w-96 bg-gray-800 border-l border-gray-700 overflow-y-auto">
+            <div class="p-6">
+                <h3 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-chart-candlestick mr-2 text-indigo-400"></i>交易预览
+                </h3>
+
+                <!-- 当前持仓 -->
+                <div class="mb-6">
+                    <h4 class="text-sm text-gray-400 mb-3">模拟持仓</h4>
+                    <div class="space-y-3">
+                        <div class="trade-card bg-gray-700 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold">AAPL</span>
+                                <span class="text-green-400">+5.2%</span>
+                            </div>
+                            <div class="text-sm text-gray-400">
+                                <div class="flex justify-between">
+                                    <span>持仓: 100股</span>
+                                    <span>市值: $17,850</span>
+                                </div>
+                                <div class="flex justify-between mt-1">
+                                    <span>成本: $170.00</span>
+                                    <span class="text-green-400">盈利: +$850</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trade-card bg-gray-700 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold">BTC</span>
+                                <span class="text-red-400">-2.1%</span>
+                            </div>
+                            <div class="text-sm text-gray-400">
+                                <div class="flex justify-between">
+                                    <span>持仓: 0.5个</span>
+                                    <span>市值: $33,622</span>
+                                </div>
+                                <div class="flex justify-between mt-1">
+                                    <span>成本: $68,000</span>
+                                    <span class="text-red-400">亏损: -$378</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模拟交易 -->
+                <div class="mb-6">
+                    <h4 class="text-sm text-gray-400 mb-3">模拟下单</h4>
+                    <div class="bg-gray-700 rounded-lg p-4">
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1">交易对</label>
+                                <select class="w-full bg-gray-600 border border-gray-500 rounded px-3 py-2 text-sm text-white">
+                                    <option>AAPL - Apple Inc.</option>
+                                    <option>BTC - Bitcoin</option>
+                                    <option>ETH - Ethereum</option>
+                                    <option>茅台 - 贵州茅台</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1">方向</label>
+                                <div class="flex gap-2">
+                                    <button class="flex-1 bg-green-600 text-white py-2 rounded text-sm hover:bg-green-700 transition">
+                                        <i class="fas fa-arrow-up mr-1"></i>买入
+                                    </button>
+                                    <button class="flex-1 bg-red-600 text-white py-2 rounded text-sm hover:bg-red-700 transition">
+                                        <i class="fas fa-arrow-down mr-1"></i>卖出
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1">数量</label>
+                                <input type="number" value="100" class="w-full bg-gray-600 border border-gray-500 rounded px-3 py-2 text-sm text-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1">价格</label>
+                                <input type="number" value="178.50" class="w-full bg-gray-600 border border-gray-500 rounded px-3 py-2 text-sm text-white">
+                            </div>
+                            <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition text-sm">
+                                执行交易
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 成交记录 -->
+                <div>
+                    <h4 class="text-sm text-gray-400 mb-3">成交记录</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg text-sm">
+                            <div>
+                                <span class="text-green-400">买入</span>
+                                <span class="text-gray-400 ml-2">AAPL</span>
+                            </div>
+                            <span class="text-white">100股 @ $178.50</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg text-sm">
+                            <div>
+                                <span class="text-red-400">卖出</span>
+                                <span class="text-gray-400 ml-2">TSLA</span>
+                            </div>
+                            <span class="text-white">50股 @ $245.30</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg text-sm">
+                            <div>
+                                <span class="text-green-400">买入</span>
+                                <span class="text-gray-400 ml-2">BTC</span>
+                            </div>
+                            <span class="text-white">0.5个 @ $67,200</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // 发送消息
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+            
+            if (message) {
+                // 添加用户消息
+                addMessage(message, 'user');
+                
+                // 模拟机器人回复
+                setTimeout(() => {
+                    const reply = generateReply(message);
+                    addMessage(reply, 'bot');
+                }, 1000);
+                
+                input.value = '';
+            }
+        }
+
+        // 添加快捷命令
+        function quickCommand(cmd) {
+            const input = document.getElementById('message-input');
+            input.value = cmd;
+            input.focus();
+        }
+
+        // 添加消息到聊天区域
+        function addMessage(content, type) {
+            const chatContainer = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message flex items-start gap-3 ' + (type === 'user' ? 'justify-end' : '');
+            
+            if (type === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="message-user rounded-lg p-3 max-w-md">
+                        <p class="text-sm">${escapeHtml(content)}</p>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="message-bot rounded-lg p-3 max-w-md">
+                        <p class="text-sm">${content}</p>
+                    </div>
+                `;
+            }
+            
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // 生成机器人回复
+        function generateReply(message) {
+            if (message.startsWith('/stock')) {
+                const symbol = message.split(' ')[1] || 'AAPL';
+                return `📈 <strong>${symbol}</strong><br>
+                        当前价格: <span class="text-green-400">$${(Math.random() * 200 + 100).toFixed(2)}</span><br>
+                        涨跌: <span class="text-green-400">+${(Math.random() * 5).toFixed(2)}%</span><br>
+                        成交量: ${(Math.random() * 100).toFixed(1)}M`;
+            } else if (message.startsWith('/chart')) {
+                return '📊 K线图功能需要在交易页面查看。<br>请访问 <a href="trading-chart.html" class="text-indigo-400 underline">K线图页面</a>';
+            } else if (message.startsWith('/analyze')) {
+                return `🤖 AI分析结果：<br>
+                        <span class="text-green-400">买入信号 (置信度: ${Math.floor(Math.random() * 20 + 80)}%)</span><br>
+                        • MACD金叉形成<br>
+                        • 突破上升通道<br>
+                        • 成交量放大`;
+            } else if (message.startsWith('/alert')) {
+                return '✅ 价格预警设置成功！<br>当价格达到目标值时，我会第一时间通知你。';
+            } else {
+                return '你好！我是茶海虾王金融AI助手。<br>你可以使用以下命令：<br>/stock [代码] - 查询股价<br>/chart [代码] - 查看K线<br>/analyze [代码] - AI分析<br>/alert [代码] [价格] - 设置预警';
+            }
+        }
+
+        // HTML转义
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 回车发送
+        document.getElementById('message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

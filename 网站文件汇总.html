@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶海虾王@金融交易所看板平台 - 网站文件汇总</title>
+    <meta name="description" content="茶海虾王金融交易所看板平台网站文件汇总，包括HTML、MD和后端文件的详细结构">
+    <meta name="keywords" content="茶海虾王,金融交易所,网站文件,汇总,HTML,MD,后端文件">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .file-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        
+        .section-title {
+            border-left: 4px solid #667eea;
+            padding-left: 16px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">茶海虾王</span>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="#overview" class="text-gray-700 hover:text-indigo-600 transition">项目概览</a>
+                    <a href="#files" class="text-gray-700 hover:text-indigo-600 transition">文件结构</a>
+                    <a href="#api" class="text-gray-700 hover:text-indigo-600 transition">API端点</a>
+                    <a href="#status" class="text-gray-700 hover:text-indigo-600 transition">系统状态</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">网站文件汇总</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                茶海虾王@金融交易所看板平台的所有网站文件结构和内容汇总
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#files" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                    查看文件结构
+                </a>
+                <a href="API文档.html" class="bg-white bg-opacity-20 text-white px-8 py-3 rounded-full font-semibold hover:bg-opacity-30 transition">
+                    API文档
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 section-title">项目概览</h2>
+            <p class="text-lg text-gray-600 mb-8">
+                茶海虾王金融交易所看板平台是一个专业的金融交易分析工具，集成了AI智能分析、实时行情、技术指标、投资组合管理等功能，为投资者和交易者提供全方位的金融分析工具。
+            </p>
+            
+            <h3 class="text-2xl font-semibold mb-4">核心功能</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-brain text-indigo-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">AI智能分析</h4>
+                    <p class="text-gray-600 text-sm">基于机器学习的智能价格预测、模式识别、情绪分析和风险评估</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-bar text-purple-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">技术指标</h4>
+                    <p class="text-gray-600 text-sm">50+种技术指标，包括MA、RSI、MACD、布林带、KDJ、斐波那契等</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-blue-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">实时行情</h4>
+                    <p class="text-gray-600 text-sm">股票、加密货币、外汇实时行情推送，WebSocket实时数据更新</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-wallet text-green-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">投资组合</h4>
+                    <p class="text-gray-600 text-sm">多维度资产管理、收益分析、风险监控、自动再平衡</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-orange-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">本地AI模型</h4>
+                    <p class="text-gray-600 text-sm">支持Ollama和LM Studio本地模型，保护数据隐私</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-database text-red-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2">Choice数据量化接口</h4>
+                    <p class="text-gray-600 text-sm">多语言支持的量化数据接口，为专业投资者提供丰富的金融数据</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Files Section -->
+    <section id="files" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 section-title">网站文件结构</h2>
+            
+            <!-- Main HTML Files -->
+            <h3 class="text-2xl font-semibold mb-4">主要HTML文件</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">文件名</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">描述</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">路径</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">index.html</td>
+                            <td class="px-6 py-4">网站首页</td>
+                            <td class="px-6 py-4">index.html</td>
+                            <td class="px-6 py-4"><a href="index.html" class="text-indigo-600 hover:text-indigo-800">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">index-en.html</td>
+                            <td class="px-6 py-4">英文首页</td>
+                            <td class="px-6 py-4">index-en.html</td>
+                            <td class="px-6 py-4"><a href="index-en.html" class="text-indigo-600 hover:text-indigo-800">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">login.html</td>
+                            <td class="px-6 py-4">登录页面</td>
+                            <td class="px-6 py-4">login.html</td>
+                            <td class="px-6 py-4"><a href="login.html" class="text-indigo-600 hover:text-indigo-800">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">register.html</td>
+                            <td class="px-6 py-4">注册页面</td>
+                            <td class="px-6 py-4">register.html</td>
+                            <td class="px-6 py-4"><a href="register.html" class="text-indigo-600 hover:text-indigo-800">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">dashboard.html</td>
+                            <td class="px-6 py-4">仪表盘页面</td>
+                            <td class="px-6 py-4">dashboard.html</td>
+                            <td class="px-6 py-4"><a href="dashboard.html" class="text-indigo-600 hover:text-indigo-800">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">trading-chart.html</td>
+                            <td class="px-6 py-4">K线图页面</td>
+                            <td class="px-6 py-4">trading-chart.html</td>
+                            <td class="px-6 py-4"><a href="trading-chart.html" class="text-indigo-600 hover:text-indigo-800">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">ai-news.html</td>
+                            <td class="px-6 py-4">AI新闻页面</td>
+                            <td class="px-6 py-4">ai-news.html</td>
+                            <td class="px-6 py-4"><a href="ai-news.html" class="text-indigo-600 hover:text-indigo-800">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">ai-tools.html</td>
+                            <td class="px-6 py-4">AI工具中心</td>
+                            <td class="px-6 py-4">ai-tools.html</td>
+                            <td class="px-6 py-4"><a href="ai-tools.html" class="text-indigo-600 hover:text-indigo-800">查看</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Main MD Files -->
+            <h3 class="text-2xl font-semibold mb-4 mt-12">主要MD文件</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">文件名</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">描述</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">路径</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">README.md</td>
+                            <td class="px-6 py-4">项目说明文件</td>
+                            <td class="px-6 py-4">README.md</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">项目开发进度报告.md</td>
+                            <td class="px-6 py-4">项目开发进度报告</td>
+                            <td class="px-6 py-4">项目开发进度报告.md</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">文档汇总.md</td>
+                            <td class="px-6 py-4">文档汇总文件</td>
+                            <td class="px-6 py-4">文档汇总.md</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">API文档.md</td>
+                            <td class="px-6 py-4">API文档</td>
+                            <td class="px-6 py-4">API文档.md</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">维护计划.md</td>
+                            <td class="px-6 py-4">维护计划</td>
+                            <td class="px-6 py-4">maintenance-plan.md</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">CHANGELOG.md</td>
+                            <td class="px-6 py-4">变更日志</td>
+                            <td class="px-6 py-4">CHANGELOG.md</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">网站文件汇总.md</td>
+                            <td class="px-6 py-4">网站文件汇总</td>
+                            <td class="px-6 py-4">网站文件汇总.md</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Backend Files -->
+            <h3 class="text-2xl font-semibold mb-4 mt-12">后端文件</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-4">核心文件</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><i class="fas fa-file-code text-indigo-600 mr-2"></i>server.js - 主服务器文件</li>
+                        <li><i class="fas fa-file-code text-indigo-600 mr-2"></i>package.json - 项目依赖</li>
+                        <li><i class="fas fa-file-code text-indigo-600 mr-2"></i>.env - 环境变量配置</li>
+                        <li><i class="fas fa-file-code text-indigo-600 mr-2"></i>README.md - 后端说明文件</li>
+                        <li><i class="fas fa-file-code text-indigo-600 mr-2"></i>OLLAMA_SETUP.md - Ollama设置指南</li>
+                    </ul>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-4">配置文件</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><i class="fas fa-cog text-indigo-600 mr-2"></i>database.js - 数据库配置</li>
+                        <li><i class="fas fa-cog text-indigo-600 mr-2"></i>redis.js - Redis配置</li>
+                        <li><i class="fas fa-cog text-indigo-600 mr-2"></i>financeAPI.js - 金融数据API配置</li>
+                        <li><i class="fas fa-cog text-indigo-600 mr-2"></i>security.js - 安全配置</li>
+                        <li><i class="fas fa-cog text-indigo-600 mr-2"></i>local-ai-model.js - 本地AI模型配置</li>
+                        <li><i class="fas fa-cog text-indigo-600 mr-2"></i>choice-quant-api.js - Choice数据量化接口配置</li>
+                    </ul>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-4">路由文件</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><i class="fas fa-random text-indigo-600 mr-2"></i>auth.js - 认证路由</li>
+                        <li><i class="fas fa-random text-indigo-600 mr-2"></i>users.js - 用户路由</li>
+                        <li><i class="fas fa-random text-indigo-600 mr-2"></i>assets.js - 资产路由</li>
+                        <li><i class="fas fa-random text-indigo-600 mr-2"></i>transactions.js - 交易路由</li>
+                        <li><i class="fas fa-random text-indigo-600 mr-2"></i>market.js - 市场路由</li>
+                        <li><i class="fas fa-random text-indigo-600 mr-2"></i>finance-data.js - 金融数据路由</li>
+                    </ul>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-4">脚本文件</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><i class="fas fa-script text-indigo-600 mr-2"></i>test-data-integration.js - 数据接入测试脚本</li>
+                        <li><i class="fas fa-script text-indigo-600 mr-2"></i>test-ollama.js - Ollama测试脚本</li>
+                        <li><i class="fas fa-script text-indigo-600 mr-2"></i>test-email.js - 邮件测试脚本</li>
+                        <li><i class="fas fa-script text-indigo-600 mr-2"></i>test-email-simple.js - 简单邮件测试脚本</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Endpoints Section -->
+    <section id="api" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 section-title">API端点</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-600">认证API</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><code>POST /api/auth/register</code> - 注册</li>
+                        <li><code>POST /api/auth/login</code> - 登录</li>
+                        <li><code>POST /api/auth/refresh</code> - 刷新令牌</li>
+                        <li><code>POST /api/auth/logout</code> - 登出</li>
+                        <li><code>GET /api/auth/me</code> - 获取当前用户</li>
+                    </ul>
+                </div>
+                
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-600">市场API</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><code>GET /api/market/overview</code> - 市场行情</li>
+                        <li><code>GET /api/market/price/:symbol</code> - 资产价格</li>
+                        <li><code>GET /api/market/kline/:symbol</code> - K线数据</li>
+                        <li><code>GET /api/market/pairs</code> - 交易对</li>
+                        <li><code>GET /api/market/orderbook/:symbol</code> - 市场深度</li>
+                        <li><code>GET /api/market/trades/:symbol</code> - 交易历史</li>
+                    </ul>
+                </div>
+                
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-600">金融分析API</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><code>POST /api/analysis/technical</code> - 技术分析</li>
+                        <li><code>POST /api/analysis/fundamental</code> - 基本面分析</li>
+                        <li><code>POST /api/analysis/risk</code> - 风险管理</li>
+                        <li><code>POST /api/analysis/portfolio</code> - 投资组合分析</li>
+                        <li><code>POST /api/analysis/sentiment</code> - 市场情绪分析</li>
+                    </ul>
+                </div>
+                
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-600">AI分析API</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><code>POST /api/ai/analysis/market-trend</code> - 市场趋势分析</li>
+                        <li><code>POST /api/ai/analysis/risk-assessment</code> - 投资风险评估</li>
+                        <li><code>POST /api/ai/analysis/portfolio-optimization</code> - 投资组合优化</li>
+                        <li><code>POST /api/ai/analysis/market-prediction</code> - 市场走势预测</li>
+                        <li><code>POST /api/ai/analysis/financial-analysis</code> - 财务报表分析</li>
+                        <li><code>POST /api/ai/analysis/news-sentiment</code> - 新闻情绪分析</li>
+                    </ul>
+                </div>
+                
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-600">本地AI模型API</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><code>GET /api/finance/local-ai/config</code> - 获取配置信息</li>
+                        <li><code>GET /api/finance/local-ai/test/:provider</code> - 测试连接</li>
+                        <li><code>POST /api/finance/local-ai/generate/:provider</code> - 生成文本</li>
+                        <li><code>POST /api/finance/local-ai/analyze/:provider</code> - 金融分析</li>
+                    </ul>
+                </div>
+                
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-600">Choice数据量化接口API</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><code>GET /api/finance/choice/quant-api</code> - 获取接口信息</li>
+                        <li><code>GET /api/finance/choice/quant-api/download</code> - 获取下载信息</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Status Section -->
+    <section id="status" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 section-title">系统状态</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h3 class="text-xl font-semibold mb-4">服务器状态</h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-center justify-between">
+                            <span>服务器状态</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-semibold">运行中</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span>API地址</span>
+                            <span>http://localhost:3021/api</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span>健康检查</span>
+                            <span>http://localhost:3021/health</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span>环境</span>
+                            <span>development</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h3 class="text-xl font-semibold mb-4">数据库状态</h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-center justify-between">
+                            <span>内存数据库</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-semibold">已连接</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span>MongoDB</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">未连接</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span>Redis</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-semibold">已连接</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span>MySQL</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-semibold">已连接</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Data Sources Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 section-title">金融数据源集成</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">蛋卷基金</h4>
+                    <p class="text-gray-600 text-sm">基金数据和指数估值</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">雪球网</h4>
+                    <p class="text-gray-600 text-sm">行情中心和最新数据</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">东方财富</h4>
+                    <p class="text-gray-600 text-sm">Choice智能金融终端和妙想大模型</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">新浪财经</h4>
+                    <p class="text-gray-600 text-sm">沪深股票、基金、债券、港股、美股等行情</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">中金在线</h4>
+                    <p class="text-gray-600 text-sm">财经、股票、数据、基金、黄金、外汇、期货、理财</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">华尔街见闻</h4>
+                    <p class="text-gray-600 text-sm">外汇商品/债券行情和资讯</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">金融界</h4>
+                    <p class="text-gray-600 text-sm">7X24小时电报、AI直播、大盘云图等</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">证券时报</h4>
+                    <p class="text-gray-600 text-sm">上市公司栏目和工具箱</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">中国证监会</h4>
+                    <p class="text-gray-600 text-sm">政府机构和相关公司超链接</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">广发证券</h4>
+                    <p class="text-gray-600 text-sm">证券服务和供应商</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">中国人民银行</h4>
+                    <p class="text-gray-600 text-sm">央行政策和数据</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">中国知网</h4>
+                    <p class="text-gray-600 text-sm">学术数据和AI模型服务</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">第一财经</h4>
+                    <p class="text-gray-600 text-sm">财经新闻和数据</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">新一线城市研究所</h4>
+                    <p class="text-gray-600 text-sm">城市数据和排名</p>
+                </div>
+                <div class="file-card rounded-xl p-6 card-hover">
+                    <h4 class="font-bold text-gray-900 mb-2">Choice数据量化接口</h4>
+                    <p class="text-gray-600 text-sm">多语言量化数据接口</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">开始使用茶海虾王金融交易所</h2>
+            <p class="text-xl mb-8">
+                立即注册，免费体验所有功能
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="register.html" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                    免费注册
+                </a>
+                <a href="API文档.html" class="bg-white bg-opacity-20 text-white px-8 py-3 rounded-full font-semibold hover:bg-opacity-30 transition">
+                    API文档
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">
+                        专业金融交易看板平台，为您的投资决策提供智能支持
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html#features" class="hover:text-white transition">功能特性</a></li>
+                        <li><a href="index.html#tools" class="hover:text-white transition">工具集合</a></li>
+                        <li><a href="API文档.html" class="hover:text-white transition">API文档</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">资源</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="help-center.html" class="hover:text-white transition">帮助中心</a></li>
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="whitepapers.html" class="hover:text-white transition">白皮书</a></li>
+                        <li><a href="product-updates.html" class="hover:text-white transition">产品更新</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>rao5201@126.com</li>
+                        <li><i class="fas fa-globe mr-2"></i>https://rao5201.github.io/chxwFinance/</li>
+                    </ul>
+                    <div class="flex gap-4 mt-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-weixin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400">
+                <p>&copy; 2026 海南茶海虾王管理有限责任公司. 保留所有权利.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="privacy.html" class="hover:text-white transition">隐私政策</a>
+                    <a href="terms.html" class="hover:text-white transition">服务条款</a>
+                    <a href="license.html" class="hover:text-white transition">许可证</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

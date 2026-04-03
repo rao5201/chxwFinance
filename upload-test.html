@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>文件上传测试</h1>
+        
+        <h2>单文件上传</h2>
+        <form id="singleUploadForm">
+            <div class="form-group">
+                <label for="singleFile">选择文件：</label>
+                <input type="file" id="singleFile" name="file" required>
+            </div>
+            <button type="submit">上传文件</button>
+        </form>
+        <div id="singleResult" class="result"></div>
+        
+        <h2>多文件上传</h2>
+        <form id="multipleUploadForm">
+            <div class="form-group">
+                <label for="multipleFiles">选择文件：</label>
+                <input type="file" id="multipleFiles" name="files" multiple required>
+            </div>
+            <button type="submit">上传文件</button>
+        </form>
+        <div id="multipleResult" class="result"></div>
+        
+        <h2>文件列表</h2>
+        <button id="getFileList">获取文件列表</button>
+        <div id="fileListResult" class="result"></div>
+    </div>
+    
+    <script>
+        // 单文件上传
+        document.getElementById('singleUploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById('singleFile');
+            formData.append('file', fileInput.files[0]);
+            
+            fetch('http://localhost:3022/api/upload/single', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('singleResult');
+                resultDiv.className = 'result ' + (data.status === 'success' ? 'success' : 'error');
+                resultDiv.innerHTML = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                const resultDiv = document.getElementById('singleResult');
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '上传失败: ' + error.message;
+            });
+        });
+        
+        // 多文件上传
+        document.getElementById('multipleUploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById('multipleFiles');
+            for (let i = 0; i < fileInput.files.length; i++) {
+                formData.append('files', fileInput.files[i]);
+            }
+            
+            fetch('http://localhost:3022/api/upload/multiple', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('multipleResult');
+                resultDiv.className = 'result ' + (data.status === 'success' ? 'success' : 'error');
+                resultDiv.innerHTML = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                const resultDiv = document.getElementById('multipleResult');
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '上传失败: ' + error.message;
+            });
+        });
+        
+        // 获取文件列表
+        document.getElementById('getFileList').addEventListener('click', function() {
+            fetch('http://localhost:3022/api/upload/list')
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('fileListResult');
+                resultDiv.className = 'result ' + (data.status === 'success' ? 'success' : 'error');
+                resultDiv.innerHTML = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                const resultDiv = document.getElementById('fileListResult');
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '获取文件列表失败: ' + error.message;
+            });
+        });
+    </script>
+</body>
+</html>

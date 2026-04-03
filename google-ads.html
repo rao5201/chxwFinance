@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google广告解决方案 - 茶海虾王@金融交易所看板平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 24px;
+            color: white;
+            text-align: center;
+        }
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold gradient-text">茶海虾王</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-700 hover:text-indigo-600 transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-700 hover:text-indigo-600 transition">AI新闻</a>
+                    <a href="trading-chart.html" class="text-gray-700 hover:text-indigo-600 transition">K线图</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-indigo-600 transition">定价</a>
+                    <a href="google-ads.html" class="text-indigo-600 font-semibold">Google广告</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">关于我们</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login.html" class="text-gray-700 hover:text-indigo-600 transition">登录</a>
+                    <a href="/register.html" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">
+                        免费试用
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                        为什么选择Google广告？
+                    </h1>
+                    <p class="text-xl text-indigo-100 mb-8">
+                        投放付费广告，短时间内显著扩大品牌曝光，快速成单
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-center">
+                            立即咨询
+                        </a>
+                        <span class="text-indigo-200 text-sm flex items-center justify-center">
+                            <i class="fas fa-user-tie mr-2"></i>10年+广告投手咨询
+                        </span>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="bg-white bg-opacity-10 backdrop-blur rounded-3xl p-8">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold mb-2">200+</div>
+                                <div class="text-indigo-200">覆盖国家</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold mb-2">2万亿</div>
+                                <div class="text-indigo-200">年均搜索</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold mb-2">80%</div>
+                                <div class="text-indigo-200">全球覆盖率</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold mb-2">10年+</div>
+                                <div class="text-indigo-200">投手经验</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心优势 -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Google广告核心优势</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card card-hover">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">最全的受众展示面</h3>
+                    <p class="text-gray-600">Google是世界上最大的搜索引擎，覆盖200多个国家，年均约2万亿次搜索，每个搜索都可能吸引用户</p>
+                </div>
+
+                <div class="feature-card card-hover">
+                    <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-palette text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">丰富的广告形式</h3>
+                    <p class="text-gray-600">广告客户可以选择文字、图片、应用促销、橱窗购物、自适应搜索、视频等多种广告形式</p>
+                </div>
+
+                <div class="feature-card card-hover">
+                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-wallet text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">广告预算管理</h3>
+                    <p class="text-gray-600">依据自身的需求和财务规划定制每日的广告支出限额，以此确保广告成本的合理控制</p>
+                </div>
+
+                <div class="feature-card card-hover">
+                    <div class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-crosshairs text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">精细化目标受众</h3>
+                    <p class="text-gray-600">依据关键词、地区、兴趣等多重维度来精确筛选目标受众，确保广告内容能够精准触达潜在目标群体</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 解决方案 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">大数跨境Google广告解决方案</h2>
+            <p class="text-center text-gray-600 mb-12">专业的Google广告服务，助力您的业务快速增长</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-gift text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Google免费开户</h3>
+                    </div>
+                    <p class="text-gray-600">谷歌新客户赠金，1-2天完成开户，快速启动您的广告 campaigns</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-chalkboard-teacher text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">广告1v1培训</h3>
+                    </div>
+                    <p class="text-gray-600">10年+经验专业投手一对一培训，手把手教您掌握Google广告投放技巧</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-hands-helping text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">广告全托管</h3>
+                    </div>
+                    <p class="text-gray-600">您可以选择是否与授权代理商共同管理，灵活的合作模式满足不同需求</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-file-alt text-orange-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Google网站审查报告</h3>
+                    </div>
+                    <p class="text-gray-600">分析您的网站整体数据与自然搜索情况，并提出改进建议，优化广告效果</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-headset text-pink-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Google陪伴式咨询</h3>
+                    </div>
+                    <p class="text-gray-600">24h内必回复，全程协助客户管理账户，给出分析与建议，让您无后顾之忧</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">Google营销方案定制</h3>
+                    </div>
+                    <p class="text-gray-600">从制定品牌形象到市场调研/网站分析，为您提供定制化的营销方案</p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <div class="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full">
+                    <i class="fas fa-award mr-3 text-xl"></i>
+                    <div class="text-left">
+                        <div class="font-bold text-lg">Google官方一级代理</div>
+                        <div class="text-sm text-indigo-100">资深优化师为您量身定制广告策略，全方位效果运营</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据统计 -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 to-indigo-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">我们的成绩</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+                <div class="stat-card">
+                    <div class="text-4xl font-bold mb-2">30W+</div>
+                    <div class="text-indigo-200">累计活动数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="text-4xl font-bold mb-2">100W+</div>
+                    <div class="text-indigo-200">累计参与人数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="text-4xl font-bold mb-2">2W+</div>
+                    <div class="text-indigo-200">累计入驻主办方</div>
+                </div>
+                <div class="stat-card">
+                    <div class="text-4xl font-bold mb-2">1亿+</div>
+                    <div class="text-indigo-200">累计总曝光</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">1000+</div>
+                    <div class="text-gray-300">线下活动年均场次</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">100W+</div>
+                    <div class="text-gray-300">线下累计参与人数</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">100+</div>
+                    <div class="text-gray-300">线下展会覆盖城市</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">1000+</div>
+                    <div class="text-gray-300">线上直播场次</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">3000W+</div>
+                    <div class="text-gray-300">线上直播累计观看人数</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">1亿+</div>
+                    <div class="text-gray-300">线上直播累计点赞</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精准服务 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">精准触达，量身定制</h2>
+            <p class="text-center text-gray-600 mb-12">专业的Google广告服务，全方位满足您的营销需求</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-rocket text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">快速开户</h3>
+                    </div>
+                    <p class="text-gray-600">简化开户流程，快速完成Google广告账户开通，让您的广告尽快上线投放</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">政策合规审查</h3>
+                    </div>
+                    <p class="text-gray-600">专业团队审核广告内容，确保符合Google广告政策，避免账户被封风险</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-search text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">SEO/SEM服务</h3>
+                    </div>
+                    <p class="text-gray-600">搜索引擎优化与搜索引擎营销相结合，提升网站自然排名和付费广告效果</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-cogs text-orange-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">账户管理</h3>
+                    </div>
+                    <p class="text-gray-600">专业团队全程管理您的广告账户，优化投放策略，提升广告ROI</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-bar text-pink-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">数据可视化分析</h3>
+                    </div>
+                    <p class="text-gray-600">提供直观的数据报表和可视化分析，让您清晰了解广告投放效果和用户行为</p>
+                </div>
+
+                <div class="feature-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-paint-brush text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">定制化品牌营销方案</h3>
+                    </div>
+                    <p class="text-gray-600">根据您的品牌特点和目标市场，量身定制专属的营销推广方案</p>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">独立产品私人订制</h3>
+                        <p class="text-gray-600">针对特殊需求，我们提供完全定制化的独立产品解决方案</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-indigo-600 mb-2">价格协商</div>
+                        <button class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition">
+                            联系我们
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务优势 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">我们的服务优势</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card text-center bg-white">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-network-wired text-3xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">全渠道流量覆盖</h3>
+                    <p class="text-gray-600">在搜索平台和社交媒体获得了众多全球巨头们的官方资格合作伙伴认证，用户覆盖率达全球80%</p>
+                </div>
+
+                <div class="feature-card text-center bg-white">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-route text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">跟踪式服务</h3>
+                    <p class="text-gray-600">确定合作后，从制定推广流程、开通账户到投放管理再到效果评估最后进行持续优化</p>
+                </div>
+
+                <div class="feature-card text-center bg-white">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-pie text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">高于友商的市场转化率</h3>
+                    <p class="text-gray-600">基于实时数据及我们的经验储备，制定推广计划，并根据数据的反馈进行调整直到最佳效果</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作平台 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">众多合作平台</h2>
+            <p class="text-center text-gray-600 mb-12">值得信赖的品牌背书</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                <div class="partner-logo bg-white rounded-xl p-6 flex items-center justify-center h-24">
+                    <i class="fab fa-google text-4xl text-gray-400"></i>
+                </div>
+                <div class="partner-logo bg-white rounded-xl p-6 flex items-center justify-center h-24">
+                    <i class="fab fa-facebook text-4xl text-gray-400"></i>
+                </div>
+                <div class="partner-logo bg-white rounded-xl p-6 flex items-center justify-center h-24">
+                    <i class="fab fa-instagram text-4xl text-gray-400"></i>
+                </div>
+                <div class="partner-logo bg-white rounded-xl p-6 flex items-center justify-center h-24">
+                    <i class="fab fa-tiktok text-4xl text-gray-400"></i>
+                </div>
+                <div class="partner-logo bg-white rounded-xl p-6 flex items-center justify-center h-24">
+                    <i class="fab fa-youtube text-4xl text-gray-400"></i>
+                </div>
+                <div class="partner-logo bg-white rounded-xl p-6 flex items-center justify-center h-24">
+                    <i class="fab fa-linkedin text-4xl text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">准备好开启您的Google广告之旅了吗？</h2>
+            <p class="text-xl text-indigo-100 mb-8">
+                立即咨询，获取10年+广告投手的专业建议
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/contact.html" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
+                    <i class="fas fa-phone-alt mr-2"></i>点击咨询
+                </a>
+                <a href="/register.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition">
+                    免费开户
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">专业的金融交易所看板平台，集成AI工具与实时数据分析。</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="ai-tools.html" class="hover:text-white transition">AI工具</a></li>
+                        <li><a href="ai-news.html" class="hover:text-white transition">AI新闻</a></li>
+                        <li><a href="trading-chart.html" class="hover:text-white transition">K线图</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="sandbox.html" class="hover:text-white transition">沙盒体验</a></li>
+                        <li><a href="license.html" class="hover:text-white transition">许可证</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>support@chaxiawang.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>400-888-8888</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>海南省海口市</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 茶海虾王@金融交易所看板平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

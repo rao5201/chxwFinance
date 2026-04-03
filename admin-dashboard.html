@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>茶海虾王@金融交易所看板平台 - 后台管理系统</title>
+  <meta name="description" content="茶海虾王@金融交易所看板平台 - 后台管理系统">
+  <!-- 英文名称 -->
+  <meta name="application-name" content="Tea Sea Shrimp King @ Financial Exchange Bulletin Board Platform - Admin Dashboard">
+  <!-- 安全头配置 -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://cdn.jsdelivr.net; style-src 'self' https://cdn.tailwindcss.com https://fonts.googleapis.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+  <meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-blue': '#0A192F',
+            'dark-blue': '#112240',
+            'navy': '#172A45',
+            'gold': '#E6AF2E',
+            'gold-light': '#F4D35E',
+            'cyan': '#64FFDA',
+            'gray-light': '#CCD6F6',
+            'gray-dark': '#8892B0',
+            'danger': '#FF6B6B',
+            'success': '#4ECDC4',
+            'warning': '#FFE66D'
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'orbitron': ['Orbitron', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap');
+    
+    .scrollbar-gold::-webkit-scrollbar {
+      width: 6px;
+    }
+    .scrollbar-gold::-webkit-scrollbar-track {
+      background: rgba(17, 34, 64, 0.5);
+    }
+    .scrollbar-gold::-webkit-scrollbar-thumb {
+      background: rgba(230, 175, 46, 0.5);
+      border-radius: 3px;
+    }
+    .scrollbar-gold::-webkit-scrollbar-thumb:hover {
+      background: rgba(230, 175, 46, 0.8);
+    }
+    
+    .sidebar-item:hover {
+      background: linear-gradient(90deg, rgba(230, 175, 46, 0.1) 0%, transparent 100%);
+      border-left: 3px solid #E6AF2E;
+    }
+    
+    .sidebar-item.active {
+      background: linear-gradient(90deg, rgba(230, 175, 46, 0.2) 0%, transparent 100%);
+      border-left: 3px solid #E6AF2E;
+    }
+    
+    .data-table th {
+      background: rgba(23, 42, 69, 0.8);
+    }
+    
+    .data-table tr:hover {
+      background: rgba(230, 175, 46, 0.05);
+    }
+    
+    .status-badge {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .status-active {
+      background: rgba(78, 205, 196, 0.2);
+      color: #4ECDC4;
+    }
+    
+    .status-inactive {
+      background: rgba(255, 107, 107, 0.2);
+      color: #FF6B6B;
+    }
+    
+    .status-pending {
+      background: rgba(255, 230, 109, 0.2);
+      color: #FFE66D;
+    }
+  </style>
+</head>
+
+<body class="bg-deep-blue text-gray-light min-h-screen overflow-x-hidden scrollbar-gold">
+  <!-- 登录页面 -->
+  <div id="login-page" class="fixed inset-0 z-50 flex items-center justify-center bg-deep-blue">
+    <div class="bg-dark-blue rounded-xl p-8 w-full max-w-md border border-navy">
+      <div class="text-center mb-8">
+        <div class="w-16 h-16 rounded-lg bg-gradient-to-br from-gold to-gold-light flex items-center justify-center mx-auto mb-4">
+          <i class="fa fa-cog text-deep-blue text-2xl"></i>
+        </div>
+        <h1 class="text-2xl font-orbitron font-bold text-gold mb-2">后台管理系统</h1>
+        <p class="text-gray-dark">茶海虾王@金融交易所看板平台</p>
+      </div>
+      
+      <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">管理员账号</label>
+          <input type="text" id="admin-username" class="w-full bg-navy border border-navy rounded-md px-4 py-3 text-gray-light focus:outline-none focus:ring-2 focus:ring-gold/50" placeholder="请输入管理员账号" required>
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm font-medium mb-2">密码</label>
+          <input type="password" id="admin-password" class="w-full bg-navy border border-navy rounded-md px-4 py-3 text-gray-light focus:outline-none focus:ring-2 focus:ring-gold/50" placeholder="请输入密码" required>
+        </div>
+        <button type="submit" class="w-full bg-gold text-deep-blue font-medium py-3 rounded-md hover:bg-gold-light transition-colors duration-300">
+          登录
+        </button>
+      </form>
+      
+      <div class="mt-6 text-center">
+        <a href="index.html" class="text-gray-dark hover:text-gold transition-colors duration-300 text-sm">
+          <i class="fa fa-arrow-left mr-1"></i> 返回前台
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主管理界面 -->
+  <div id="admin-dashboard" class="hidden">
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 z-40 bg-dark-blue/90 backdrop-blur-md border-b border-navy/50">
+      <div class="flex items-center justify-between px-6 py-3">
+        <div class="flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold to-gold-light flex items-center justify-center">
+            <i class="fa fa-cog text-deep-blue text-xl"></i>
+          </div>
+          <h1 class="text-xl font-orbitron font-bold text-gold">后台管理系统</h1>
+        </div>
+        
+        <div class="flex items-center space-x-6">
+          <div class="relative">
+            <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-danger text-white text-xs flex items-center justify-center">5</span>
+            <button class="text-gray-light hover:text-gold transition-colors duration-300">
+              <i class="fa fa-bell-o text-xl"></i>
+            </button>
+          </div>
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center">
+              <i class="fa fa-user text-gold"></i>
+            </div>
+            <span class="text-sm font-medium">系统管理员</span>
+          </div>
+          <button onclick="handleAdminLogout()" class="text-gray-dark hover:text-gold transition-colors duration-300">
+            <i class="fa fa-sign-out text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="flex">
+      <!-- 侧边栏 -->
+      <aside class="w-64 bg-dark-blue border-r border-navy/50 min-h-screen">
+        <nav class="py-6">
+          <div class="px-4 mb-6">
+            <p class="text-xs text-gray-dark uppercase tracking-wider mb-2">主菜单</p>
+          </div>
+          
+          <a href="#" onclick="showSection('dashboard')" class="sidebar-item active flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-dashboard w-6"></i>
+            <span>数据概览</span>
+          </a>
+          
+          <a href="#" onclick="showSection('users')" class="sidebar-item flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-users w-6"></i>
+            <span>用户管理</span>
+          </a>
+          
+          <a href="#" onclick="showSection('assets')" class="sidebar-item flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-database w-6"></i>
+            <span>资产管理</span>
+          </a>
+          
+          <a href="#" onclick="showSection('transactions')" class="sidebar-item flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-exchange w-6"></i>
+            <span>交易管理</span>
+          </a>
+          
+          <a href="#" onclick="showSection('ai-analysis')" class="sidebar-item flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-line-chart w-6"></i>
+            <span>AI分析记录</span>
+          </a>
+          
+          <div class="px-4 mt-8 mb-2">
+            <p class="text-xs text-gray-dark uppercase tracking-wider mb-2">系统设置</p>
+          </div>
+          
+          <a href="#" onclick="showSection('settings')" class="sidebar-item flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-cogs w-6"></i>
+            <span>系统配置</span>
+          </a>
+          
+          <a href="#" onclick="showSection('security')" class="sidebar-item flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-shield w-6"></i>
+            <span>安全审计</span>
+          </a>
+          
+          <a href="#" onclick="showSection('logs')" class="sidebar-item flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-file-text-o w-6"></i>
+            <span>系统日志</span>
+          </a>
+          
+          <a href="#" onclick="showSection('database')" class="sidebar-item flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-server w-6"></i>
+            <span>数据库管理</span>
+          </a>
+          
+          <a href="#" onclick="showSection('api')" class="sidebar-item flex items-center px-6 py-3 text-gray-light hover:text-gold transition-all duration-300">
+            <i class="fa fa-plug w-6"></i>
+            <span>接口管理</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- 主内容区域 -->
+      <main class="flex-1 p-6 overflow-y-auto">
+        <!-- 数据概览面板 -->
+        <section id="dashboard-section" class="section-content">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">数据概览</h2>
+            <p class="text-gray-dark">实时监控平台运营数据</p>
+          </div>
+          
+          <!-- 统计卡片 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center">
+                  <i class="fa fa-users text-gold text-xl"></i>
+                </div>
+                <span class="status-badge status-success">+12%</span>
+              </div>
+              <p class="text-gray-dark text-sm mb-1">总用户数</p>
+              <p class="text-2xl font-orbitron font-bold text-gray-light">12,458</p>
+            </div>
+            
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-lg bg-cyan/20 flex items-center justify-center">
+                  <i class="fa fa-database text-cyan text-xl"></i>
+                </div>
+                <span class="status-badge status-success">+8%</span>
+              </div>
+              <p class="text-gray-dark text-sm mb-1">资产总数</p>
+              <p class="text-2xl font-orbitron font-bold text-gray-light">45,892</p>
+            </div>
+            
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center">
+                  <i class="fa fa-exchange text-success text-xl"></i>
+                </div>
+                <span class="status-badge status-success">+23%</span>
+              </div>
+              <p class="text-gray-dark text-sm mb-1">今日交易</p>
+              <p class="text-2xl font-orbitron font-bold text-gray-light">1,234</p>
+            </div>
+            
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-lg bg-warning/20 flex items-center justify-center">
+                  <i class="fa fa-diamond text-warning text-xl"></i>
+                </div>
+                <span class="status-badge status-success">+15%</span>
+              </div>
+              <p class="text-gray-dark text-sm mb-1">平台收益</p>
+              <p class="text-2xl font-orbitron font-bold text-gray-light">¥89,456</p>
+            </div>
+          </div>
+          
+          <!-- 图表区域 -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <h3 class="text-lg font-orbitron font-semibold mb-4 text-gold">用户增长趋势</h3>
+              <canvas id="userGrowthChart" height="200"></canvas>
+            </div>
+            
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <h3 class="text-lg font-orbitron font-semibold mb-4 text-gold">交易统计</h3>
+              <canvas id="transactionChart" height="200"></canvas>
+            </div>
+          </div>
+          
+          <!-- 最近活动 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-orbitron font-semibold text-gold">最近活动</h3>
+              <button class="text-gold hover:text-gold-light transition-colors duration-300 text-sm">
+                查看全部 <i class="fa fa-arrow-right ml-1"></i>
+              </button>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between py-3 border-b border-navy/50">
+                <div class="flex items-center space-x-3">
+                  <div class="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center">
+                    <i class="fa fa-check text-success text-sm"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium">新用户注册</p>
+                    <p class="text-xs text-gray-dark">用户 user_12345 完成注册</p>
+                  </div>
+                </div>
+                <span class="text-xs text-gray-dark">2分钟前</span>
+              </div>
+              
+              <div class="flex items-center justify-between py-3 border-b border-navy/50">
+                <div class="flex items-center space-x-3">
+                  <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center">
+                    <i class="fa fa-exchange text-gold text-sm"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium">交易完成</p>
+                    <p class="text-xs text-gray-dark">用户完成记忆资产交易 ¥1,250</p>
+                  </div>
+                </div>
+                <span class="text-xs text-gray-dark">5分钟前</span>
+              </div>
+              
+              <div class="flex items-center justify-between py-3 border-b border-navy/50">
+                <div class="flex items-center space-x-3">
+                  <div class="w-8 h-8 rounded-full bg-cyan/20 flex items-center justify-center">
+                    <i class="fa fa-upload text-cyan text-sm"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium">资产上传</p>
+                    <p class="text-xs text-gray-dark">用户上传新的记忆资产</p>
+                  </div>
+                </div>
+                <span class="text-xs text-gray-dark">10分钟前</span>
+              </div>
+              
+              <div class="flex items-center justify-between py-3">
+                <div class="flex items-center space-x-3">
+                  <div class="w-8 h-8 rounded-full bg-warning/20 flex items-center justify-center">
+                    <i class="fa fa-line-chart text-warning text-sm"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium">AI分析请求</p>
+                    <p class="text-xs text-gray-dark">用户请求市场趋势分析</p>
+                  </div>
+                </div>
+                <span class="text-xs text-gray-dark">15分钟前</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 用户管理面板 -->
+        <section id="users-section" class="section-content hidden">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">用户管理</h2>
+            <p class="text-gray-dark">管理平台所有用户信息</p>
+          </div>
+          
+          <!-- 操作栏 -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+            <div class="flex space-x-4">
+              <input type="text" placeholder="搜索用户..." class="bg-dark-blue border border-navy rounded-md px-4 py-2 text-gray-light focus:outline-none focus:ring-2 focus:ring-gold/50 w-64">
+              <select class="bg-dark-blue border border-navy rounded-md px-4 py-2 text-gray-light focus:outline-none focus:ring-2 focus:ring-gold/50">
+                <option value="">所有状态</option>
+                <option value="active">正常</option>
+                <option value="inactive">禁用</option>
+                <option value="pending">待审核</option>
+              </select>
+            </div>
+            <div class="flex space-x-3">
+              <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+                <i class="fa fa-plus mr-2"></i>添加用户
+              </button>
+              <button class="px-4 py-2 bg-navy border border-navy rounded-md hover:bg-dark-blue transition-colors duration-300">
+                <i class="fa fa-download mr-2"></i>导出
+              </button>
+            </div>
+          </div>
+          
+          <!-- 用户表格 -->
+          <div class="bg-dark-blue rounded-xl border border-navy overflow-hidden">
+            <table class="w-full data-table">
+              <thead>
+                <tr class="text-left text-sm">
+                  <th class="px-6 py-4 font-medium">用户ID</th>
+                  <th class="px-6 py-4 font-medium">用户名</th>
+                  <th class="px-6 py-4 font-medium">邮箱</th>
+                  <th class="px-6 py-4 font-medium">注册时间</th>
+                  <th class="px-6 py-4 font-medium">资产数量</th>
+                  <th class="px-6 py-4 font-medium">状态</th>
+                  <th class="px-6 py-4 font-medium">操作</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">#10001</td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center space-x-3">
+                      <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center">
+                        <i class="fa fa-user text-gold text-sm"></i>
+                      </div>
+                      <span>茶海虾王</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">user@example.com</td>
+                  <td class="px-6 py-4">2026-03-15</td>
+                  <td class="px-6 py-4">12</td>
+                  <td class="px-6 py-4"><span class="status-badge status-active">正常</span></td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i></button>
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-edit"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">#10002</td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center space-x-3">
+                      <div class="w-8 h-8 rounded-full bg-cyan/20 flex items-center justify-center">
+                        <i class="fa fa-user text-cyan text-sm"></i>
+                      </div>
+                      <span>金融达人</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">trader@example.com</td>
+                  <td class="px-6 py-4">2026-03-14</td>
+                  <td class="px-6 py-4">8</td>
+                  <td class="px-6 py-4"><span class="status-badge status-active">正常</span></td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i></button>
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-edit"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">#10003</td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center space-x-3">
+                      <div class="w-8 h-8 rounded-full bg-warning/20 flex items-center justify-center">
+                        <i class="fa fa-user text-warning text-sm"></i>
+                      </div>
+                      <span>量化新手</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">newbie@example.com</td>
+                  <td class="px-6 py-4">2026-03-13</td>
+                  <td class="px-6 py-4">3</td>
+                  <td class="px-6 py-4"><span class="status-badge status-pending">待审核</span></td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i></button>
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-edit"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- 分页 -->
+          <div class="flex items-center justify-between mt-6">
+            <p class="text-sm text-gray-dark">显示 1-10 共 124 条记录</p>
+            <div class="flex space-x-2">
+              <button class="px-3 py-2 bg-navy rounded-md hover:bg-dark-blue transition-colors duration-300 disabled:opacity-50" disabled>
+                <i class="fa fa-chevron-left"></i>
+              </button>
+              <button class="px-3 py-2 bg-gold text-deep-blue rounded-md">1</button>
+              <button class="px-3 py-2 bg-navy rounded-md hover:bg-dark-blue transition-colors duration-300">2</button>
+              <button class="px-3 py-2 bg-navy rounded-md hover:bg-dark-blue transition-colors duration-300">3</button>
+              <button class="px-3 py-2 bg-navy rounded-md hover:bg-dark-blue transition-colors duration-300">
+                <i class="fa fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 资产管理面板 -->
+        <section id="assets-section" class="section-content hidden">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">资产管理</h2>
+            <p class="text-gray-dark">管理平台所有记忆资产</p>
+          </div>
+          
+          <!-- 统计卡片 -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <div class="bg-dark-blue rounded-xl p-5 border border-navy">
+              <p class="text-gray-dark text-sm mb-1">资产总数</p>
+              <p class="text-2xl font-orbitron font-bold text-gold">45,892</p>
+            </div>
+            <div class="bg-dark-blue rounded-xl p-5 border border-navy">
+              <p class="text-gray-dark text-sm mb-1">今日新增</p>
+              <p class="text-2xl font-orbitron font-bold text-success">+156</p>
+            </div>
+            <div class="bg-dark-blue rounded-xl p-5 border border-navy">
+              <p class="text-gray-dark text-sm mb-1">待审核</p>
+              <p class="text-2xl font-orbitron font-bold text-warning">23</p>
+            </div>
+            <div class="bg-dark-blue rounded-xl p-5 border border-navy">
+              <p class="text-gray-dark text-sm mb-1">总价值</p>
+              <p class="text-2xl font-orbitron font-bold text-cyan">¥2.5M</p>
+            </div>
+          </div>
+          
+          <!-- 资产表格 -->
+          <div class="bg-dark-blue rounded-xl border border-navy overflow-hidden">
+            <table class="w-full data-table">
+              <thead>
+                <tr class="text-left text-sm">
+                  <th class="px-6 py-4 font-medium">资产ID</th>
+                  <th class="px-6 py-4 font-medium">资产名称</th>
+                  <th class="px-6 py-4 font-medium">类型</th>
+                  <th class="px-6 py-4 font-medium">所有者</th>
+                  <th class="px-6 py-4 font-medium">价格</th>
+                  <th class="px-6 py-4 font-medium">状态</th>
+                  <th class="px-6 py-4 font-medium">操作</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">#A001</td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center space-x-3">
+                      <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center">
+                        <i class="fa fa-mountain text-blue-400"></i>
+                      </div>
+                      <span>登顶珠峰</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">体验类</td>
+                  <td class="px-6 py-4">茶海虾王</td>
+                  <td class="px-6 py-4 text-gold">¥192.50</td>
+                  <td class="px-6 py-4"><span class="status-badge status-active">上架中</span></td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i></button>
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-edit"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 交易管理面板 -->
+        <section id="transactions-section" class="section-content hidden">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">交易管理</h2>
+            <p class="text-gray-dark">监控和管理所有交易记录</p>
+          </div>
+          
+          <!-- 交易表格 -->
+          <div class="bg-dark-blue rounded-xl border border-navy overflow-hidden">
+            <table class="w-full data-table">
+              <thead>
+                <tr class="text-left text-sm">
+                  <th class="px-6 py-4 font-medium">交易ID</th>
+                  <th class="px-6 py-4 font-medium">交易类型</th>
+                  <th class="px-6 py-4 font-medium">资产</th>
+                  <th class="px-6 py-4 font-medium">买家</th>
+                  <th class="px-6 py-4 font-medium">卖家</th>
+                  <th class="px-6 py-4 font-medium">金额</th>
+                  <th class="px-6 py-4 font-medium">时间</th>
+                  <th class="px-6 py-4 font-medium">状态</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">#T001</td>
+                  <td class="px-6 py-4"><span class="text-success">买入</span></td>
+                  <td class="px-6 py-4">登顶珠峰</td>
+                  <td class="px-6 py-4">金融达人</td>
+                  <td class="px-6 py-4">茶海虾王</td>
+                  <td class="px-6 py-4 text-gold">¥192.50</td>
+                  <td class="px-6 py-4">2026-04-02 14:30</td>
+                  <td class="px-6 py-4"><span class="status-badge status-active">完成</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 数据库管理面板 -->
+        <section id="database-section" class="section-content hidden">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">数据库管理</h2>
+            <p class="text-gray-dark">管理数据库结构和数据</p>
+          </div>
+          
+          <!-- 数据库统计 -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center">
+                  <i class="fa fa-database text-gold text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-dark text-sm mb-1">数据库大小</p>
+              <p class="text-2xl font-orbitron font-bold text-gray-light">2.3 GB</p>
+            </div>
+            
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-lg bg-cyan/20 flex items-center justify-center">
+                  <i class="fa fa-table text-cyan text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-dark text-sm mb-1">数据表数量</p>
+              <p class="text-2xl font-orbitron font-bold text-gray-light">12</p>
+            </div>
+            
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center">
+                  <i class="fa fa-check-circle text-success text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-dark text-sm mb-1">连接状态</p>
+              <p class="text-2xl font-orbitron font-bold text-success">正常</p>
+            </div>
+          </div>
+          
+          <!-- 数据表列表 -->
+          <div class="bg-dark-blue rounded-xl border border-navy overflow-hidden">
+            <div class="px-6 py-4 border-b border-navy/50">
+              <h3 class="text-lg font-orbitron font-semibold text-gold">数据表列表</h3>
+            </div>
+            <table class="w-full data-table">
+              <thead>
+                <tr class="text-left text-sm">
+                  <th class="px-6 py-4 font-medium">表名</th>
+                  <th class="px-6 py-4 font-medium">记录数</th>
+                  <th class="px-6 py-4 font-medium">大小</th>
+                  <th class="px-6 py-4 font-medium">最后更新</th>
+                  <th class="px-6 py-4 font-medium">操作</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">
+                    <i class="fa fa-table text-gold mr-2"></i>users
+                  </td>
+                  <td class="px-6 py-4">12,458</td>
+                  <td class="px-6 py-4">45 MB</td>
+                  <td class="px-6 py-4">2026-04-02 15:30</td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i> 查看</button>
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-edit"></i> 编辑</button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-download"></i> 导出</button>
+                    </div>
+                  </td>
+                </tr>
+                
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">
+                    <i class="fa fa-table text-gold mr-2"></i>assets
+                  </td>
+                  <td class="px-6 py-4">45,892</td>
+                  <td class="px-6 py-4">128 MB</td>
+                  <td class="px-6 py-4">2026-04-02 15:25</td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i> 查看</button>
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-edit"></i> 编辑</button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-download"></i> 导出</button>
+                    </div>
+                  </td>
+                </tr>
+                
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">
+                    <i class="fa fa-table text-gold mr-2"></i>transactions
+                  </td>
+                  <td class="px-6 py-4">89,456</td>
+                  <td class="px-6 py-4">256 MB</td>
+                  <td class="px-6 py-4">2026-04-02 15:30</td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i> 查看</button>
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-edit"></i> 编辑</button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-download"></i> 导出</button>
+                    </div>
+                  </td>
+                </tr>
+                
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">
+                    <i class="fa fa-table text-gold mr-2"></i>ai_analysis
+                  </td>
+                  <td class="px-6 py-4">23,567</td>
+                  <td class="px-6 py-4">89 MB</td>
+                  <td class="px-6 py-4">2026-04-02 15:20</td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i> 查看</button>
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-edit"></i> 编辑</button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-download"></i> 导出</button>
+                    </div>
+                  </td>
+                </tr>
+                
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">
+                    <i class="fa fa-table text-gold mr-2"></i>user_assets
+                  </td>
+                  <td class="px-6 py-4">34,789</td>
+                  <td class="px-6 py-4">67 MB</td>
+                  <td class="px-6 py-4">2026-04-02 15:28</td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i> 查看</button>
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-edit"></i> 编辑</button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-download"></i> 导出</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- 数据库操作 -->
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">数据备份</h3>
+              <p class="text-gray-dark text-sm mb-4">定期备份数据库，确保数据安全</p>
+              <div class="flex space-x-3">
+                <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+                  <i class="fa fa-download mr-2"></i>立即备份
+                </button>
+                <button class="px-4 py-2 bg-navy border border-navy rounded-md hover:bg-dark-blue transition-colors duration-300">
+                  <i class="fa fa-clock-o mr-2"></i>设置自动备份
+                </button>
+              </div>
+            </div>
+            
+            <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+              <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">数据恢复</h3>
+              <p class="text-gray-dark text-sm mb-4">从备份文件恢复数据库</p>
+              <div class="flex space-x-3">
+                <button class="px-4 py-2 bg-cyan text-deep-blue rounded-md hover:bg-cyan/80 transition-colors duration-300">
+                  <i class="fa fa-upload mr-2"></i>上传备份文件
+                </button>
+                <button class="px-4 py-2 bg-navy border border-navy rounded-md hover:bg-dark-blue transition-colors duration-300">
+                  <i class="fa fa-history mr-2"></i>查看备份历史
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 系统配置面板 -->
+        <section id="settings-section" class="section-content hidden">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">系统配置</h2>
+            <p class="text-gray-dark">配置第三方接口和AI模型</p>
+          </div>
+          
+          <!-- 第三方接口配置 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy mb-6">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">第三方接口配置</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">API类型</label>
+                <select class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300">
+                  <option>OpenAI API</option>
+                  <option>Anthropic API</option>
+                  <option>Google AI API</option>
+                  <option>自定义API</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">API密钥</label>
+                <input type="password" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" placeholder="输入API密钥">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">API端点</label>
+                <input type="text" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" placeholder="输入API端点URL">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">速率限制</label>
+                <input type="number" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" placeholder="请求/分钟">
+              </div>
+              <div class="flex space-x-3">
+                <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+                  <i class="fa fa-save mr-2"></i>保存配置
+                </button>
+                <button class="px-4 py-2 bg-cyan text-deep-blue rounded-md hover:bg-cyan/80 transition-colors duration-300">
+                  <i class="fa fa-refresh mr-2"></i>测试连接
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- AI模型管理 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy mb-6">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">AI模型管理</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">模型类型</label>
+                <select class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" id="model-type">
+                  <option value="third-party">第三方模型</option>
+                  <option value="local">本地模型</option>
+                  <option value="custom">自定义模型</option>
+                </select>
+              </div>
+              
+              <!-- 第三方模型 -->
+              <div id="third-party-models" class="space-y-3">
+                <div>
+                  <label class="block text-sm font-medium text-gray-light mb-2">模型选择</label>
+                  <select class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300">
+                    <option>gpt-4</option>
+                    <option>gpt-4o</option>
+                    <option>claude-3-opus</option>
+                    <option>gemini-pro</option>
+                    <option>llama-3</option>
+                    <option>mistral-large</option>
+                    <option>cohere-command</option>
+                    <option>anthropic-claude-3</option>
+                    <option>google-gemini</option>
+                    <option>meta-llama</option>
+                  </select>
+                </div>
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <p class="text-xs text-gray-dark mb-2">免责声明</p>
+                  <p class="text-xs text-gray-light">第三方模型是否收费与此软件网站app不承担费用，由第三方自行解决和保留第三方最终解释权。</p>
+                </div>
+              </div>
+              
+              <!-- 本地模型 -->
+              <div id="local-models" class="space-y-3 hidden">
+                <div>
+                  <label class="block text-sm font-medium text-gray-light mb-2">本地模型</label>
+                  <select class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300">
+                    <option>llama-3-8b</option>
+                    <option>mistral-7b</option>
+                    <option>gemma-7b</option>
+                    <option>falcon-7b</option>
+                    <option>custom-local-model</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-light mb-2">模型路径</label>
+                  <input type="text" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" placeholder="输入本地模型路径">
+                </div>
+              </div>
+              
+              <!-- 自定义模型 -->
+              <div id="custom-models" class="space-y-3 hidden">
+                <div>
+                  <label class="block text-sm font-medium text-gray-light mb-2">模型名称</label>
+                  <input type="text" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" placeholder="输入自定义模型名称">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-light mb-2">模型端点</label>
+                  <input type="text" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" placeholder="输入模型API端点">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-light mb-2">API密钥</label>
+                  <input type="password" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" placeholder="输入API密钥">
+                </div>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">模型参数</label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs text-gray-dark mb-1">温度</label>
+                    <input type="number" step="0.1" min="0" max="2" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" value="0.7">
+                  </div>
+                  <div>
+                    <label class="block text-xs text-gray-dark mb-1">最大令牌数</label>
+                    <input type="number" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" value="2000">
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">模型状态</label>
+                <div class="flex items-center space-x-2">
+                  <span class="status-badge status-active">在线</span>
+                  <span class="text-xs text-gray-dark">响应时间: 320ms</span>
+                </div>
+              </div>
+              
+              <div class="flex space-x-3">
+                <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+                  <i class="fa fa-save mr-2"></i>保存配置
+                </button>
+                <button class="px-4 py-2 bg-success text-deep-blue rounded-md hover:bg-success/80 transition-colors duration-300">
+                  <i class="fa fa-check mr-2"></i>测试模型
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 通道管理 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy mb-6">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">通道管理</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">通道状态</label>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div class="bg-navy/30 p-4 rounded-lg">
+                    <p class="text-xs text-gray-dark mb-1">主通道</p>
+                    <div class="flex items-center space-x-2">
+                      <span class="status-badge status-active">活跃</span>
+                      <span class="text-xs text-gray-dark">OpenAI</span>
+                    </div>
+                  </div>
+                  <div class="bg-navy/30 p-4 rounded-lg">
+                    <p class="text-xs text-gray-dark mb-1">备用通道</p>
+                    <div class="flex items-center space-x-2">
+                      <span class="status-badge status-pending">就绪</span>
+                      <span class="text-xs text-gray-dark">Anthropic</span>
+                    </div>
+                  </div>
+                  <div class="bg-navy/30 p-4 rounded-lg">
+                    <p class="text-xs text-gray-dark mb-1">备用通道</p>
+                    <div class="flex items-center space-x-2">
+                      <span class="status-badge status-pending">就绪</span>
+                      <span class="text-xs text-gray-dark">Google AI</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">负载均衡策略</label>
+                <select class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300">
+                  <option>轮询</option>
+                  <option>权重</option>
+                  <option>最少连接</option>
+                  <option>故障转移</option>
+                </select>
+              </div>
+              <div class="flex space-x-3">
+                <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+                  <i class="fa fa-save mr-2"></i>保存配置
+                </button>
+                <button class="px-4 py-2 bg-cyan text-deep-blue rounded-md hover:bg-cyan/80 transition-colors duration-300">
+                  <i class="fa fa-refresh mr-2"></i>刷新通道状态
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 监控与告警 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">监控与告警</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">监控项</label>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <input type="checkbox" checked class="rounded text-gold">
+                    <span class="text-sm text-gray-light">API调用状态</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <input type="checkbox" checked class="rounded text-gold">
+                    <span class="text-sm text-gray-light">模型响应时间</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <input type="checkbox" checked class="rounded text-gold">
+                    <span class="text-sm text-gray-light">错误率</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <input type="checkbox" checked class="rounded text-gold">
+                    <span class="text-sm text-gray-light">成本监控</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">告警设置</label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs text-gray-dark mb-1">响应时间阈值</label>
+                    <input type="number" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" value="1000" placeholder="毫秒">
+                  </div>
+                  <div>
+                    <label class="block text-xs text-gray-dark mb-1">错误率阈值</label>
+                    <input type="number" step="0.1" min="0" max="100" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" value="5" placeholder="%">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">告警通知</label>
+                <input type="email" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" value="rao5201@126.com" placeholder="告警通知邮箱">
+              </div>
+              <div class="flex space-x-3">
+                <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+                  <i class="fa fa-save mr-2"></i>保存配置
+                </button>
+                <button class="px-4 py-2 bg-success text-deep-blue rounded-md hover:bg-success/80 transition-colors duration-300">
+                  <i class="fa fa-bell mr-2"></i>测试告警
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 安全审计面板 -->
+        <section id="security-section" class="section-content hidden">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">安全审计</h2>
+            <p class="text-gray-dark">系统安全审计和防护</p>
+          </div>
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">安全状态</h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-navy/30 p-4 rounded-lg">
+                  <p class="text-xs text-gray-dark mb-1">安全评分</p>
+                  <p class="text-2xl font-orbitron font-bold text-success">98/100</p>
+                </div>
+                <div class="bg-navy/30 p-4 rounded-lg">
+                  <p class="text-xs text-gray-dark mb-1">扫描时间</p>
+                  <p class="text-sm text-gray-light">2026-04-02 15:00</p>
+                </div>
+                <div class="bg-navy/30 p-4 rounded-lg">
+                  <p class="text-xs text-gray-dark mb-1">风险等级</p>
+                  <span class="status-badge status-active">低</span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">安全扫描</label>
+                <div class="flex space-x-3">
+                  <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+                    <i class="fa fa-search mr-2"></i>立即扫描
+                  </button>
+                  <button class="px-4 py-2 bg-navy border border-navy rounded-md hover:bg-dark-blue transition-colors duration-300">
+                    <i class="fa fa-clock-o mr-2"></i>设置自动扫描
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 系统日志面板 -->
+        <section id="logs-section" class="section-content hidden">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">系统日志</h2>
+            <p class="text-gray-dark">系统运行日志和事件记录</p>
+          </div>
+          <div class="bg-dark-blue rounded-xl border border-navy overflow-hidden">
+            <div class="px-6 py-4 border-b border-navy/50">
+              <h3 class="text-lg font-orbitron font-semibold text-gold">最近事件</h3>
+            </div>
+            <div class="p-6">
+              <div class="space-y-4">
+                <div class="bg-navy/30 p-4 rounded-lg">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gold">API调用成功</span>
+                    <span class="text-xs text-gray-dark">2026-04-02 15:30:45</span>
+                  </div>
+                  <p class="text-xs text-gray-light">OpenAI API调用成功，响应时间: 320ms</p>
+                </div>
+                <div class="bg-navy/30 p-4 rounded-lg">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gold">用户登录</span>
+                    <span class="text-xs text-gray-dark">2026-04-02 15:29:12</span>
+                  </div>
+                  <p class="text-xs text-gray-light">用户 admin 登录成功</p>
+                </div>
+                <div class="bg-navy/30 p-4 rounded-lg">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gold">数据库备份</span>
+                    <span class="text-xs text-gray-dark">2026-04-02 15:00:00</span>
+                  </div>
+                  <p class="text-xs text-gray-light">自动备份完成，备份文件: backup_20260402_150000.sql</p>
+                </div>
+              </div>
+              <div class="mt-6 flex justify-end">
+                <button class="px-4 py-2 bg-navy border border-navy rounded-md hover:bg-dark-blue transition-colors duration-300">
+                  <i class="fa fa-download mr-2"></i>导出日志
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- AI分析记录面板 -->
+        <section id="ai-analysis-section" class="section-content hidden">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">AI分析记录</h2>
+            <p class="text-gray-dark">查看和管理AI分析历史</p>
+          </div>
+          <div class="bg-dark-blue rounded-xl border border-navy overflow-hidden">
+            <table class="w-full data-table">
+              <thead>
+                <tr class="text-left text-sm">
+                  <th class="px-6 py-4 font-medium">分析ID</th>
+                  <th class="px-6 py-4 font-medium">用户</th>
+                  <th class="px-6 py-4 font-medium">分析类型</th>
+                  <th class="px-6 py-4 font-medium">请求内容</th>
+                  <th class="px-6 py-4 font-medium">响应时间</th>
+                  <th class="px-6 py-4 font-medium">状态</th>
+                  <th class="px-6 py-4 font-medium">操作</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">#AI001</td>
+                  <td class="px-6 py-4">金融达人</td>
+                  <td class="px-6 py-4">市场趋势</td>
+                  <td class="px-6 py-4 text-gray-dark truncate max-w-xs">分析当前市场趋势</td>
+                  <td class="px-6 py-4">320ms</td>
+                  <td class="px-6 py-4"><span class="status-badge status-active">成功</span></td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i> 查看</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="border-t border-navy/50">
+                  <td class="px-6 py-4">#AI002</td>
+                  <td class="px-6 py-4">量化新手</td>
+                  <td class="px-6 py-4">价格预测</td>
+                  <td class="px-6 py-4 text-gray-dark truncate max-w-xs">预测某资产价格走势</td>
+                  <td class="px-6 py-4">450ms</td>
+                  <td class="px-6 py-4"><span class="status-badge status-active">成功</span></td>
+                  <td class="px-6 py-4">
+                    <div class="flex space-x-2">
+                      <button class="text-gold hover:text-gold-light transition-colors duration-300"><i class="fa fa-eye"></i> 查看</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 接口管理面板 -->
+        <section id="api-section" class="section-content hidden">
+          <div class="mb-6">
+            <h2 class="text-2xl font-orbitron font-bold text-gold mb-2">接口管理</h2>
+            <p class="text-gray-dark">管理第三方接口、插件和外部系统集成</p>
+          </div>
+          
+          <!-- 接口切换管理 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy mb-6">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">接口切换管理</h3>
+            <div class="space-y-4">
+              <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-sm font-medium text-gray-light">当前激活接口</span>
+                  <span class="status-badge status-active">OpenClaw</span>
+                </div>
+                <p class="text-xs text-gray-dark mb-3">您可以随时切换不同的第三方接口，系统将自动保存您的配置</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300 text-sm flex items-center justify-center">
+                    <i class="fa fa-check mr-2"></i>OpenClaw
+                  </button>
+                  <button class="px-4 py-2 bg-navy border border-navy rounded-md hover:bg-dark-blue transition-colors duration-300 text-sm flex items-center justify-center">
+                    <i class="fa fa-exchange mr-2"></i>切换到券商
+                  </button>
+                  <button class="px-4 py-2 bg-navy border border-navy rounded-md hover:bg-dark-blue transition-colors duration-300 text-sm flex items-center justify-center">
+                    <i class="fa fa-exchange mr-2"></i>切换到银行
+                  </button>
+                </div>
+              </div>
+              
+              <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-sm font-medium text-gray-light">实时数据接入</span>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-active">已启用</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" checked class="sr-only peer">
+                      <div class="w-11 h-6 bg-navy peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold"></div>
+                    </label>
+                  </div>
+                </div>
+                <p class="text-xs text-gray-dark mb-3">启用后将自动接入实时市场数据</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <button class="px-4 py-2 bg-success text-deep-blue rounded-md hover:bg-success/80 transition-colors duration-300 text-sm flex items-center justify-center">
+                    <i class="fa fa-play mr-2"></i>启动实时数据
+                  </button>
+                  <button class="px-4 py-2 bg-warning text-deep-blue rounded-md hover:bg-warning/80 transition-colors duration-300 text-sm flex items-center justify-center">
+                    <i class="fa fa-pause mr-2"></i>暂停实时数据
+                  </button>
+                </div>
+              </div>
+              
+              <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-sm font-medium text-gray-light">接口优先级设置</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between bg-dark-blue p-3 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                      <span class="text-gold font-bold">1</span>
+                      <span class="text-sm text-gray-light">OpenClaw</span>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-gray-dark hover:text-gold transition-colors duration-300"><i class="fa fa-arrow-up"></i></button>
+                      <button class="text-gray-dark hover:text-gold transition-colors duration-300"><i class="fa fa-arrow-down"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between bg-dark-blue p-3 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                      <span class="text-gold font-bold">2</span>
+                      <span class="text-sm text-gray-light">券商API</span>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-gray-dark hover:text-gold transition-colors duration-300"><i class="fa fa-arrow-up"></i></button>
+                      <button class="text-gray-dark hover:text-gold transition-colors duration-300"><i class="fa fa-arrow-down"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between bg-dark-blue p-3 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                      <span class="text-gold font-bold">3</span>
+                      <span class="text-sm text-gray-light">银行API</span>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-gray-dark hover:text-gold transition-colors duration-300"><i class="fa fa-arrow-up"></i></button>
+                      <button class="text-gray-dark hover:text-gold transition-colors duration-300"><i class="fa fa-arrow-down"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- OpenClaw系统集成 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy mb-6">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">OpenClaw系统集成</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">OpenClaw API地址</label>
+                <input type="text" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" placeholder="输入OpenClaw系统API地址">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">API密钥</label>
+                <input type="password" class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300" placeholder="输入OpenClaw API密钥">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">连接状态</label>
+                <div class="flex items-center space-x-2">
+                  <span class="status-badge status-active">已连接</span>
+                  <span class="text-xs text-gray-dark">响应时间: 250ms</span>
+                </div>
+              </div>
+              <div class="flex space-x-3">
+                <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+                  <i class="fa fa-save mr-2"></i>保存配置
+                </button>
+                <button class="px-4 py-2 bg-cyan text-deep-blue rounded-md hover:bg-cyan/80 transition-colors duration-300">
+                  <i class="fa fa-refresh mr-2"></i>测试连接
+                </button>
+                <button class="px-4 py-2 bg-danger text-deep-blue rounded-md hover:bg-danger/80 transition-colors duration-300">
+                  <i class="fa fa-trash mr-2"></i>断开连接
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 第三方插件管理 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy mb-6">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">第三方插件管理</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-sm font-medium text-gray-light">已安装插件</span>
+                <button class="px-3 py-1 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300 text-sm">
+                  <i class="fa fa-plus mr-1"></i>添加插件
+                </button>
+              </div>
+              <div class="space-y-3">
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <div class="flex justify-between items-center mb-2">
+                    <div>
+                      <p class="text-sm font-medium text-gold">MarketData Plugin</p>
+                      <p class="text-xs text-gray-dark">提供实时市场数据</p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-cog"></i></button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-check"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-active">已启用</span>
+                    <span class="text-xs text-gray-dark">版本: 1.0.0</span>
+                  </div>
+                </div>
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <div class="flex justify-between items-center mb-2">
+                    <div>
+                      <p class="text-sm font-medium text-gold">RiskAnalyzer Plugin</p>
+                      <p class="text-xs text-gray-dark">风险分析工具</p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-cog"></i></button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-check"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-active">已启用</span>
+                    <span class="text-xs text-gray-dark">版本: 1.2.0</span>
+                  </div>
+                </div>
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <div class="flex justify-between items-center mb-2">
+                    <div>
+                      <p class="text-sm font-medium text-gold">Notification Plugin</p>
+                      <p class="text-xs text-gray-dark">通知服务</p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-cog"></i></button>
+                      <button class="text-warning hover:text-warning/80 transition-colors duration-300"><i class="fa fa-times"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-inactive">已禁用</span>
+                    <span class="text-xs text-gray-dark">版本: 1.1.0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 金融公司接口 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy mb-6">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">金融公司接口</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-sm font-medium text-gray-light">已配置接口</span>
+                <button class="px-3 py-1 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300 text-sm">
+                  <i class="fa fa-plus mr-1"></i>添加接口
+                </button>
+              </div>
+              <div class="space-y-3">
+                <!-- 保险公司接口 -->
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <div class="flex justify-between items-center mb-2">
+                    <div>
+                      <p class="text-sm font-medium text-gold">保险公司API</p>
+                      <p class="text-xs text-gray-dark">保险产品接口</p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-cog"></i></button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-refresh"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-active">已连接</span>
+                    <span class="text-xs text-gray-dark">最后同步: 2026-04-02 15:35</span>
+                  </div>
+                </div>
+                <!-- 金融牌照交易所接口 -->
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <div class="flex justify-between items-center mb-2">
+                    <div>
+                      <p class="text-sm font-medium text-gold">金融牌照交易所API</p>
+                      <p class="text-xs text-gray-dark">合规交易接口</p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-cog"></i></button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-refresh"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-active">已连接</span>
+                    <span class="text-xs text-gray-dark">最后同步: 2026-04-02 15:32</span>
+                  </div>
+                </div>
+                <!-- 银行接口 -->
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <div class="flex justify-between items-center mb-2">
+                    <div>
+                      <p class="text-sm font-medium text-gold">银行API</p>
+                      <p class="text-xs text-gray-dark">资金转账接口</p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-cog"></i></button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-refresh"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-active">已连接</span>
+                    <span class="text-xs text-gray-dark">最后同步: 2026-04-02 15:25</span>
+                  </div>
+                </div>
+                <!-- 证券交易所接口 -->
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <div class="flex justify-between items-center mb-2">
+                    <div>
+                      <p class="text-sm font-medium text-gold">证券交易所API</p>
+                      <p class="text-xs text-gray-dark">股票交易接口</p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-cog"></i></button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-refresh"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-active">已连接</span>
+                    <span class="text-xs text-gray-dark">最后同步: 2026-04-02 15:30</span>
+                  </div>
+                </div>
+                <!-- 券商接口 -->
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <div class="flex justify-between items-center mb-2">
+                    <div>
+                      <p class="text-sm font-medium text-gold">券商API</p>
+                      <p class="text-xs text-gray-dark">股票交易接口</p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-cog"></i></button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-refresh"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-active">已连接</span>
+                    <span class="text-xs text-gray-dark">最后同步: 2026-04-02 15:28</span>
+                  </div>
+                </div>
+                <!-- 数据提供商接口 -->
+                <div class="bg-navy/30 p-4 rounded-lg border border-navy">
+                  <div class="flex justify-between items-center mb-2">
+                    <div>
+                      <p class="text-sm font-medium text-gold">数据提供商API</p>
+                      <p class="text-xs text-gray-dark">市场数据接口</p>
+                    </div>
+                    <div class="flex space-x-2">
+                      <button class="text-cyan hover:text-cyan/80 transition-colors duration-300"><i class="fa fa-cog"></i></button>
+                      <button class="text-success hover:text-success/80 transition-colors duration-300"><i class="fa fa-refresh"></i></button>
+                      <button class="text-danger hover:text-danger/80 transition-colors duration-300"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="status-badge status-active">已连接</span>
+                    <span class="text-xs text-gray-dark">最后同步: 2026-04-02 15:20</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 在线数据更新 -->
+          <div class="bg-dark-blue rounded-xl p-6 border border-navy">
+            <h3 class="text-lg font-orbitron font-semibold text-gold mb-4">在线数据更新</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">自动更新设置</label>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <input type="checkbox" checked class="rounded text-gold">
+                    <span class="text-sm text-gray-light">启用自动数据更新</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <input type="checkbox" checked class="rounded text-gold">
+                    <span class="text-sm text-gray-light">启用实时市场数据</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <input type="checkbox" checked class="rounded text-gold">
+                    <span class="text-sm text-gray-light">启用交易数据同步</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-light mb-2">更新频率</label>
+                <select class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-2 text-gray-light focus:outline-none focus:border-gold/50 transition-colors duration-300">
+                  <option>实时 (5秒)</option>
+                  <option>高频 (30秒)</option>
+                  <option>中频 (1分钟)</option>
+                  <option>低频 (5分钟)</option>
+                  <option>手动更新</option>
+                </select>
+              </div>
+              <div class="flex space-x-3">
+                <button class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+                  <i class="fa fa-save mr-2"></i>保存配置
+                </button>
+                <button class="px-4 py-2 bg-success text-deep-blue rounded-md hover:bg-success/80 transition-colors duration-300">
+                  <i class="fa fa-refresh mr-2"></i>立即更新数据
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // 管理员登录
+    function handleAdminLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('admin-username').value;
+      const password = document.getElementById('admin-password').value;
+      
+      // 模拟登录验证
+      if (username && password) {
+        document.getElementById('login-page').classList.add('hidden');
+        document.getElementById('admin-dashboard').classList.remove('hidden');
+        initCharts();
+      } else {
+        alert('请输入管理员账号和密码');
+      }
+    }
+    
+    // 管理员登出
+    function handleAdminLogout() {
+      document.getElementById('admin-dashboard').classList.add('hidden');
+      document.getElementById('login-page').classList.remove('hidden');
+      document.getElementById('admin-login-form').reset();
+    }
+    
+    // 切换侧边栏菜单
+    function showSection(sectionName) {
+      // 隐藏所有内容区域
+      document.querySelectorAll('.section-content').forEach(section => {
+        section.classList.add('hidden');
+      });
+      
+      // 显示选中的内容区域
+      document.getElementById(sectionName + '-section').classList.remove('hidden');
+      
+      // 更新侧边栏激活状态
+      document.querySelectorAll('.sidebar-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      event.target.closest('.sidebar-item').classList.add('active');
+    }
+    
+    // 初始化图表
+    function initCharts() {
+      // 用户增长趋势图
+      const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
+      new Chart(userGrowthCtx, {
+        type: 'line',
+        data: {
+          labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+          datasets: [{
+            label: '新增用户',
+            data: [1200, 1900, 3000, 5000, 8000, 12458],
+            borderColor: '#E6AF2E',
+            backgroundColor: 'rgba(230, 175, 46, 0.1)',
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: '#8892B0'
+              }
+            },
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                color: '#8892B0'
+              }
+            }
+          }
+        }
+      });
+      
+      // 交易统计图
+      const transactionCtx = document.getElementById('transactionChart').getContext('2d');
+      new Chart(transactionCtx, {
+        type: 'bar',
+        data: {
+          labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+          datasets: [{
+            label: '交易量',
+            data: [150, 230, 180, 320, 280, 190, 240],
+            backgroundColor: '#E6AF2E',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: '#8892B0'
+              }
+            },
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                color: '#8892B0'
+              }
+            }
+          }
+        }
+      });
+    }
+    
+    // 模型类型切换
+    function initModelTypeToggle() {
+      const modelTypeSelect = document.getElementById('model-type');
+      if (modelTypeSelect) {
+        modelTypeSelect.addEventListener('change', function() {
+          const selectedType = this.value;
+          
+          // 隐藏所有模型配置区域
+          document.getElementById('third-party-models').classList.add('hidden');
+          document.getElementById('local-models').classList.add('hidden');
+          document.getElementById('custom-models').classList.add('hidden');
+          
+          // 显示选中的模型配置区域
+          if (selectedType === 'third-party') {
+            document.getElementById('third-party-models').classList.remove('hidden');
+          } else if (selectedType === 'local') {
+            document.getElementById('local-models').classList.remove('hidden');
+          } else if (selectedType === 'custom') {
+            document.getElementById('custom-models').classList.remove('hidden');
+          }
+        });
+      }
+    }
+    
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      initModelTypeToggle();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行业白皮书 - 茶海虾王@金融交易所看板平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .whitepaper-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .whitepaper-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .category-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .category-finance { background: #dbeafe; color: #1e40af; }
+        .category-city { background: #dcfce7; color: #166534; }
+        .category-industry { background: #fef3c7; color: #92400e; }
+        .category-education { background: #fce7f3; color: #9d174d; }
+        .category-energy { background: #e0e7ff; color: #3730a3; }
+        .category-healthcare { background: #fff7ed; color: #c2410c; }
+        .category-general { background: #f3f4f6; color: #4b5563; }
+        .filter-tag {
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        .filter-tag:hover {
+            background: #f3f4f6;
+        }
+        .filter-tag.active {
+            background: #4f46e5;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold gradient-text">茶海虾王</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-700 hover:text-indigo-600 transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-700 hover:text-indigo-600 transition">AI新闻</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-indigo-600 transition">定价</a>
+                    <a href="cloud-pricing.html" class="text-gray-700 hover:text-indigo-600 transition">云产品</a>
+                    <a href="cloud-health.html" class="text-gray-700 hover:text-indigo-600 transition">健康看板</a>
+                    <a href="support-plans.html" class="text-gray-700 hover:text-indigo-600 transition">支持计划</a>
+                    <a href="whitepapers.html" class="text-indigo-600 font-semibold">白皮书</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">关于我们</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login.html" class="text-gray-700 hover:text-indigo-600 transition">登录</a>
+                    <a href="/register.html" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">免费试用</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">行业白皮书</h1>
+            <p class="text-xl text-indigo-100 max-w-3xl mx-auto">汇聚行业前沿洞察，助力企业数字化转型与智能化升级</p>
+        </div>
+    </section>
+
+    <!-- 分类筛选 -->
+    <section class="py-8 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="font-semibold text-gray-700 mr-2">分类筛选：</span>
+                <span class="filter-tag active" data-category="all">全部</span>
+                <span class="filter-tag" data-category="finance">金融</span>
+                <span class="filter-tag" data-category="city">智慧城市</span>
+                <span class="filter-tag" data-category="industry">工业</span>
+                <span class="filter-tag" data-category="education">教育</span>
+                <span class="filter-tag" data-category="energy">能源</span>
+                <span class="filter-tag" data-category="healthcare">医疗</span>
+                <span class="filter-tag" data-category="agriculture">农业</span>
+                <span class="filter-tag" data-category="general">通用</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 白皮书列表 -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 雄安新区2022年大数据研究报告 -->
+                <div class="whitepaper-card" data-category="city">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-city text-blue-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-city">智慧城市</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">未来之城 雄姿初显——雄安新区2022年大数据研究报告</h3>
+                    <p class="text-gray-600 text-sm mb-6">由百度智能云、百度研究院商业智能实验室联合撰写发布。报告构建了城市量化分析的大数据指标体系，运用人工智能和大数据分析技术，全面呈现雄安新区2022年在承接疏解、生态治理、城市建设、配套服务和创新实践等方面取得的新进展。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 2023年中国主流广电媒体转型研究报告 -->
+                <div class="whitepaper-card" data-category="city">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-broadcast-tower text-purple-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-city">智慧城市</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">2023年中国主流广电媒体转型研究报告</h3>
+                    <p class="text-gray-600 text-sm mb-6">移动互联网的高速发展重塑用户信息获取渠道。面对行业新态势，主流广电媒体以技术赋能向智慧媒体转型，已成为提升用户粘性、应对行业竞争的不二选择。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 数字城市知识工程赋能计划1.0 -->
+                <div class="whitepaper-card" data-category="city">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-chart-line text-teal-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-city">智慧城市</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">数字城市知识工程赋能计划1.0——城市元指标研究报告</h3>
+                    <p class="text-gray-600 text-sm mb-6">城市元指标是面向城市体验、体征监测、以及其它泛城市评估等城市研究与城市治理需要提出的创新概念，旨在探讨建立一套"数据-指标-知识"的三级城市数据应用框架。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 数智赋能乡村产业振兴白皮书 -->
+                <div class="whitepaper-card" data-category="agriculture">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-seedling text-green-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-industry">农业</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">新农业、新产业、新格局——数智赋能乡村产业振兴白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">本白皮书从中国农业转型升级"窗口期"背景出发，以数智赋能为驱动力，以产业链升级和产业服务体系升级为战略关键点，剖析如何践行新的产业发展模式。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 中国保险行业数智化展望 -->
+                <div class="whitepaper-card" data-category="finance">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-finance">金融</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">数智时代 - 中国保险行业数智化展望及全球案例分析白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">中国保险行业从外延式的高速增长，走向内涵式的高质量发展，亟需寻找发展新动能。保险企业面临巨大转型压力，迫切需要以数字驱动变革。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 5G+AI智能工业视觉解决方案 -->
+                <div class="whitepaper-card" data-category="industry">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-industry text-orange-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-industry">工业</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云5G+AI 智能工业视觉解决方案白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">5G+AI 的工业视觉解决方案，通过端 + 5G 网络 + 边缘云 + 云服务的协作，将成为未来智能化工厂标配解决方案。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 百度城市数字化转型白皮书 -->
+                <div class="whitepaper-card" data-category="city">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-city text-cyan-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-city">智慧城市</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度城市数字化转型白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">城市数字化转型已成为提升城市核心竞争力的关键抓手与内在要求。白皮书重点剖析了新时期城市数字化转型的内涵、要求与重点。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 百度智能云未来银行白皮书 -->
+                <div class="whitepaper-card" data-category="finance">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-university text-indigo-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-finance">金融</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云未来银行白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">未来银行建设的驱动因素在于改进金融产品和服务在获客、交易、售后等方面的客户互动体验。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 百度智能云智慧能源白皮书 -->
+                <div class="whitepaper-card" data-category="energy">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-bolt text-yellow-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-energy">能源</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云智慧能源白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">智慧能源体系是通过打造平台连接产业链上下游企业，汇聚与协同商业伙伴，发挥各参与主体核心优势。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 人工智能赋能数字水务白皮书 -->
+                <div class="whitepaper-card" data-category="city">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-tint text-blue-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-city">智慧城市</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">人工智能赋能数字水务白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">本报告书由国际水协会和百度共同撰写，以人工智能赋能水务行业的国内外案例分析为重点。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 百度智能云工业互联网白皮书 -->
+                <div class="whitepaper-card" data-category="industry">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-cogs text-green-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-industry">工业</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云工业互联网白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">【百度智能云开物】工业互联网平台，旨在构建自主可控的"智能云+工业互联网平台+敏捷智能应用"的新型工业基础设施。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 百度智能云服务白皮书 -->
+                <div class="whitepaper-card" data-category="general">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-handshake text-gray-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-general">通用</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云服务白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">百度在多年智能化赋能实践中，形成了完整的智能化服务体系和端到端敏捷的服务方法论。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 区域性银行数字化转型白皮书 -->
+                <div class="whitepaper-card" data-category="finance">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-building text-blue-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-finance">金融</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云区域性银行数字化转型白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">从国家规划和自身定位角度，区域性银行将逐渐回归本源、服务地方，结合地域特色和客群特点。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- AI+高等教育发展与应用白皮书 -->
+                <div class="whitepaper-card" data-category="education">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-purple-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-education">教育</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云AI+高等教育发展与应用白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">人工智能、大数据、区块链等技术迅猛发展，深刻改变人才需求和教育形态。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 工业互联网金融助力区域数字新经济白皮书 -->
+                <div class="whitepaper-card" data-category="finance">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-industry text-orange-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-finance">金融</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">工业互联网金融助力区域数字新经济白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">白皮书立足当前区域经济发展难题，探索以数字经济助力区域协同发展的解决方案。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 医疗知识中台白皮书 -->
+                <div class="whitepaper-card" data-category="healthcare">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-red-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-healthcare">医疗</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">医疗知识中台白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">医疗服务资源的供需不平衡将是医疗行业长期面临的严峻挑战。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 数智碳中和白皮书 -->
+                <div class="whitepaper-card" data-category="energy">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-leaf text-green-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-energy">能源</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">数智碳中和白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">融合百度智能云"云智一体"加速产业零碳转型的创新实践。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 智能+工业互联网平台白皮书 -->
+                <div class="whitepaper-card" data-category="industry">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-robot text-yellow-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-industry">工业</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">智能+工业互联网平台白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">制造业是实体经济的基础，实体经济是我国发展的本钱。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 百度智能云智慧城市白皮书2021 -->
+                <div class="whitepaper-card" data-category="city">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-city text-cyan-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-city">智慧城市</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云智慧城市白皮书2021</h3>
+                    <p class="text-gray-600 text-sm mb-6">百度智慧城市，依托百度在数据要素配置能力、全栈AI技术和赋能产业智能化的三大优势。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 新业态、新模式、新场景——数智赋能城乡融合发展 -->
+                <div class="whitepaper-card" data-category="agriculture">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-users text-green-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-industry">农业</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">新业态、新模式、新场景——数智赋能城乡融合发展</h3>
+                    <p class="text-gray-600 text-sm mb-6">百度智能云与毕马威中国依托完善的理论框架、丰富的项目经验以及对于实践的深刻理解。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 蝶变中的未来之城——雄安新区2021年大数据研究报告 -->
+                <div class="whitepaper-card" data-category="city">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-city">智慧城市</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">蝶变中的未来之城——雄安新区2021年大数据研究报告</h3>
+                    <p class="text-gray-600 text-sm mb-6">报告围绕人口流动变化、城市功能发展、生态环境治理、交通路网建设、智能创新实践等方面。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 人工智能助力城市"双碳"目标达成白皮书 -->
+                <div class="whitepaper-card" data-category="energy">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-brain text-green-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-energy">能源</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">人工智能助力城市"双碳"目标达成白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">白皮书分析了双碳战略的背景和意义，阐述了城市双碳目标的内涵和重点领域。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 产业智能化生态研究报告白皮书 -->
+                <div class="whitepaper-card" data-category="general">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-project-diagram text-gray-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-general">通用</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">产业智能化生态研究报告白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">白皮书指出产业智能化是智能经济发展的主引擎，要以生态系统构建加速产业智能化发展。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 中国智能经济发展白皮书 -->
+                <div class="whitepaper-card" data-category="general">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-rocket text-purple-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-general">通用</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">中国智能经济发展白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">白皮书阐述了智能经济的内涵，介绍了智能经济的典型应用领域。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 百度智能云AI中台白皮书 -->
+                <div class="whitepaper-card" data-category="general">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-brain text-indigo-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-general">通用</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云AI中台白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">在人工智能驱动产业智能转型升级过程中，AI中台成为智能化底座和关键基础设施。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 百度智能云知识中台白皮书 -->
+                <div class="whitepaper-card" data-category="general">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-book text-teal-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-general">通用</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">百度智能云知识中台白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">面对企业知识应用需求，知识中台具备覆盖全生命周期、一站式服务、定制化解决方案等特点。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+                <!-- 企业智能工作白皮书 -->
+                <div class="whitepaper-card" data-category="general">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-briefcase text-orange-600 text-xl"></i>
+                        </div>
+                        <span class="category-tag category-general">通用</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">企业智能工作白皮书</h3>
+                    <p class="text-gray-600 text-sm mb-6">白皮书指出企业经营智能化推动工作模式升级、智能化协同与知识管理定义智能工作模式。</p>
+                    <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        <i class="fas fa-download mr-2"></i> 下载白皮书
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">获取更多行业洞察</h2>
+            <p class="text-xl text-indigo-100 mb-8">注册即可免费下载全部白皮书，获取行业前沿洞察</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/register.html" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">免费注册</a>
+                <a href="/contact.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition">联系我们</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">专业的金融交易所看板平台，集成AI工具与实时数据分析。</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="ai-tools.html" class="hover:text-white transition">AI工具</a></li>
+                        <li><a href="ai-news.html" class="hover:text-white transition">AI新闻</a></li>
+                        <li><a href="cloud-pricing.html" class="hover:text-white transition">云产品</a></li>
+                        <li><a href="cloud-health.html" class="hover:text-white transition">健康看板</a></li>
+                        <li><a href="support-plans.html" class="hover:text-white transition">支持计划</a></li>
+                        <li><a href="whitepapers.html" class="hover:text-white transition">白皮书</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>rao5201@126.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 茶海虾王@金融交易所看板平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 分类筛选功能
+        document.querySelectorAll('.filter-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                document.querySelectorAll('.whitepaper-card').forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全端数据资产管理 - 茶海虾王@金融交易所看板平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .capability-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 32px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: #f3f4f6;
+            border-radius: 20px;
+            margin: 4px;
+            font-size: 14px;
+            color: #374151;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold gradient-text">茶海虾王</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-700 hover:text-indigo-600 transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-700 hover:text-indigo-600 transition">AI新闻</a>
+                    <a href="trading-chart.html" class="text-gray-700 hover:text-indigo-600 transition">K线图</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-indigo-600 transition">定价</a>
+                    <a href="google-ads.html" class="text-gray-700 hover:text-indigo-600 transition">Google广告</a>
+                    <a href="data-asset.html" class="text-indigo-600 font-semibold">数据资产</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">关于我们</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login.html" class="text-gray-700 hover:text-indigo-600 transition">登录</a>
+                    <a href="/register.html" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">
+                        免费试用
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    全端数据资产一站式管理
+                </h1>
+                <p class="text-xl text-indigo-100 mb-8">
+                    全端数据便捷采集、打通统一用户ID体系，打造企业数字化经营根基
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#capabilities" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
+                        了解六大能力
+                    </a>
+                    <a href="#demo" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition">
+                        体验产品Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 六大能力 -->
+    <section id="capabilities" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">六大能力实现数据资产一站式管理</h2>
+            <p class="text-center text-gray-600 mb-12">构建完整的数据采集、处理、分析与应用体系</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 多端采集 -->
+                <div class="capability-card">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-download text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">多端采集</h3>
+                    <p class="text-indigo-100 mb-4">提供可视化圈选、轻量级SDK、HTTP API、后端传数等采集方案</p>
+                    <ul class="space-y-2 text-sm text-indigo-100">
+                        <li><i class="fas fa-check mr-2"></i>网站数据采集</li>
+                        <li><i class="fas fa-check mr-2"></i>APP数据采集</li>
+                        <li><i class="fas fa-check mr-2"></i>小程序数据采集</li>
+                        <li><i class="fas fa-check mr-2"></i>百亿量级实时处理</li>
+                    </ul>
+                </div>
+
+                <!-- 数据模型 -->
+                <div class="capability-card">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-project-diagram text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">数据模型</h3>
+                    <p class="text-indigo-100 mb-4">User-Event模型完整刻画每个用户的行为流</p>
+                    <ul class="space-y-2 text-sm text-indigo-100">
+                        <li><i class="fas fa-check mr-2"></i>广告点击追踪</li>
+                        <li><i class="fas fa-check mr-2"></i>用户到访记录</li>
+                        <li><i class="fas fa-check mr-2"></i>转化行为分析</li>
+                        <li><i class="fas fa-check mr-2"></i>多维度交叉分析</li>
+                    </ul>
+                </div>
+
+                <!-- 统一用户ID -->
+                <div class="capability-card">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-user-shield text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">统一用户ID</h3>
+                    <p class="text-indigo-100 mb-4">构建统一用户ID体系，打通跨端跨渠道行为路径</p>
+                    <ul class="space-y-2 text-sm text-indigo-100">
+                        <li><i class="fas fa-check mr-2"></i>跨端用户识别</li>
+                        <li><i class="fas fa-check mr-2"></i>跨渠道行为追踪</li>
+                        <li><i class="fas fa-check mr-2"></i>用户旅程还原</li>
+                        <li><i class="fas fa-check mr-2"></i>深度业务洞察</li>
+                    </ul>
+                </div>
+
+                <!-- 跨端融合 -->
+                <div class="capability-card">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-code-branch text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">跨端融合</h3>
+                    <p class="text-indigo-100 mb-4">不同端的数据可快速融合，积累有效数据资产</p>
+                    <ul class="space-y-2 text-sm text-indigo-100">
+                        <li><i class="fas fa-check mr-2"></i>多端数据整合</li>
+                        <li><i class="fas fa-check mr-2"></i>一键数据管理</li>
+                        <li><i class="fas fa-check mr-2"></i>高效对比分析</li>
+                        <li><i class="fas fa-check mr-2"></i>数据资产沉淀</li>
+                    </ul>
+                </div>
+
+                <!-- 数据权限 -->
+                <div class="capability-card">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-lock text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">数据权限</h3>
+                    <p class="text-indigo-100 mb-4">完备的数据权限控制体系，保障数据安全</p>
+                    <ul class="space-y-2 text-sm text-indigo-100">
+                        <li><i class="fas fa-check mr-2"></i>角色权限管理</li>
+                        <li><i class="fas fa-check mr-2"></i>数据访问控制</li>
+                        <li><i class="fas fa-check mr-2"></i>操作日志追踪</li>
+                        <li><i class="fas fa-check mr-2"></i>最大程度保障安全</li>
+                    </ul>
+                </div>
+
+                <!-- 用户分群 -->
+                <div class="capability-card">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">用户分群</h3>
+                    <p class="text-indigo-100 mb-4">支持多种组合维度将用户细分为不同目标群体</p>
+                    <ul class="space-y-2 text-sm text-indigo-100">
+                        <li><i class="fas fa-check mr-2"></i>多维度组合筛选</li>
+                        <li><i class="fas fa-check mr-2"></i>目标群体细分</li>
+                        <li><i class="fas fa-check mr-2"></i>人群数据表现</li>
+                        <li><i class="fas fa-check mr-2"></i>提升分析效率</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 支持平台 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">全端数据覆盖</h2>
+            <p class="text-center text-gray-600 mb-12">支持多种平台和终端的数据采集与管理</p>
+            
+            <div class="flex flex-wrap justify-center">
+                <span class="platform-badge"><i class="fas fa-globe mr-2 text-blue-500"></i>网站</span>
+                <span class="platform-badge"><i class="fas fa-mobile-alt mr-2 text-green-500"></i>iOS APP</span>
+                <span class="platform-badge"><i class="fas fa-mobile mr-2 text-green-500"></i>Android APP</span>
+                <span class="platform-badge"><i class="fab fa-weixin mr-2 text-green-600"></i>微信小程序</span>
+                <span class="platform-badge"><i class="fas fa-bolt mr-2 text-blue-400"></i>字节小程序</span>
+                <span class="platform-badge"><i class="fas fa-shopping-cart mr-2 text-red-500"></i>支付宝小程序</span>
+                <span class="platform-badge"><i class="fas fa-cloud mr-2 text-purple-500"></i>H5页面</span>
+                <span class="platform-badge"><i class="fas fa-server mr-2 text-gray-600"></i>服务端</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 多维智能分析 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">模块实现多维智能分析</h2>
+            <p class="text-center text-gray-600 mb-12">洞察用户行为，驱动业务增长</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 内置数据看板 -->
+                <div class="feature-card card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-tachometer-alt text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">内置数据看板</h3>
+                    <p class="text-gray-600 mb-4">内置基础数据看板与行业定制看板，快速查看业务数据表现，一目了然掌握核心指标</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>基础数据看板</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>行业定制看板</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>实时数据更新</li>
+                    </ul>
+                </div>
+
+                <!-- 多维分析模型 -->
+                <div class="feature-card card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cubes text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">多维分析模型</h3>
+                    <p class="text-gray-600 mb-4">提供多维度用户行为分析模型、热力图，实现灵活的数据交叉分析，深度挖掘用户行为模式</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>多维度分析模型</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>用户行为热力图</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>灵活交叉分析</li>
+                    </ul>
+                </div>
+
+                <!-- 转化归因分析 -->
+                <div class="feature-card card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-funnel-dollar text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">转化归因分析</h3>
+                    <p class="text-gray-600 mb-4">支持站外推广渠道与站内运营坑位渠道分析，多种归因模型评估渠道贡献，优化投放策略</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>站外渠道分析</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>站内坑位分析</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>多种归因模型</li>
+                    </ul>
+                </div>
+
+                <!-- 用户画像分析 -->
+                <div class="feature-card card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-user-circle text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">用户画像分析</h3>
+                    <p class="text-gray-600 mb-4">用户画像提供基础属性、搜索意图、行业动态、全网触媒等多种画像分析维度，全方位了解用户</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>基础属性分析</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>搜索意图分析</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>全网触媒分析</li>
+                    </ul>
+                </div>
+
+                <!-- 搜索意图分析 -->
+                <div class="feature-card card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">搜索意图分析</h3>
+                    <p class="text-gray-600 mb-4">独家提供用户搜索意图词，精准洞察用户真实兴趣点，为内容优化和营销策略提供数据支撑</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>独家搜索意图词</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>真实兴趣洞察</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>营销决策支持</li>
+                    </ul>
+                </div>
+
+                <!-- 自定义SQL查询 -->
+                <div class="feature-card card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">自定义SQL查询</h3>
+                    <p class="text-gray-600 mb-4">提供自定义SQL查询功能，满足您个性化分析需求，灵活获取所需数据，支持复杂业务场景</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>自定义SQL查询</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>个性化分析需求</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>复杂场景支持</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 更多功能 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">更多功能，等你体验</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-pie text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">多维智能数据分析平台</h3>
+                    <p class="text-gray-600 mb-4">强大的数据分析能力，支持多维度交叉分析，深度挖掘数据价值</p>
+                    <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-700">
+                        了解详情 <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="feature-card card-hover">
+                    <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">全域数据营销运营应用</h3>
+                    <p class="text-gray-600 mb-4">基于数据资产的智能营销应用，实现精准触达和个性化运营</p>
+                    <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-700">
+                        了解详情 <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="feature-card card-hover" id="demo">
+                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-play-circle text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">体验产品Demo</h3>
+                    <p class="text-gray-600 mb-4">立即体验全端数据资产管理平台的强大功能，感受数据驱动业务增长</p>
+                    <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-700">
+                        了解详情 <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据统计 -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 to-indigo-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">一站式智能数据分析与应用平台</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-400 mb-2">百亿+</div>
+                    <div class="text-gray-300">日处理数据量</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-400 mb-2">99.9%</div>
+                    <div class="text-gray-300">系统稳定性</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-400 mb-2">毫秒级</div>
+                    <div class="text-gray-300">实时响应</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-400 mb-2">8+</div>
+                    <div class="text-gray-300">支持平台</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 科学营销运营工具 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">工具助力科学营销运营</h2>
+            <p class="text-center text-gray-600 mb-12">数据驱动营销运营，提升ROI</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- A/B测试 -->
+                <div class="feature-card card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-flask text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">A/B测试</h3>
+                    <p class="text-gray-600 mb-4">简单快捷部署A/B实验，节约实验部署成本，助您更好决策运营策略，用数据验证假设</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>简单快捷部署</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>节约实验成本</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>数据驱动决策</li>
+                    </ul>
+                </div>
+
+                <!-- 增长投放实验 -->
+                <div class="feature-card card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-rocket text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">增长投放实验</h3>
+                    <p class="text-gray-600 mb-4">针对到站未转化用户，一键投放百度，精准营销扩量，实现用户增长与转化提升</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>未转化用户召回</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>一键投放百度</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>精准营销扩量</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">更多功能，等你体验</p>
+                <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700">
+                    了解全部营销工具 <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">准备好构建您的数据资产体系了吗？</h2>
+            <p class="text-xl text-indigo-100 mb-8">
+                立即开始，打造企业数字化经营根基
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/register.html" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
+                    免费开始
+                </a>
+                <a href="/contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition">
+                    联系销售
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">专业的金融交易所看板平台，集成AI工具与实时数据分析。</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="ai-tools.html" class="hover:text-white transition">AI工具</a></li>
+                        <li><a href="ai-news.html" class="hover:text-white transition">AI新闻</a></li>
+                        <li><a href="trading-chart.html" class="hover:text-white transition">K线图</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="sandbox.html" class="hover:text-white transition">沙盒体验</a></li>
+                        <li><a href="license.html" class="hover:text-white transition">许可证</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>support@chaxiawang.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>400-888-8888</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>海南省海口市</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 茶海虾王@金融交易所看板平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

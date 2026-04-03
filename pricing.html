@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定价方案 - 茶海虾王@金融交易所看板平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        .pricing-card.featured {
+            border: 3px solid #667eea;
+            transform: scale(1.05);
+        }
+        .pricing-card.featured::before {
+            content: '推荐方案';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom-left-radius: 16px;
+        }
+        .check-icon {
+            color: #10b981;
+        }
+        .cross-icon {
+            color: #9ca3af;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .comparison-table th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        .comparison-table tr:hover {
+            background: #f9fafb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold gradient-text">茶海虾王</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-700 hover:text-indigo-600 transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-700 hover:text-indigo-600 transition">AI新闻</a>
+                    <a href="trading-chart.html" class="text-gray-700 hover:text-indigo-600 transition">K线图</a>
+                    <a href="pricing.html" class="text-indigo-600 font-semibold">定价</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">关于我们</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login.html" class="text-gray-700 hover:text-indigo-600 transition">登录</a>
+                    <a href="/register.html" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">
+                        免费试用
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                选择适合您的方案
+            </h1>
+            <p class="text-xl text-indigo-100 max-w-3xl mx-auto mb-8">
+                从个人创业者到大型企业，我们提供灵活的定价方案，助您开启独立站生意
+            </p>
+            <div class="flex justify-center gap-4">
+                <span class="px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm">
+                    <i class="fas fa-check mr-2"></i>免费试用14天
+                </span>
+                <span class="px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm">
+                    <i class="fas fa-check mr-2"></i>随时升级或降级
+                </span>
+                <span class="px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm">
+                    <i class="fas fa-check mr-2"></i>无隐藏费用
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 定价卡片 -->
+    <section class="py-20 -mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 旗舰版 -->
+                <div class="pricing-card card-hover p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">旗舰版</h3>
+                        <p class="text-gray-500 mb-4">个人创业者，零成本入门</p>
+                        <div class="mb-4">
+                            <span class="text-5xl font-bold text-gray-900">免费</span>
+                        </div>
+                        <p class="text-sm text-gray-500">抽佣比例：<span class="font-semibold text-indigo-600">1%</span></p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">全部基础功能</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">自定义域名 <strong>1个</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">商品数量 <strong>20个</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">模版数量 <strong>1个</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">极速建站</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">博客功能</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">国际化(多语言、多货币)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">多平台商品采集</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full py-4 border-2 border-indigo-600 text-indigo-600 rounded-full font-semibold hover:bg-indigo-50 transition">
+                        免费试用
+                    </button>
+                </div>
+
+                <!-- 企业版 -->
+                <div class="pricing-card featured card-hover p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">企业版</h3>
+                        <p class="text-gray-500 mb-4">品牌卖家，解锁一切功能</p>
+                        <div class="mb-4">
+                            <span class="text-5xl font-bold text-gray-900">¥1680</span>
+                            <span class="text-gray-500">/年</span>
+                        </div>
+                        <p class="text-sm text-gray-500">抽佣比例：<span class="font-semibold text-indigo-600">0.6%</span></p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">全部基础功能</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">员工账号 <strong>120个</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">自定义域名 <strong>不限</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">商品数量 <strong>不限</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">模版数量 <strong>不限</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">多平台广告数据埋点追踪</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">PayPal多账户收款</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">虚拟商品</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">邮件营销(MailChimp、Omnisend)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">分销联盟</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">B2B功能</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">SEO优化工具</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold hover:shadow-lg transition">
+                        免费试用
+                    </button>
+                </div>
+
+                <!-- 定制版 -->
+                <div class="pricing-card card-hover p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">定制版</h3>
+                        <p class="text-gray-500 mb-4">大型企业，定制化解决方案</p>
+                        <div class="mb-4">
+                            <span class="text-5xl font-bold text-gray-900">详询报价</span>
+                        </div>
+                        <p class="text-sm text-gray-500">抽佣比例：<span class="font-semibold text-indigo-600">联系商务</span></p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">全部基础功能</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">员工账号 <strong>120个</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">自定义域名 <strong>不限</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">商品数量 <strong>不限</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">模版数量 <strong>不限</strong></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">定制化服务</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">1v1客户服务</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">广告开户服务</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">专属技术顾问</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check check-icon mr-3"></i>
+                            <span class="text-gray-700">API优先支持</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full py-4 border-2 border-gray-300 text-gray-700 rounded-full font-semibold hover:bg-gray-50 transition">
+                        免费咨询
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 版本比较 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">版本比较</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="comparison-table w-full">
+                    <thead>
+                        <tr>
+                            <th class="w-1/3">功能特性</th>
+                            <th class="text-center">旗舰版</th>
+                            <th class="text-center bg-indigo-50">企业版</th>
+                            <th class="text-center">定制版</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-medium">极速建站</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">自定义域名</td>
+                            <td class="text-center">1个</td>
+                            <td class="text-center bg-indigo-50">不限</td>
+                            <td class="text-center">不限</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">模版数量</td>
+                            <td class="text-center">1个</td>
+                            <td class="text-center bg-indigo-50">全部</td>
+                            <td class="text-center">全部</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">商品数量</td>
+                            <td class="text-center">20个</td>
+                            <td class="text-center bg-indigo-50">不限</td>
+                            <td class="text-center">不限</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">博客功能</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">国际化(多语言、多货币)</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">多平台商品采集</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">员工人数</td>
+                            <td class="text-center">0个</td>
+                            <td class="text-center bg-indigo-50">120个</td>
+                            <td class="text-center">120个</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">多平台广告数据埋点追踪</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">PayPal多账户收款</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">虚拟商品</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">邮件营销(MailChimp、Omnisend)</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">域名邮箱</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">分销联盟</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">B2B功能</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">B2B商家小助手</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">商品附加属性</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">表单工具</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">POD定制</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">网站SEO</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">SEO优化工具</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">广告开户服务</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">1v1客户服务</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">定制化服务</td>
+                            <td class="text-center"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-times cross-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 权益说明 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">权益说明</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="comparison-table w-full bg-white rounded-2xl shadow-sm">
+                    <thead>
+                        <tr>
+                            <th class="w-1/3">权益类型</th>
+                            <th class="text-center">旗舰版</th>
+                            <th class="text-center bg-indigo-50">企业版</th>
+                            <th class="text-center">定制版</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-gray-50">
+                            <td colspan="4" class="font-bold text-gray-900">基础功能</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">企业认证标识</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">企业专属页面</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">上传商品</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">联系方式、官网地址</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">询盘Leads</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">发布招聘信息</td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center bg-indigo-50"><i class="fas fa-check check-icon"></i></td>
+                            <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td colspan="4" class="font-bold text-gray-900">营销推广</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">排名权重（内容更靠前）</td>
+                            <td class="text-center">权重分1</td>
+                            <td class="text-center bg-indigo-50">权重分2</td>
+                            <td class="text-center">权重分5</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">关键词精准匹配</td>
+                            <td class="text-center">2个</td>
+                            <td class="text-center bg-indigo-50">3个</td>
+                            <td class="text-center">5个</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">首页推荐</td>
+                            <td class="text-center">1周</td>
+                            <td class="text-center bg-indigo-50">1周×2次</td>
+                            <td class="text-center">1周×5次</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">企业频道页Banner</td>
+                            <td class="text-center">1周</td>
+                            <td class="text-center bg-indigo-50">1周×2次</td>
+                            <td class="text-center">1周×5次</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">导航站推荐位（同大类置顶）</td>
+                            <td class="text-center">1月</td>
+                            <td class="text-center bg-indigo-50">2月</td>
+                            <td class="text-center">全年</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">公众号PR稿</td>
+                            <td class="text-center">1次</td>
+                            <td class="text-center bg-indigo-50">2次</td>
+                            <td class="text-center">2次</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">大数私域推广</td>
+                            <td class="text-center">1次</td>
+                            <td class="text-center bg-indigo-50">2次</td>
+                            <td class="text-center">2次</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td colspan="4" class="font-bold text-gray-900">活动权益</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">线下活动展位</td>
+                            <td class="text-center">1场</td>
+                            <td class="text-center bg-indigo-50">2场</td>
+                            <td class="text-center">5场</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">系列活动</td>
+                            <td class="text-center">无限</td>
+                            <td class="text-center bg-indigo-50">无限</td>
+                            <td class="text-center">无限</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">活动置顶（网页端、小程序）</td>
+                            <td class="text-center">3天×2次</td>
+                            <td class="text-center bg-indigo-50">3天×5次</td>
+                            <td class="text-center">3天×10次</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">小程序海报弹窗</td>
+                            <td class="text-center">3天×2次</td>
+                            <td class="text-center bg-indigo-50">3天×5次</td>
+                            <td class="text-center">3天×10次</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">活动宣发Logo联名</td>
+                            <td class="text-center">2次</td>
+                            <td class="text-center bg-indigo-50">5次</td>
+                            <td class="text-center">10次</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">常见问题</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">可以免费试用吗？</h3>
+                    <p class="text-gray-600">是的，所有方案都提供14天免费试用期，您可以充分体验我们的功能后再决定是否购买。</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">抽佣比例是什么意思？</h3>
+                    <p class="text-gray-600">抽佣比例是指我们根据您的销售额收取的平台服务费。旗舰版为1%，企业版为0.6%，定制版可联系商务详谈。</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">可以随时升级或降级吗？</h3>
+                    <p class="text-gray-600">当然可以！您可以根据业务需求随时升级或降级方案，我们会按比例计算费用差额。</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">支持哪些支付方式？</h3>
+                    <p class="text-gray-600">我们支持支付宝、微信支付、银行转账等多种支付方式，企业版还支持对公转账。</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">有隐藏费用吗？</h3>
+                    <p class="text-gray-600">绝对没有！我们的定价透明，您看到的价格就是最终价格，不会有任何隐藏费用。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">准备好开始您的独立站生意了吗？</h2>
+            <p class="text-xl text-indigo-100 mb-8">
+                立即注册，享受14天免费试用，无需信用卡
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/register.html" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
+                    免费开始
+                </a>
+                <a href="/contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition">
+                    联系销售
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">专业的金融交易所看板平台，集成AI工具与实时数据分析。</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="ai-tools.html" class="hover:text-white transition">AI工具</a></li>
+                        <li><a href="ai-news.html" class="hover:text-white transition">AI新闻</a></li>
+                        <li><a href="trading-chart.html" class="hover:text-white transition">K线图</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="sandbox.html" class="hover:text-white transition">沙盒体验</a></li>
+                        <li><a href="license.html" class="hover:text-white transition">许可证</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>support@chaxiawang.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>400-888-8888</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>海南省海口市</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 茶海虾王@金融交易所看板平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

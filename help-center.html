@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>茶海虾王@金融交易所看板平台 - 帮助中心</title>
+  <meta name="description" content="茶海虾王@金融交易所看板平台 - 帮助中心">
+  <!-- 英文名称 -->
+  <meta name="application-name" content="Tea Sea Shrimp King @ Financial Exchange Bulletin Board Platform - Help Center">
+  <!-- 安全头配置 -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://cdn.jsdelivr.net; style-src 'self' https://cdn.tailwindcss.com https://fonts.googleapis.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+  <meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义颜色和字体 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-blue': '#0A192F',
+            'dark-blue': '#112240',
+            'navy': '#172A45',
+            'gold': '#E6AF2E',
+            'gold-light': '#F4D35E',
+            'cyan': '#64FFDA',
+            'gray-light': '#CCD6F6',
+            'gray-dark': '#8892B0'
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'orbitron': ['Orbitron', 'sans-serif']
+          },
+          boxShadow: {
+            'glow': '0 0 15px rgba(230, 175, 46, 0.4)',
+            'glow-blue': '0 0 15px rgba(100, 255, 218, 0.3)'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 0 10px rgba(230, 175, 46, 0.5);
+      }
+      .text-shadow-blue {
+        text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+      }
+      .bg-grid {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
+      .scrollbar-gold::-webkit-scrollbar {
+        width: 6px;
+      }
+      .scrollbar-gold::-webkit-scrollbar-track {
+        background: rgba(17, 34, 64, 0.5);
+      }
+      .scrollbar-gold::-webkit-scrollbar-thumb {
+        background: rgba(230, 175, 46, 0.5);
+        border-radius: 3px;
+      }
+      .scrollbar-gold::-webkit-scrollbar-thumb:hover {
+        background: rgba(230, 175, 46, 0.8);
+      }
+    }
+  </style>
+  
+  <!-- 引入Google字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-deep-blue text-gray-light min-h-screen overflow-x-hidden scrollbar-gold bg-grid">
+  <!-- 顶部导航栏 -->
+  <header class="sticky top-0 z-50 bg-deep-blue/90 backdrop-blur-md border-b border-navy/50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- 左侧logo -->
+      <div class="flex items-center space-x-2">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold to-gold-light flex items-center justify-center shadow-glow">
+          <i class="fa fa-exchange text-deep-blue text-xl"></i>
+        </div>
+        <h1 class="text-[clamp(1.25rem,3vw,1.75rem)] font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-gold to-gold-light text-shadow">
+          茶海虾王@金融交易所看板平台
+        </h1>
+      </div>
+      
+      <!-- 右侧导航 -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-gray-light hover:text-gold transition-colors duration-300">首页</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">市场</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">交易</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">资产</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">AI分析</a>
+        <a href="#" class="text-gray-light hover:text-gold transition-colors duration-300">CHXW-V5.3</a>
+        <a href="help-center.html" class="text-gold font-medium">帮助中心</a>
+      </nav>
+      
+      <!-- 移动端菜单按钮 -->
+      <button class="md:hidden text-gray-light hover:text-gold transition-colors duration-300">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- 主要内容 -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- 帮助中心标题 -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-gold to-gold-light text-shadow mb-4">
+        帮助中心
+      </h1>
+      <p class="text-gray-dark max-w-2xl mx-auto">
+        在这里您可以找到关于平台使用的详细指南和常见问题解答
+      </p>
+    </div>
+
+    <!-- 搜索框 -->
+    <div class="max-w-2xl mx-auto mb-12">
+      <div class="relative">
+        <input 
+          type="text" 
+          placeholder="搜索帮助文档..." 
+          class="w-full bg-navy/30 border border-navy rounded-lg px-4 py-3 pl-12 focus:outline-none focus:border-gold/50 transition-colors duration-300"
+        >
+        <i class="fa fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-dark"></i>
+      </div>
+    </div>
+
+    <!-- 文档分类 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <!-- 快速入门 -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-rocket text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">快速入门</h3>
+        <p class="text-gray-dark mb-4">了解平台的基本功能和使用方法</p>
+        <a href="#quickstart" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          查看文档 <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- 账户管理 -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-user text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">账户管理</h3>
+        <p class="text-gray-dark mb-4">关于账户注册、登录和安全设置</p>
+        <a href="#account" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          查看文档 <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- 交易指南 -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-exchange text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">交易指南</h3>
+        <p class="text-gray-dark mb-4">学习如何进行资产交易和管理</p>
+        <a href="#trading" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          查看文档 <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- 资产管理 -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-database text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">资产管理</h3>
+        <p class="text-gray-dark mb-4">了解如何管理和上传您的资产</p>
+        <a href="#assets" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          查看文档 <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- AI分析 -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-lightbulb-o text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">AI分析</h3>
+        <p class="text-gray-dark mb-4">使用AI智能分析功能获取投资建议</p>
+        <a href="#ai" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          查看文档 <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- 安全中心 -->
+      <div class="bg-dark-blue rounded-xl p-6 border border-navy hover:border-gold/30 transition-colors duration-300">
+        <div class="w-12 h-12 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
+          <i class="fa fa-shield text-gold text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gold mb-2">安全中心</h3>
+        <p class="text-gray-dark mb-4">了解平台的安全措施和防诈骗知识</p>
+        <a href="#security" class="text-cyan hover:text-cyan/80 transition-colors duration-300 flex items-center">
+          查看文档 <i class="fa fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- 文档列表 -->
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-orbitron font-bold text-gold mb-6">用户说明书</h2>
+      
+      <div class="space-y-4">
+        <!-- 用户操作使用说明 -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">用户操作使用说明</h3>
+              <p class="text-gray-dark text-sm">详细的平台使用指南</p>
+            </div>
+            <a href="docs/06-用户文档/用户操作使用说明.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              查看文档
+            </a>
+          </div>
+        </div>
+
+        <!-- 客服操作使用说明 -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">客服操作使用说明</h3>
+              <p class="text-gray-dark text-sm">客服团队操作指南</p>
+            </div>
+            <a href="docs/07-客服文档/客服操作使用说明.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              查看文档
+            </a>
+          </div>
+        </div>
+
+        <!-- 管理员操作使用说明 -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">管理员操作使用说明</h3>
+              <p class="text-gray-dark text-sm">管理员后台操作指南</p>
+            </div>
+            <a href="docs/08-管理员文档/管理员操作使用说明.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              查看文档
+            </a>
+          </div>
+        </div>
+
+        <!-- 第三方接入操作规定和说明书 -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">第三方接入操作规定和说明书</h3>
+              <p class="text-gray-dark text-sm">第三方接入指南</p>
+            </div>
+            <a href="docs/09-第三方接入/第三方接入操作规定和说明书.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              查看文档
+            </a>
+          </div>
+        </div>
+
+        <!-- 第三方兼容平台公司接入指南 -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">第三方兼容平台公司接入指南</h3>
+              <p class="text-gray-dark text-sm">第三方公司接入详细指南</p>
+            </div>
+            <a href="docs/09-第三方接入/第三方兼容平台公司接入指南.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              查看文档
+            </a>
+          </div>
+        </div>
+
+        <!-- 品牌标准规范文档 -->
+        <div class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-light">品牌标准规范文档</h3>
+              <p class="text-gray-dark text-sm">品牌使用规范</p>
+            </div>
+            <a href="docs/10-品牌规范/品牌标准规范文档.md" class="px-4 py-2 bg-gold text-deep-blue rounded-md hover:bg-gold-light transition-colors duration-300">
+              查看文档
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 其他帮助资源 -->
+    <div class="max-w-4xl mx-auto mt-12">
+      <h2 class="text-2xl font-orbitron font-bold text-gold mb-6">其他帮助资源</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="#" class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300 flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+            <i class="fa fa-video-camera text-gold"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-light">视频教程</h3>
+            <p class="text-gray-dark text-sm">观看平台使用视频教程</p>
+          </div>
+        </a>
+        
+        <a href="#" class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300 flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+            <i class="fa fa-comments text-gold"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-light">社区论坛</h3>
+            <p class="text-gray-dark text-sm">与其他用户交流经验</p>
+          </div>
+        </a>
+        
+        <a href="#" class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300 flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+            <i class="fa fa-headphones text-gold"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-light">在线客服</h3>
+            <p class="text-gray-dark text-sm">联系客服获取帮助</p>
+          </div>
+        </a>
+        
+        <a href="#" class="bg-dark-blue rounded-lg p-4 border border-navy hover:border-gold/30 transition-colors duration-300 flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+            <i class="fa fa-envelope text-gold"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-light">意见反馈</h3>
+            <p class="text-gray-dark text-sm">提交您的意见和建议</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-deep-blue border-t border-navy/50 mt-16">
+    <div class="container mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-gold font-semibold mb-4">关于我们</h3>
+          <p class="text-gray-dark text-sm">茶海虾王@金融交易所看板平台是一个专业的金融交易和分析平台，为用户提供记忆资产交易、AI智能分析等服务。</p>
+        </div>
+        <div>
+          <h3 class="text-gold font-semibold mb-4">快速链接</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="text-gray-dark hover:text-gold transition-colors duration-300">首页</a></li>
+            <li><a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300">市场</a></li>
+            <li><a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300">交易</a></li>
+            <li><a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300">资产</a></li>
+            <li><a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300">AI分析</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-gold font-semibold mb-4">帮助中心</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#quickstart" class="text-gray-dark hover:text-gold transition-colors duration-300">快速入门</a></li>
+            <li><a href="#account" class="text-gray-dark hover:text-gold transition-colors duration-300">账户管理</a></li>
+            <li><a href="#trading" class="text-gray-dark hover:text-gold transition-colors duration-300">交易指南</a></li>
+            <li><a href="#assets" class="text-gray-dark hover:text-gold transition-colors duration-300">资产管理</a></li>
+            <li><a href="#security" class="text-gray-dark hover:text-gold transition-colors duration-300">安全中心</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-gold font-semibold mb-4">联系方式</h3>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center space-x-2">
+              <i class="fa fa-envelope text-gold"></i>
+              <span class="text-gray-dark">rao5201@126.com</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i class="fa fa-phone text-gold"></i>
+              <span class="text-gray-dark">400-123-4567</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i class="fa fa-map-marker text-gold"></i>
+              <span class="text-gray-dark">北京市朝阳区金融街</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-navy/50 mt-8 pt-8 flex flex-col md:flex-row md:items-center justify-between">
+        <div class="mb-4 md:mb-0">
+          <p class="text-gray-dark text-sm">
+            &copy; 2026 海南茶海虾王管理有限责任公司 保留所有权利.
+          </p>
+          <p class="text-gray-dark text-sm mt-1">
+            技术支持服务联系：rao5201@126.com
+          </p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300 text-sm">隐私政策</a>
+          <a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300 text-sm">服务条款</a>
+          <a href="#" class="text-gray-dark hover:text-gold transition-colors duration-300 text-sm">免责声明</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 搜索功能
+    document.querySelector('input[placeholder="搜索帮助文档..."]').addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') {
+        const searchTerm = this.value.trim();
+        if (searchTerm) {
+          alert(`搜索：${searchTerm}`);
+          // 实际项目中这里会跳转到搜索结果页
+        }
+      }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

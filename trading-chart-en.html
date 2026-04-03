@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Financial Real-time Charts - Tea Sea Shrimp King Financial Exchange</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+        }
+        .signal-buy {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .signal-sell {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+        .signal-neutral {
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+        }
+        .indicator-badge {
+            transition: all 0.2s ease;
+        }
+        .indicator-badge:hover {
+            transform: scale(1.05);
+        }
+        .timeframe-btn {
+            transition: all 0.2s ease;
+        }
+        .timeframe-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index-en.html" class="text-2xl font-bold gradient-text">Tea Sea Shrimp King</a>
+                    <span class="mx-3 text-gray-600">|</span>
+                    <span class="text-gray-400">AI Financial Charts</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="index-en.html" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="ai-tools-en.html" class="text-gray-400 hover:text-white transition">AI Tools</a>
+                    <a href="ai-news-en.html" class="text-gray-400 hover:text-white transition">AI News</a>
+                    <a href="trading-chart-en.html" class="text-indigo-400 font-semibold">Charts</a>
+                    <a href="trading-chart.html" class="text-gray-400 hover:text-white transition">中文</a>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+                        <i class="fas fa-robot mr-2"></i>Robot
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex h-screen">
+        <!-- Left: Market List -->
+        <aside class="w-64 bg-gray-800 border-r border-gray-700 overflow-y-auto">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-list mr-2 text-indigo-400"></i>Market List
+                </h3>
+                
+                <!-- A-shares -->
+                <div class="mb-4">
+                    <h4 class="text-sm text-gray-500 mb-2">A-shares</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>Kweichow Moutai</span>
+                            <span class="text-green-400">+2.35%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>CATL</span>
+                            <span class="text-red-400">-1.20%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>BYD</span>
+                            <span class="text-green-400">+3.15%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- US Stocks -->
+                <div class="mb-4">
+                    <h4 class="text-sm text-gray-500 mb-2">US Stocks</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>Apple</span>
+                            <span class="text-green-400">+1.85%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>Microsoft</span>
+                            <span class="text-green-400">+0.95%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>Tesla</span>
+                            <span class="text-red-400">-2.40%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cryptocurrencies -->
+                <div class="mb-4">
+                    <h4 class="text-sm text-gray-500 mb-2">Cryptocurrencies</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>Bitcoin</span>
+                            <span class="text-green-400">+3.25%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>Ethereum</span>
+                            <span class="text-green-400">+2.10%</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600">
+                            <span>BNB</span>
+                            <span class="text-red-400">-0.85%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right: Chart Area -->
+        <main class="flex-1 flex flex-col overflow-hidden">
+            <!-- Chart Control Bar -->
+            <div class="bg-gray-800 border-b border-gray-700 p-4">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <h2 class="text-xl font-semibold">Bitcoin / USDT</h2>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl font-bold text-white">$42,580.00</span>
+                            <span class="text-green-400">+2.35%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <button class="timeframe-btn active px-4 py-2 rounded-lg text-sm font-medium">1H</button>
+                        <button class="timeframe-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-700 hover:bg-gray-600">4H</button>
+                        <button class="timeframe-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-700 hover:bg-gray-600">1D</button>
+                        <button class="timeframe-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-700 hover:bg-gray-600">1W</button>
+                        <button class="timeframe-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-700 hover:bg-gray-600">1M</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Container -->
+            <div class="flex-1 p-4 overflow-auto">
+                <div class="chart-container" id="chartContainer"></div>
+            </div>
+
+            <!-- Indicator Panel -->
+            <div class="bg-gray-800 border-t border-gray-700 p-4">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <h3 class="text-lg font-semibold">Technical Indicators</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="indicator-badge px-3 py-1 rounded-full bg-gray-700 text-sm">
+                                RSI: 65.2
+                            </span>
+                            <span class="indicator-badge px-3 py-1 rounded-full bg-gray-700 text-sm">
+                                MACD: +0.45
+                            </span>
+                            <span class="indicator-badge px-3 py-1 rounded-full bg-gray-700 text-sm">
+                                MA20: $41,850
+                            </span>
+                            <span class="indicator-badge px-3 py-1 rounded-full bg-gray-700 text-sm">
+                                MA50: $40,200
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm text-gray-400">AI Signal:</span>
+                            <span class="px-4 py-2 rounded-lg signal-buy text-sm font-medium">
+                                <i class="fas fa-arrow-up mr-1"></i>Buy
+                            </span>
+                        </div>
+                        <button class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+                            <i class="fas fa-trade mr-2"></i>Trade Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Initialize chart
+        const chartContainer = document.getElementById('chartContainer');
+        const chart = LightweightCharts.createChart(chartContainer, {
+            width: chartContainer.clientWidth,
+            height: chartContainer.clientHeight,
+            timeScale: {
+                timeVisible: true,
+                secondsVisible: false,
+            },
+            priceScale: {
+                mode: LightweightCharts.PriceScaleMode.Normal,
+            },
+            grid: {
+                vertLines: {
+                    color: 'rgba(42, 46, 57, 0.5)',
+                },
+                horzLines: {
+                    color: 'rgba(42, 46, 57, 0.5)',
+                },
+            },
+        });
+
+        // Add candlestick series
+        const candlestickSeries = chart.addCandlestickSeries({
+            upColor: '#10b981',
+            downColor: '#ef4444',
+            borderUpColor: '#10b981',
+            borderDownColor: '#ef4444',
+            wickUpColor: '#10b981',
+            wickDownColor: '#ef4444',
+        });
+
+        // Generate sample data
+        const generateCandlestickData = (count, startPrice) => {
+            const data = [];
+            let price = startPrice;
+            const now = Date.now();
+            const oneHour = 60 * 60 * 1000;
+
+            for (let i = count; i >= 0; i--) {
+                const open = price;
+                const high = price + Math.random() * 1000;
+                const low = price - Math.random() * 1000;
+                const close = low + Math.random() * (high - low);
+                price = close;
+
+                data.push({
+                    time: (now - i * oneHour) / 1000,
+                    open: open,
+                    high: high,
+                    low: low,
+                    close: close,
+                });
+            }
+
+            return data;
+        };
+
+        // Set data
+        const data = generateCandlestickData(24, 42000);
+        candlestickSeries.setData(data);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            chart.resize(chartContainer.clientWidth, chartContainer.clientHeight);
+        });
+
+        // Timeframe buttons
+        document.querySelectorAll('.timeframe-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.timeframe-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.add('bg-gray-700', 'hover:bg-gray-600');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                this.classList.remove('bg-gray-700', 'hover:bg-gray-600');
+                
+                // Here you would typically update the chart data based on the selected timeframe
+                console.log(`Selected timeframe: ${this.textContent}`);
+            });
+        });
+    </script>
+</body>
+</html>

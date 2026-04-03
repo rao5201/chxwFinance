@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial Intelligence News Center - Tea Sea Shrimp King Financial Exchange</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .news-card {
+            transition: all 0.3s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .category-badge {
+            transition: all 0.2s ease;
+        }
+        .category-badge:hover {
+            transform: scale(1.05);
+        }
+        .sentiment-positive { color: #10b981; }
+        .sentiment-negative { color: #ef4444; }
+        .sentiment-neutral { color: #6b7280; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index-en.html" class="text-2xl font-bold gradient-text">Tea Sea Shrimp King</a>
+                    <span class="mx-3 text-gray-300">|</span>
+                    <span class="text-gray-600">AI News Center</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="index-en.html" class="text-gray-600 hover:text-indigo-600 transition">Home</a>
+                    <a href="ai-tools-en.html" class="text-gray-600 hover:text-indigo-600 transition">AI Tools</a>
+                    <a href="ai-news-en.html" class="text-indigo-600 font-semibold">AI News</a>
+                    <a href="ai-news.html" class="text-gray-600 hover:text-indigo-600 transition">中文</a>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+                        <i class="fas fa-bell mr-2"></i>Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    <i class="fas fa-newspaper mr-3"></i>Artificial Intelligence News Center
+                </h1>
+                <p class="text-xl text-indigo-100 mb-8">
+                    Stay informed about the latest AI news and developments, aggregating global AI information
+                </p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full">
+                        <i class="fas fa-sync-alt mr-2"></i>Real-time Updates
+                    </div>
+                    <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full">
+                        <i class="fas fa-globe mr-2"></i>Global News
+                    </div>
+                    <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full">
+                        <i class="fas fa-chart-line mr-2"></i>Trading Signals
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trading Signals Panel -->
+    <section class="py-8 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-900">
+                    <i class="fas fa-signal text-indigo-600 mr-2"></i>AI Trading Signals
+                </h2>
+                <span class="text-sm text-gray-500">Based on news sentiment analysis</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-green-600 font-semibold">Bullish Signal</p>
+                            <p class="text-2xl font-bold text-green-700">OpenAI Releases GPT-5</p>
+                        </div>
+                        <i class="fas fa-arrow-trend-up text-3xl text-green-500"></i>
+                    </div>
+                    <p class="text-sm text-green-600 mt-2">Impact: Overall AI sector rise</p>
+                </div>
+                <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-red-600 font-semibold">Bearish Signal</p>
+                            <p class="text-2xl font-bold text-red-700">AI Regulation Tightened</p>
+                        </div>
+                        <i class="fas fa-arrow-trend-down text-3xl text-red-500"></i>
+                    </div>
+                    <p class="text-sm text-red-600 mt-2">Impact: AI stocks pullback</p>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-blue-600 font-semibold">Neutral Signal</p>
+                            <p class="text-2xl font-bold text-blue-700">AI Funding Stable</p>
+                        </div>
+                        <i class="fas fa-arrow-right text-3xl text-blue-500"></i>
+                    </div>
+                    <p class="text-sm text-blue-600 mt-2">Impact: Stable market performance</p>
+                </div>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-purple-600 font-semibold">Opportunity</p>
+                            <p class="text-2xl font-bold text-purple-700">New AI Startup</p>
+                        </div>
+                        <i class="fas fa-lightbulb text-3xl text-purple-500"></i>
+                    </div>
+                    <p class="text-sm text-purple-600 mt-2">Impact: Potential investment opportunity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Main News Column -->
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl font-bold mb-8">Latest AI News</h2>
+                    
+                    <!-- Featured News -->
+                    <div class="news-card bg-white rounded-xl shadow-sm overflow-hidden mb-8">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=OpenAI%20GPT-5%20release%20announcement%20with%20futuristic%20AI%20technology&image_size=landscape_16_9" alt="OpenAI GPT-5 Release" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="category-badge px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">Breaking News</span>
+                                <span class="text-gray-500 text-sm">2 hours ago</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">OpenAI Releases GPT-5 with Advanced Capabilities</h3>
+                            <p class="text-gray-600 mb-4">
+                                OpenAI has officially released GPT-5, the latest version of its flagship language model. The new model features significant improvements in reasoning, context understanding, and creative capabilities, promising to revolutionize various industries including finance, healthcare, and education.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-user text-gray-400"></i>
+                                    <span class="text-gray-600">AI Reporter</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <span class="flex items-center gap-1 text-gray-500">
+                                        <i class="far fa-eye"></i>
+                                        <span>1,245</span>
+                                    </span>
+                                    <span class="flex items-center gap-1 text-gray-500">
+                                        <i class="far fa-comment"></i>
+                                        <span>32</span>
+                                    </span>
+                                    <span class="flex items-center gap-1 sentiment-positive">
+                                        <i class="far fa-thumbs-up"></i>
+                                        <span>85%</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News List -->
+                    <div class="space-y-6">
+                        <div class="news-card bg-white rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=AI%20regulation%20government%20meeting&image_size=landscape_4_3" alt="AI Regulation" class="w-full md:w-1/3 h-48 md:h-auto object-cover">
+                            <div class="p-6 md:w-2/3">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="category-badge px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">Regulation</span>
+                                    <span class="text-gray-500 text-sm">4 hours ago</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Global Governments Tighten AI Regulation</h3>
+                                <p class="text-gray-600 mb-3">
+                                    Several countries are implementing stricter regulations for artificial intelligence, focusing on ethical considerations, data privacy, and potential risks. The new rules aim to balance innovation with responsible AI development.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-user text-gray-400"></i>
+                                        <span class="text-gray-600">Policy Analyst</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <span class="flex items-center gap-1 text-gray-500">
+                                            <i class="far fa-eye"></i>
+                                            <span>876</span>
+                                        </span>
+                                        <span class="flex items-center gap-1 sentiment-negative">
+                                            <i class="far fa-thumbs-up"></i>
+                                            <span>42%</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-card bg-white rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=AI%20funding%20investment%20meeting&image_size=landscape_4_3" alt="AI Funding" class="w-full md:w-1/3 h-48 md:h-auto object-cover">
+                            <div class="p-6 md:w-2/3">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="category-badge px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-medium">Funding</span>
+                                    <span class="text-gray-500 text-sm">6 hours ago</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">AI Startups Raise Record Funding in Q1 2026</h3>
+                                <p class="text-gray-600 mb-3">
+                                    Artificial intelligence startups have raised over $15 billion in funding during the first quarter of 2026, setting a new record. Investors are increasingly focused on AI applications in healthcare, finance, and enterprise solutions.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-user text-gray-400"></i>
+                                        <span class="text-gray-600">Financial Reporter</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <span class="flex items-center gap-1 text-gray-500">
+                                            <i class="far fa-eye"></i>
+                                            <span>654</span>
+                                        </span>
+                                        <span class="flex items-center gap-1 sentiment-positive">
+                                            <i class="far fa-thumbs-up"></i>
+                                            <span>78%</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-card bg-white rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=AI%20healthcare%20technology%20hospital&image_size=landscape_4_3" alt="AI Healthcare" class="w-full md:w-1/3 h-48 md:h-auto object-cover">
+                            <div class="p-6 md:w-2/3">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="category-badge px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-medium">Healthcare</span>
+                                    <span class="text-gray-500 text-sm">8 hours ago</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">AI Revolutionizes Healthcare Diagnostics</h3>
+                                <p class="text-gray-600 mb-3">
+                                    New AI systems are demonstrating remarkable accuracy in diagnosing diseases from medical images, with some models outperforming human doctors in certain areas. This technology is expected to improve early detection and treatment outcomes.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-user text-gray-400"></i>
+                                        <span class="text-gray-600">Healthcare Correspondent</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <span class="flex items-center gap-1 text-gray-500">
+                                            <i class="far fa-eye"></i>
+                                            <span>923</span>
+                                        </span>
+                                        <span class="flex items-center gap-1 sentiment-positive">
+                                            <i class="far fa-thumbs-up"></i>
+                                            <span>91%</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex justify-center mt-12">
+                        <nav class="flex items-center space-x-2">
+                            <a href="#" class="px-3 py-2 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 transition">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                            <a href="#" class="px-4 py-2 rounded-lg bg-indigo-600 text-white">1</a>
+                            <a href="#" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 transition">2</a>
+                            <a href="#" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 transition">3</a>
+                            <a href="#" class="px-3 py-2 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 transition">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="md:w-1/3">
+                    <!-- Categories -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4">News Categories</h3>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-indigo-600 transition">
+                                    <span>Breaking News</span>
+                                    <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs">12</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-indigo-600 transition">
+                                    <span>Technology</span>
+                                    <span class="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs">28</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-indigo-600 transition">
+                                    <span>Finance</span>
+                                    <span class="bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full text-xs">19</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-indigo-600 transition">
+                                    <span>Healthcare</span>
+                                    <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded-full text-xs">15</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-indigo-600 transition">
+                                    <span>Regulation</span>
+                                    <span class="bg-red-100 text-red-600 px-2 py-1 rounded-full text-xs">8</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-indigo-600 transition">
+                                    <span>Funding</span>
+                                    <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded-full text-xs">14</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Trending News -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4">Trending News</h3>
+                        <ul class="space-y-4">
+                            <li class="flex gap-3">
+                                <span class="flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold">1</span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 hover:text-indigo-600 transition">OpenAI Releases GPT-5 with Advanced Capabilities</h4>
+                                    <p class="text-sm text-gray-500">2 hours ago</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold">2</span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 hover:text-indigo-600 transition">Global Governments Tighten AI Regulation</h4>
+                                    <p class="text-sm text-gray-500">4 hours ago</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold">3</span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 hover:text-indigo-600 transition">AI Startups Raise Record Funding in Q1 2026</h4>
+                                    <p class="text-sm text-gray-500">6 hours ago</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold">4</span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 hover:text-indigo-600 transition">AI Revolutionizes Healthcare Diagnostics</h4>
+                                    <p class="text-sm text-gray-500">8 hours ago</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold">5</span>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 hover:text-indigo-600 transition">New AI Model Outperforms Humans in Financial Forecasting</h4>
+                                    <p class="text-sm text-gray-500">10 hours ago</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Subscribe -->
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-xl p-6 text-white">
+                        <h3 class="text-xl font-bold mb-4">Subscribe to AI News</h3>
+                        <p class="mb-4">
+                            Get the latest AI news and trading signals delivered directly to your inbox
+                        </p>
+                        <form class="space-y-3">
+                            <input type="email" placeholder="Your email address" class="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+                            <button type="submit" class="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">
+                                Subscribe Now
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Tea Sea Shrimp King</h3>
+                    <p class="text-gray-400 mb-4">
+                        Professional financial trading platform with AI-powered tools
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="ai-tools-en.html" class="text-gray-400 hover:text-white transition">AI Tools</a></li>
+                        <li><a href="trading-chart-en.html" class="text-gray-400 hover:text-white transition">Trading Charts</a></li>
+                        <li><a href="ai-news-en.html" class="text-gray-400 hover:text-white transition">AI News</a></li>
+                        <li><a href="dashboard.html" class="text-gray-400 hover:text-white transition">Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="docs.html" class="text-gray-400 hover:text-white transition">Documentation</a></li>
+                        <li><a href="whitepapers.html" class="text-gray-400 hover:text-white transition">Whitepapers</a></li>
+                        <li><a href="product-updates.html" class="text-gray-400 hover:text-white transition">Product Updates</a></li>
+                        <li><a href="help-center-en.html" class="text-gray-400 hover:text-white transition">Help Center</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2026 Tea Sea Shrimp King Financial Exchange. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // News sentiment analysis simulation
+        document.querySelectorAll('.sentiment-positive, .sentiment-negative, .sentiment-neutral').forEach(element => {
+            const sentiment = element.textContent.trim();
+            if (sentiment.includes('%')) {
+                const score = parseInt(sentiment);
+                if (score > 70) {
+                    element.className = 'flex items-center gap-1 sentiment-positive';
+                } else if (score < 40) {
+                    element.className = 'flex items-center gap-1 sentiment-negative';
+                } else {
+                    element.className = 'flex items-center gap-1 sentiment-neutral';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完整文件汇总 - 茶海虾王@金融交易所看板平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .folder-icon {
+            color: #6366f1;
+        }
+        .file-icon {
+            color: #8b5cf6;
+        }
+        .category-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        .file-item i {
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        .file-item span {
+            flex: 1;
+        }
+        .file-item .file-type {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: #e0e7ff;
+            color: #4338ca;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold gradient-text">茶海虾王</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-700 hover:text-indigo-600 transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-700 hover:text-indigo-600 transition">AI新闻</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-indigo-600 transition">定价</a>
+                    <a href="cloud-pricing.html" class="text-gray-700 hover:text-indigo-600 transition">云产品</a>
+                    <a href="cloud-health.html" class="text-gray-700 hover:text-indigo-600 transition">健康看板</a>
+                    <a href="support-plans.html" class="text-gray-700 hover:text-indigo-600 transition">支持计划</a>
+                    <a href="whitepapers.html" class="text-gray-700 hover:text-indigo-600 transition">白皮书</a>
+                    <a href="product-updates.html" class="text-gray-700 hover:text-indigo-600 transition">产品动态</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">关于我们</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login.html" class="text-gray-700 hover:text-indigo-600 transition">登录</a>
+                    <a href="/register.html" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">免费试用</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">完整文件汇总</h1>
+            <p class="text-xl text-indigo-100 max-w-3xl mx-auto">茶海虾王@金融交易所看板平台 - 所有文件的详细分类与统计</p>
+        </div>
+    </section>
+
+    <!-- 项目概述 -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">项目概述</h2>
+            <p class="text-lg text-gray-600">
+                本项目是一个完整的金融交易所看板平台，集成了AI工具、云产品、企业支持服务等内容，提供实时数据分析、交易功能和行业洞察。
+            </p>
+        </div>
+    </section>
+
+    <!-- 文件统计 -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">文件分类统计</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="category-card">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-code text-2xl folder-icon mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-900">HTML文件</h3>
+                    </div>
+                    <p class="text-3xl font-bold text-indigo-600 mb-4">23</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• 主页面：2个（中英文）</li>
+                        <li>• 功能页面：14个</li>
+                        <li>• 文档页面：3个</li>
+                        <li>• 报告页面：2个</li>
+                        <li>• 汇总页面：2个</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-markdown text-2xl folder-icon mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-900">Markdown文件</h3>
+                    </div>
+                    <p class="text-3xl font-bold text-indigo-600 mb-4">16</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• 根目录：5个</li>
+                        <li>• 后端：3个</li>
+                        <li>• 文档目录：8个</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-server text-2xl folder-icon mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-900">后端文件</h3>
+                    </div>
+                    <p class="text-3xl font-bold text-indigo-600 mb-4">60</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• 配置文件：21个</li>
+                        <li>• 部署文件：7个</li>
+                        <li>• 模型文件：6个</li>
+                        <li>• 路由文件：8个</li>
+                        <li>• 脚本文件：4个</li>
+                        <li>• 根文件：14个</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-alt text-2xl folder-icon mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-900">其他文件</h3>
+                    </div>
+                    <p class="text-3xl font-bold text-indigo-600 mb-4">12</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• 配置文件：3个</li>
+                        <li>• 样式文件：1个</li>
+                        <li>• 图标文件：8个</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 根目录文件 -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">根目录文件</h2>
+            
+            <!-- HTML文件 -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-file-code file-icon mr-2"></i> HTML网站页面文件
+                </h3>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>index.html</span>
+                            <span class="file-type">主首页</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>index-en.html</span>
+                            <span class="file-type">英文首页</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>ai-tools.html</span>
+                            <span class="file-type">AI工具页面</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>ai-news.html</span>
+                            <span class="file-type">AI新闻页面</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>cloud-pricing.html</span>
+                            <span class="file-type">云产品定价</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>cloud-health.html</span>
+                            <span class="file-type">云健康看板</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>support-plans.html</span>
+                            <span class="file-type">企业支持计划</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>whitepapers.html</span>
+                            <span class="file-type">行业白皮书</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>product-updates.html</span>
+                            <span class="file-type">产品动态</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>pricing.html</span>
+                            <span class="file-type">定价页面</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>data-asset.html</span>
+                            <span class="file-type">数据资产</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>google-ads.html</span>
+                            <span class="file-type">Google广告</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>trading-chart.html</span>
+                            <span class="file-type">交易图表</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>about.html</span>
+                            <span class="file-type">关于我们</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>login.html</span>
+                            <span class="file-type">登录页面</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>register.html</span>
+                            <span class="file-type">注册页面</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>docs.html</span>
+                            <span class="file-type">开发文档</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>help-center.html</span>
+                            <span class="file-type">帮助中心</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>help-center-en.html</span>
+                            <span class="file-type">英文帮助中心</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>admin-dashboard.html</span>
+                            <span class="file-type">管理员仪表盘</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>sandbox.html</span>
+                            <span class="file-type">沙盒测试</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>license.html</span>
+                            <span class="file-type">许可证</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>项目阶段检查报告.html</span>
+                            <span class="file-type">报告</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>项目落实情况检查报告.html</span>
+                            <span class="file-type">报告</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Markdown文件 -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-file-markdown file-icon mr-2"></i> Markdown文档文件
+                </h3>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>API文档.md</span>
+                            <span class="file-type">API接口文档</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>CHANGELOG.md</span>
+                            <span class="file-type">变更日志</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>maintenance-plan.md</span>
+                            <span class="file-type">维护计划</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>文档汇总.md</span>
+                            <span class="file-type">文档汇总</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>完整文件汇总.md</span>
+                            <span class="file-type">文件汇总</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他文件 -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-file-alt file-icon mr-2"></i> 其他根目录文件
+                </h3>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>docker-compose.yml</span>
+                            <span class="file-type">Docker配置</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>manifest.json</span>
+                            <span class="file-type">Web应用清单</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>service-worker.js</span>
+                            <span class="file-type">服务工作线程</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>mobile-optimization.css</span>
+                            <span class="file-type">移动端样式</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 后端目录 -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">后端目录 (backend/)</h2>
+            
+            <!-- 配置文件 -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-cog file-icon mr-2"></i> 配置文件 (backend/config/)
+                </h3>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>advanced-monitoring.js</span>
+                            <span class="file-type">高级监控</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>ai-analysis-advanced.js</span>
+                            <span class="file-type">AI分析</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>ai-tools-integration.js</span>
+                            <span class="file-type">AI工具集成</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>alert-channels.js</span>
+                            <span class="file-type">告警通道</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>backup.js</span>
+                            <span class="file-type">备份配置</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>cross-platform.js</span>
+                            <span class="file-type">跨平台</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>database.js</span>
+                            <span class="file-type">数据库</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>finance-data-sources.js</span>
+                            <span class="file-type">金融数据源</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>financeAPI.js</span>
+                            <span class="file-type">金融API</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>https.js</span>
+                            <span class="file-type">HTTPS</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>logger.js</span>
+                            <span class="file-type">日志</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>ml-training-system.js</span>
+                            <span class="file-type">机器学习</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>mobile-optimization.js</span>
+                            <span class="file-type">移动端优化</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>payment.js</span>
+                            <span class="file-type">支付</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>performance.js</span>
+                            <span class="file-type">性能</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>realtime-push.js</span>
+                            <span class="file-type">实时推送</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>redis.js</span>
+                            <span class="file-type">Redis</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>security-test.js</span>
+                            <span class="file-type">安全测试</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>security.js</span>
+                            <span class="file-type">安全</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>social-features.js</span>
+                            <span class="file-type">社交功能</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>technical-indicators.js</span>
+                            <span class="file-type">技术指标</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-code file-icon"></i>
+                            <span>tools-collection.js</span>
+                            <span class="file-type">工具集合</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他后端文件 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 部署文件 -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-server file-icon mr-2"></i> 部署文件 (backend/deploy/)
+                    </h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="space-y-2">
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>README.md</span>
+                                <span class="file-type">部署说明</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>backup.sh</span>
+                                <span class="file-type">备份脚本</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>deploy.sh</span>
+                                <span class="file-type">部署脚本</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>ecosystem.config.json</span>
+                                <span class="file-type">PM2配置</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>mongod.conf</span>
+                                <span class="file-type">MongoDB</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>nginx.conf</span>
+                                <span class="file-type">Nginx</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>redis.conf</span>
+                                <span class="file-type">Redis</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>setup-ssl.sh</span>
+                                <span class="file-type">SSL设置</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模型文件 -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-database file-icon mr-2"></i> 模型文件 (backend/models/)
+                    </h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="space-y-2">
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>AIAnalysis.js</span>
+                                <span class="file-type">AI分析模型</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>Asset.js</span>
+                                <span class="file-type">资产模型</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>Transaction.js</span>
+                                <span class="file-type">交易模型</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>User.js</span>
+                                <span class="file-type">用户模型</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>UserAsset.js</span>
+                                <span class="file-type">用户资产</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>index.js</span>
+                                <span class="file-type">模型索引</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 路由文件 -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-route file-icon mr-2"></i> 路由文件 (backend/routes/)
+                    </h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="space-y-2">
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>ai.js</span>
+                                <span class="file-type">AI路由</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>assets.js</span>
+                                <span class="file-type">资产路由</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>auth.js</span>
+                                <span class="file-type">认证路由</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>market.js</span>
+                                <span class="file-type">市场路由</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>notifications.js</span>
+                                <span class="file-type">通知路由</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>payment.js</span>
+                                <span class="file-type">支付路由</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>transactions.js</span>
+                                <span class="file-type">交易路由</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>users.js</span>
+                                <span class="file-type">用户路由</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 脚本文件 -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-script file-icon mr-2"></i> 脚本文件 (backend/scripts/)
+                    </h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="space-y-2">
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>deploy-production.js</span>
+                                <span class="file-type">生产部署</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>setup-backup-schedule.js</span>
+                                <span class="file-type">备份计划</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>setup-production-security.js</span>
+                                <span class="file-type">安全设置</span>
+                            </div>
+                            <div class="file-item">
+                                <i class="fas fa-file-code file-icon"></i>
+                                <span>setup-ssl.js</span>
+                                <span class="file-type">SSL设置</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文档目录 -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">文档目录 (docs/)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 系统设计 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-sitemap folder-icon mr-2"></i> 系统设计 (01-系统设计/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>server-config.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>系统设计文档.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 实现计划 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-tasks folder-icon mr-2"></i> 实现计划 (02-实现计划/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>实现计划文档.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 安全合规 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-shield-alt folder-icon mr-2"></i> 安全合规 (03-安全合规/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>安全修复总结.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>安全合规报告.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>安全审计报告.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>安全版本更新日志.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 上线部署 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-rocket folder-icon mr-2"></i> 上线部署 (04-上线部署/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>上线准备检查清单.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>上线执行计划.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>联网测试计划.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 维护运营 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-tools folder-icon mr-2"></i> 维护运营 (05-维护运营/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>维护与最佳实践文档.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>网站更新计划.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>网站运营测试报告.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 用户文档 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-user folder-icon mr-2"></i> 用户文档 (06-用户文档/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>app使用注意事项与网站对接同步.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>app使用说明书.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>用户app安装操作说明书.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>用户操作使用说明.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 客服文档 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-headset folder-icon mr-2"></i> 客服文档 (07-客服文档/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>客服操作使用说明.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 管理员文档 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-user-shield folder-icon mr-2"></i> 管理员文档 (08-管理员文档/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>管理员操作使用说明.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第三方接入 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-plug folder-icon mr-2"></i> 第三方接入 (09-第三方接入/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>CHXW-V5.3融合方案.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>第三方兼容平台公司接入指南.md</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>第三方接入操作规定和说明书.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 品牌规范 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-brand folder-icon mr-2"></i> 品牌规范 (10-品牌规范/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>品牌标准规范文档.md</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 图标目录 -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">图标目录</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- ICO图标 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-image folder-icon mr-2"></i> ICO图标 (ico/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>favicon128 .ico</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>favicon256.ico</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>favicon32.ico</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>favicon48.ico</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>favicon512.ico</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>favicon64.ico</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图标目录 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-icons folder-icon mr-2"></i> 图标目录 (icons/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-markdown file-icon"></i>
+                            <span>README.md</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 网站图标 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-globe folder-icon mr-2"></i> 网站图标 (网站图标/)
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>网站图标.ico</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>网站图标.png</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>网站图标1.png</span>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-image file-icon"></i>
+                            <span>网站图标2.png</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术栈 -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">技术栈</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 前端 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-code file-icon mr-2"></i> 前端
+                    </h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• HTML5</li>
+                        <li>• Tailwind CSS</li>
+                        <li>• Font Awesome</li>
+                        <li>• JavaScript</li>
+                    </ul>
+                </div>
+
+                <!-- 后端 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-server file-icon mr-2"></i> 后端
+                    </h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Node.js</li>
+                        <li>• Express</li>
+                        <li>• MongoDB</li>
+                        <li>• Redis</li>
+                        <li>• PM2</li>
+                        <li>• Nginx</li>
+                    </ul>
+                </div>
+
+                <!-- 监控与部署 -->
+                <div class="category-card">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-cogs file-icon mr-2"></i> 监控与部署
+                    </h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Prometheus</li>
+                        <li>• Grafana</li>
+                        <li>• Docker</li>
+                        <li>• SSL/TLS</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目特点 -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">项目特点</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="category-card">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop-code text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">完整的前端架构</h3>
+                    <p class="text-gray-600">包含多个功能页面，响应式设计，用户体验良好</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-server text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">强大的后端系统</h3>
+                    <p class="text-gray-600">完善的配置管理、API接口和数据模型</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-book text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">丰富的文档体系</h3>
+                    <p class="text-gray-600">从系统设计到用户操作的完整文档</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">安全合规</h3>
+                    <p class="text-gray-600">详细的安全审计和合规报告</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-tools text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">部署与维护</h3>
+                    <p class="text-gray-600">完整的部署脚本和维护计划</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-globe text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">多语言支持</h3>
+                    <p class="text-gray-600">中英文版本，国际化支持</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 总结 -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">项目总结</h2>
+            <p class="text-xl text-indigo-100 mb-8">
+                茶海虾王@金融交易所看板平台是一个功能完整、架构清晰的金融交易系统，集成了AI工具、云服务、企业支持等多种功能。项目文件组织合理，文档完善，技术栈现代化，为用户提供了一个专业、安全、高效的金融交易平台。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="index.html" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">返回首页</a>
+                <a href="docs.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition">查看文档</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">专业的金融交易所看板平台，集成AI工具与实时数据分析。</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="ai-tools.html" class="hover:text-white transition">AI工具</a></li>
+                        <li><a href="ai-news.html" class="hover:text-white transition">AI新闻</a></li>
+                        <li><a href="cloud-pricing.html" class="hover:text-white transition">云产品</a></li>
+                        <li><a href="cloud-health.html" class="hover:text-white transition">健康看板</a></li>
+                        <li><a href="support-plans.html" class="hover:text-white transition">支持计划</a></li>
+                        <li><a href="whitepapers.html" class="hover:text-white transition">白皮书</a></li>
+                        <li><a href="product-updates.html" class="hover:text-white transition">产品动态</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>rao5201@126.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 茶海虾王@金融交易所看板平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

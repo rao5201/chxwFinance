@@ -1,0 +1,67 @@
+{
+  "name": "茶海虾王@金融交易所看板平台",
+  "short_name": "茶海虾王金融",
+  "description": "金融看板平台，提供记忆资产交易服务",
+  "name_en": "Tea Sea Shrimp King @ Financial Exchange Bulletin Board Platform",
+  "short_name_en": "Tea Sea Shrimp King",
+  "description_en": "Financial bulletin board platform, providing memory asset trading services",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0A192F",
+  "theme_color": "#E6AF2E",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "any",
+  "categories": ["finance", "business", "investment"],
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "shortcuts": [
+    {
+      "name": "市场概览",
+      "short_name": "市场",
+      "description": "查看市场概览",
+      "url": ".?view=market",
+      "icons": [{ "src": "icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "我的资产",
+      "short_name": "资产",
+      "description": "查看我的资产",
+      "url": ".?view=assets",
+      "icons": [{ "src": "icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "AI分析",
+      "short_name": "AI",
+      "description": "使用AI分析助手",
+      "url": ".?view=ai",
+      "icons": [{ "src": "icons/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [],
+  "share_target": {
+    "action": ".",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "iarc_rating_id": ""
+}

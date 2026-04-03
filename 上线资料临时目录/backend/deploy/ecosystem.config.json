@@ -1,0 +1,30 @@
+{
+  "apps": [
+    {
+      "name": "tea-sea-shrimp-king",
+      "script": "./server.js",
+      "cwd": "/var/www/tea-sea-shrimp-king/backend",
+      "instances": "max",
+      "exec_mode": "cluster",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb://app_user:YOUR_MONGODB_PASSWORD@localhost:27017/tea_sea_shrimp_king?authSource=tea_sea_shrimp_king",
+        "REDIS_URL": "redis://:YOUR_REDIS_PASSWORD@localhost:6379"
+      },
+      "log_date_format": "YYYY-MM-DD HH:mm:ss Z",
+      "error_file": "/var/log/pm2/tea-sea-shrimp-king-error.log",
+      "out_file": "/var/log/pm2/tea-sea-shrimp-king-out.log",
+      "log_file": "/var/log/pm2/tea-sea-shrimp-king-combined.log",
+      "time": true,
+      "max_memory_restart": "1G",
+      "min_uptime": "10s",
+      "max_restarts": 5,
+      "restart_delay": 3000,
+      "kill_timeout": 5000,
+      "listen_timeout": 10000,
+      "merge_logs": true,
+      "log_type": "json"
+    }
+  ]
+}

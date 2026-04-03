@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国市场 - 茶海虾王@金融交易所看板平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .market-card {
+            border-left: 4px solid #6366f1;
+        }
+        .bank-card {
+            border-left: 4px solid #10b981;
+        }
+        .futures-card {
+            border-left: 4px solid #f59e0b;
+        }
+        .price-up {
+            color: #10b981;
+        }
+        .price-down {
+            color: #ef4444;
+        }
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        .loading::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                    <span class="text-xl font-bold gradient-text">茶海虾王</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">首页</a>
+                    <a href="ai-tools.html" class="text-gray-700 hover:text-indigo-600 transition">AI工具</a>
+                    <a href="ai-news.html" class="text-gray-700 hover:text-indigo-600 transition">AI新闻</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-indigo-600 transition">定价</a>
+                    <a href="cloud-pricing.html" class="text-gray-700 hover:text-indigo-600 transition">云产品</a>
+                    <a href="cloud-health.html" class="text-gray-700 hover:text-indigo-600 transition">健康看板</a>
+                    <a href="support-plans.html" class="text-gray-700 hover:text-indigo-600 transition">支持计划</a>
+                    <a href="whitepapers.html" class="text-gray-700 hover:text-indigo-600 transition">白皮书</a>
+                    <a href="product-updates.html" class="text-gray-700 hover:text-indigo-600 transition">产品动态</a>
+                    <a href="china-market.html" class="text-indigo-600 font-semibold">中国市场</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">关于我们</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login.html" class="text-gray-700 hover:text-indigo-600 transition">登录</a>
+                    <a href="/register.html" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">免费试用</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">中国市场</h1>
+            <p class="text-xl text-indigo-100 max-w-3xl mx-auto">实时监控中国股市、期货交易和银行系统的最新数据</p>
+        </div>
+    </section>
+
+    <!-- 市场概览 -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">市场概览</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 中国股市 -->
+                <div class="card market-card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">中国股市</h3>
+                        <span class="text-sm font-semibold text-gray-500" id="stock-time">加载中...</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">上证指数</span>
+                            <div>
+                                <span class="text-lg font-bold" id="sh-index">--</span>
+                                <span class="ml-2 text-sm" id="sh-change">--</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">深证成指</span>
+                            <div>
+                                <span class="text-lg font-bold" id="sz-index">--</span>
+                                <span class="ml-2 text-sm" id="sz-change">--</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">创业板指</span>
+                            <div>
+                                <span class="text-lg font-bold" id="cyb-index">--</span>
+                                <span class="ml-2 text-sm" id="cyb-change">--</span>
+                            </div>
+                        </div>
+                        <div class="h-40">
+                            <canvas id="stock-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 中国期货 -->
+                <div class="card futures-card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">中国期货</h3>
+                        <span class="text-sm font-semibold text-gray-500" id="futures-time">加载中...</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">黄金期货</span>
+                            <div>
+                                <span class="text-lg font-bold" id="gold-price">--</span>
+                                <span class="ml-2 text-sm" id="gold-change">--</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">原油期货</span>
+                            <div>
+                                <span class="text-lg font-bold" id="oil-price">--</span>
+                                <span class="ml-2 text-sm" id="oil-change">--</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">螺纹钢</span>
+                            <div>
+                                <span class="text-lg font-bold" id="steel-price">--</span>
+                                <span class="ml-2 text-sm" id="steel-change">--</span>
+                            </div>
+                        </div>
+                        <div class="h-40">
+                            <canvas id="futures-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 银行系统 -->
+                <div class="card bank-card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">银行系统</h3>
+                        <span class="text-sm font-semibold text-gray-500" id="bank-time">加载中...</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">工商银行</span>
+                            <span class="text-sm text-gray-600" id="icbc-status">--</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">建设银行</span>
+                            <span class="text-sm text-gray-600" id="ccb-status">--</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">农业银行</span>
+                            <span class="text-sm text-gray-600" id="abc-status">--</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">中国银行</span>
+                            <span class="text-sm text-gray-600" id="boc-status">--</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">招商银行</span>
+                            <span class="text-sm text-gray-600" id="cmb-status">--</span>
+                        </div>
+                        <div class="h-24">
+                            <canvas id="bank-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 详细数据 -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">详细数据</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- 中国股市详细数据 -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">中国股市详细数据</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">股票名称</th>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">代码</th>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">最新价</th>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">涨跌幅</th>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">成交量</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="stock-table">
+                                <tr>
+                                    <td colspan="5" class="px-6 py-4 text-center">
+                                        <div class="loading"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 中国期货详细数据 -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">中国期货详细数据</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">品种</th>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">最新价</th>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">涨跌幅</th>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">成交量</th>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">持仓量</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="futures-table">
+                                <tr>
+                                    <td colspan="5" class="px-6 py-4 text-center">
+                                        <div class="loading"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 银行系统状态 -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">银行系统状态</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- 工商银行 -->
+                <div class="card border-l-4 border-blue-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-landmark text-blue-600"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">工商银行</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">系统状态</span>
+                            <span class="text-sm font-semibold" id="icbc-system">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">API状态</span>
+                            <span class="text-sm font-semibold" id="icbc-api">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">响应时间</span>
+                            <span class="text-sm font-semibold" id="icbc-response">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 建设银行 -->
+                <div class="card border-l-4 border-green-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-landmark text-green-600"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">建设银行</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">系统状态</span>
+                            <span class="text-sm font-semibold" id="ccb-system">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">API状态</span>
+                            <span class="text-sm font-semibold" id="ccb-api">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">响应时间</span>
+                            <span class="text-sm font-semibold" id="ccb-response">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 农业银行 -->
+                <div class="card border-l-4 border-yellow-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-landmark text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">农业银行</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">系统状态</span>
+                            <span class="text-sm font-semibold" id="abc-system">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">API状态</span>
+                            <span class="text-sm font-semibold" id="abc-api">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">响应时间</span>
+                            <span class="text-sm font-semibold" id="abc-response">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 中国银行 -->
+                <div class="card border-l-4 border-red-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-landmark text-red-600"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">中国银行</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">系统状态</span>
+                            <span class="text-sm font-semibold" id="boc-system">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">API状态</span>
+                            <span class="text-sm font-semibold" id="boc-api">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">响应时间</span>
+                            <span class="text-sm font-semibold" id="boc-response">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 招商银行 -->
+                <div class="card border-l-4 border-purple-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-landmark text-purple-600"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900">招商银行</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">系统状态</span>
+                            <span class="text-sm font-semibold" id="cmb-system">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">API状态</span>
+                            <span class="text-sm font-semibold" id="cmb-api">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">响应时间</span>
+                            <span class="text-sm font-semibold" id="cmb-response">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 市场分析 -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">市场分析</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- 股市分析 -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">股市分析</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">市场热点</h4>
+                            <div class="flex flex-wrap gap-2" id="stock-hotspots">
+                                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">加载中...</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">行业表现</h4>
+                            <div class="h-64">
+                                <canvas id="industry-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 期货分析 -->
+                <div class="card">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">期货分析</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">商品走势</h4>
+                            <div class="h-64">
+                                <canvas id="commodity-chart"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">市场情绪</h4>
+                            <div class="flex items-center">
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div class="bg-indigo-600 h-4 rounded-full" style="width: 65%"></div>
+                                </div>
+                                <span class="ml-3 text-sm font-semibold">中性偏多</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">获取实时市场数据</h2>
+            <p class="text-xl text-indigo-100 mb-8">
+                注册即可获取完整的中国市场数据和分析报告，助您做出更明智的投资决策
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/register.html" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">立即注册</a>
+                <a href="/login.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition">登录查看</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                        <span class="text-xl font-bold">茶海虾王</span>
+                    </div>
+                    <p class="text-gray-400">专业的金融交易所看板平台，集成AI工具与实时数据分析。</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="ai-tools.html" class="hover:text-white transition">AI工具</a></li>
+                        <li><a href="ai-news.html" class="hover:text-white transition">AI新闻</a></li>
+                        <li><a href="cloud-pricing.html" class="hover:text-white transition">云产品</a></li>
+                        <li><a href="cloud-health.html" class="hover:text-white transition">健康看板</a></li>
+                        <li><a href="support-plans.html" class="hover:text-white transition">支持计划</a></li>
+                        <li><a href="whitepapers.html" class="hover:text-white transition">白皮书</a></li>
+                        <li><a href="product-updates.html" class="hover:text-white transition">产品动态</a></li>
+                        <li><a href="china-market.html" class="hover:text-white transition">中国市场</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">定价</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="docs.html" class="hover:text-white transition">开发文档</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>rao5201@126.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 茶海虾王@金融交易所看板平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 模拟数据
+        const mockStockData = {
+            sh: { index: 3125.38, change: 0.85, changePercent: '+0.27%' },
+            sz: { index: 10235.67, change: 125.34, changePercent: '+1.24%' },
+            cyb: { index: 2056.78, change: 32.45, changePercent: '+1.60%' }
+        };
+
+        const mockFuturesData = {
+            gold: { price: 452.36, change: 2.15, changePercent: '+0.48%' },
+            oil: { price: 68.42, change: -0.35, changePercent: '-0.51%' },
+            steel: { price: 3856.00, change: 28.00, changePercent: '+0.73%' }
+        };
+
+        const mockBankData = {
+            icbc: { status: '正常', system: '正常', api: '正常', response: '128ms' },
+            ccb: { status: '正常', system: '正常', api: '正常', response: '95ms' },
+            abc: { status: '正常', system: '正常', api: '正常', response: '112ms' },
+            boc: { status: '正常', system: '正常', api: '正常', response: '105ms' },
+            cmb: { status: '正常', system: '正常', api: '正常', response: '87ms' }
+        };
+
+        const mockStockTable = [
+            { name: '贵州茅台', code: '600519', price: 1688.00, change: '+2.50%', volume: '123.45万手' },
+            { name: '中国平安', code: '601318', price: 42.35, change: '+0.88%', volume: '456.78万手' },
+            { name: '招商银行', code: '600036', price: 35.67, change: '+1.23%', volume: '234.56万手' },
+            { name: '宁德时代', code: '300750', price: 186.45, change: '+3.45%', volume: '345.67万手' },
+            { name: '比亚迪', code: '002594', price: 245.67, change: '+2.12%', volume: '213.45万手' }
+        ];
+
+        const mockFuturesTable = [
+            { name: '黄金', price: 452.36, change: '+0.48%', volume: '123456手', position: '456789手' },
+            { name: '原油', price: 68.42, change: '-0.51%', volume: '234567手', position: '567890手' },
+            { name: '螺纹钢', price: 3856.00, change: '+0.73%', volume: '345678手', position: '678901手' },
+            { name: '铜', price: 68520.00, change: '+1.23%', volume: '112233手', position: '334455手' },
+            { name: '大豆', price: 5234.00, change: '+0.34%', volume: '223344手', position: '445566手' }
+        ];
+
+        // 初始化图表
+        function initCharts() {
+            // 股市图表
+            const stockCtx = document.getElementById('stock-chart').getContext('2d');
+            const stockChart = new Chart(stockCtx, {
+                type: 'line',
+                data: {
+                    labels: ['9:30', '10:00', '10:30', '11:00', '11:30', '13:30', '14:00', '14:30', '15:00'],
+                    datasets: [
+                        {
+                            label: '上证指数',
+                            data: [3110, 3115, 3120, 3118, 3122, 3125, 3123, 3126, 3125],
+                            borderColor: '#6366f1',
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: '深证成指',
+                            data: [10150, 10180, 10200, 10190, 10210, 10220, 10230, 10235, 10236],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+
+            // 期货图表
+            const futuresCtx = document.getElementById('futures-chart').getContext('2d');
+            const futuresChart = new Chart(futuresCtx, {
+                type: 'line',
+                data: {
+                    labels: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '13:30', '14:00', '14:30', '15:00'],
+                    datasets: [
+                        {
+                            label: '黄金',
+                            data: [450.20, 451.10, 451.50, 452.00, 452.20, 452.30, 452.40, 452.35, 452.38, 452.36],
+                            borderColor: '#f59e0b',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+
+            // 银行状态图表
+            const bankCtx = document.getElementById('bank-chart').getContext('2d');
+            const bankChart = new Chart(bankCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['工行', '建行', '农行', '中行', '招行'],
+                    datasets: [
+                        {
+                            label: '响应时间 (ms)',
+                            data: [128, 95, 112, 105, 87],
+                            backgroundColor: [
+                                'rgba(59, 130, 246, 0.7)',
+                                'rgba(16, 185, 129, 0.7)',
+                                'rgba(245, 158, 11, 0.7)',
+                                'rgba(239, 68, 68, 0.7)',
+                                'rgba(139, 92, 246, 0.7)'
+                            ]
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // 行业表现图表
+            const industryCtx = document.getElementById('industry-chart').getContext('2d');
+            const industryChart = new Chart(industryCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['金融', '科技', '医药', '消费', '能源', '房地产'],
+                    datasets: [
+                        {
+                            label: '涨跌幅',
+                            data: [0.8, 2.3, 1.5, 0.9, -0.5, 0.2],
+                            backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                            borderColor: 'rgba(99, 102, 241, 1)',
+                            pointBackgroundColor: 'rgba(99, 102, 241, 1)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 商品走势图表
+            const commodityCtx = document.getElementById('commodity-chart').getContext('2d');
+            const commodityChart = new Chart(commodityCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+                    datasets: [
+                        {
+                            label: '黄金',
+                            data: [420, 430, 440, 435, 445, 452],
+                            borderColor: '#f59e0b',
+                            tension: 0.4
+                        },
+                        {
+                            label: '原油',
+                            data: [75, 72, 69, 67, 68, 68],
+                            borderColor: '#ef4444',
+                            tension: 0.4
+                        },
+                        {
+                            label: '螺纹钢',
+                            data: [3600, 3700, 3750, 3800, 3820, 3856],
+                            borderColor: '#10b981',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        }
+
+        // 更新股市数据
+        function updateStockData() {
+            document.getElementById('stock-time').textContent = new Date().toLocaleString();
+            document.getElementById('sh-index').textContent = mockStockData.sh.index;
+            document.getElementById('sh-change').textContent = mockStockData.sh.changePercent;
+            document.getElementById('sh-change').className = mockStockData.sh.changePercent.includes('+') ? 'ml-2 text-sm price-up' : 'ml-2 text-sm price-down';
+            
+            document.getElementById('sz-index').textContent = mockStockData.sz.index;
+            document.getElementById('sz-change').textContent = mockStockData.sz.changePercent;
+            document.getElementById('sz-change').className = mockStockData.sz.changePercent.includes('+') ? 'ml-2 text-sm price-up' : 'ml-2 text-sm price-down';
+            
+            document.getElementById('cyb-index').textContent = mockStockData.cyb.index;
+            document.getElementById('cyb-change').textContent = mockStockData.cyb.changePercent;
+            document.getElementById('cyb-change').className = mockStockData.cyb.changePercent.includes('+') ? 'ml-2 text-sm price-up' : 'ml-2 text-sm price-down';
+
+            // 更新股市表格
+            const stockTable = document.getElementById('stock-table');
+            stockTable.innerHTML = '';
+            mockStockTable.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">${item.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${item.code}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${item.price}</td>
+                    <td class="px-6 py-4 whitespace-nowrap ${item.change.includes('+') ? 'price-up' : 'price-down'}">${item.change}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${item.volume}</td>
+                `;
+                stockTable.appendChild(row);
+            });
+
+            // 更新市场热点
+            const hotspots = document.getElementById('stock-hotspots');
+            hotspots.innerHTML = '';
+            const hotspotTags = ['人工智能', '新能源', '半导体', '消费电子', '医药生物', '金融科技'];
+            hotspotTags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm';
+                span.textContent = tag;
+                hotspots.appendChild(span);
+            });
+        }
+
+        // 更新期货数据
+        function updateFuturesData() {
+            document.getElementById('futures-time').textContent = new Date().toLocaleString();
+            document.getElementById('gold-price').textContent = mockFuturesData.gold.price;
+            document.getElementById('gold-change').textContent = mockFuturesData.gold.changePercent;
+            document.getElementById('gold-change').className = mockFuturesData.gold.changePercent.includes('+') ? 'ml-2 text-sm price-up' : 'ml-2 text-sm price-down';
+            
+            document.getElementById('oil-price').textContent = mockFuturesData.oil.price;
+            document.getElementById('oil-change').textContent = mockFuturesData.oil.changePercent;
+            document.getElementById('oil-change').className = mockFuturesData.oil.changePercent.includes('+') ? 'ml-2 text-sm price-up' : 'ml-2 text-sm price-down';
+            
+            document.getElementById('steel-price').textContent = mockFuturesData.steel.price;
+            document.getElementById('steel-change').textContent = mockFuturesData.steel.changePercent;
+            document.getElementById('steel-change').className = mockFuturesData.steel.changePercent.includes('+') ? 'ml-2 text-sm price-up' : 'ml-2 text-sm price-down';
+
+            // 更新期货表格
+            const futuresTable = document.getElementById('futures-table');
+            futuresTable.innerHTML = '';
+            mockFuturesTable.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">${item.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${item.price}</td>
+                    <td class="px-6 py-4 whitespace-nowrap ${item.change.includes('+') ? 'price-up' : 'price-down'}">${item.change}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${item.volume}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${item.position}</td>
+                `;
+                futuresTable.appendChild(row);
+            });
+        }
+
+        // 更新银行数据
+        function updateBankData() {
+            document.getElementById('bank-time').textContent = new Date().toLocaleString();
+            
+            document.getElementById('icbc-status').textContent = mockBankData.icbc.status;
+            document.getElementById('icbc-system').textContent = mockBankData.icbc.system;
+            document.getElementById('icbc-api').textContent = mockBankData.icbc.api;
+            document.getElementById('icbc-response').textContent = mockBankData.icbc.response;
+            
+            document.getElementById('ccb-status').textContent = mockBankData.ccb.status;
+            document.getElementById('ccb-system').textContent = mockBankData.ccb.system;
+            document.getElementById('ccb-api').textContent = mockBankData.ccb.api;
+            document.getElementById('ccb-response').textContent = mockBankData.ccb.response;
+            
+            document.getElementById('abc-status').textContent = mockBankData.abc.status;
+            document.getElementById('abc-system').textContent = mockBankData.abc.system;
+            document.getElementById('abc-api').textContent = mockBankData.abc.api;
+            document.getElementById('abc-response').textContent = mockBankData.abc.response;
+            
+            document.getElementById('boc-status').textContent = mockBankData.boc.status;
+            document.getElementById('boc-system').textContent = mockBankData.boc.system;
+            document.getElementById('boc-api').textContent = mockBankData.boc.api;
+            document.getElementById('boc-response').textContent = mockBankData.boc.response;
+            
+            document.getElementById('cmb-status').textContent = mockBankData.cmb.status;
+            document.getElementById('cmb-system').textContent = mockBankData.cmb.system;
+            document.getElementById('cmb-api').textContent = mockBankData.cmb.api;
+            document.getElementById('cmb-response').textContent = mockBankData.cmb.response;
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initCharts();
+            updateStockData();
+            updateFuturesData();
+            updateBankData();
+
+            // 每30秒更新一次数据
+            setInterval(() => {
+                updateStockData();
+                updateFuturesData();
+                updateBankData();
+            }, 30000);
+        });
+    </script>
+</body>
+</html>

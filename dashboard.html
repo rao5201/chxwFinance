@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仪表盘 - 茶海虾王@金融交易所</title>
+    <meta name="description" content="茶海虾王金融交易所仪表盘，提供资产分析、交易记录、投资组合管理等功能">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .sidebar {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="w-64 sidebar text-white flex flex-col">
+            <div class="p-6 border-b border-gray-700">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-chart-line text-2xl text-indigo-400"></i>
+                    <span class="text-xl font-bold">茶海虾王</span>
+                </div>
+                <p class="text-gray-400 text-sm mt-2">金融交易所</p>
+            </div>
+            
+            <nav class="flex-1 p-4 space-y-1">
+                <a href="/dashboard.html" class="nav-link active flex items-center gap-3 p-3 rounded-lg">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>仪表盘</span>
+                </a>
+                <a href="/trading-chart.html" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-300">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>交易图表</span>
+                </a>
+                <a href="#" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-300">
+                    <i class="fas fa-wallet"></i>
+                    <span>资产</span>
+                </a>
+                <a href="#" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-300">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>交易</span>
+                </a>
+                <a href="#" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-300">
+                    <i class="fas fa-robot"></i>
+                    <span>AI分析</span>
+                </a>
+                <a href="#" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-300">
+                    <i class="fas fa-bell"></i>
+                    <span>通知</span>
+                </a>
+                <a href="#" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-300">
+                    <i class="fas fa-cog"></i>
+                    <span>设置</span>
+                </a>
+            </nav>
+            
+            <div class="p-4 border-t border-gray-700">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center">
+                        <span class="font-semibold">U</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold">用户</p>
+                        <p class="text-gray-400 text-xs">普通会员</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-y-auto">
+            <!-- Top Nav -->
+            <div class="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <h1 class="text-2xl font-bold text-gray-900">仪表盘</h1>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <input type="text" placeholder="搜索..." class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <div class="relative">
+                        <button class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                            <i class="fas fa-bell text-gray-600"></i>
+                            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dashboard Content -->
+            <div class="p-6 space-y-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-sm card-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">总资产</p>
+                                <h3 class="text-2xl font-bold text-gray-900">¥128,456.78</h3>
+                                <p class="text-green-500 text-sm mt-1"><i class="fas fa-arrow-up"></i> 2.4%</p>
+                            </div>
+                            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-wallet text-indigo-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-sm card-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">今日收益</p>
+                                <h3 class="text-2xl font-bold text-gray-900">¥2,345.67</h3>
+                                <p class="text-green-500 text-sm mt-1"><i class="fas fa-arrow-up"></i> 1.8%</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-chart-line text-green-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-sm card-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">总交易量</p>
+                                <h3 class="text-2xl font-bold text-gray-900">¥567,890.12</h3>
+                                <p class="text-red-500 text-sm mt-1"><i class="fas fa-arrow-down"></i> 0.5%</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-exchange-alt text-blue-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-sm card-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">持仓资产</p>
+                                <h3 class="text-2xl font-bold text-gray-900">15</h3>
+                                <p class="text-green-500 text-sm mt-1"><i class="fas fa-arrow-up"></i> 2</p>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-cubes text-purple-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-gray-900">资产分布</h3>
+                            <div class="flex gap-2">
+                                <button class="px-3 py-1 text-sm bg-gray-100 rounded-lg hover:bg-gray-200">日</button>
+                                <button class="px-3 py-1 text-sm bg-indigo-100 text-indigo-600 rounded-lg">周</button>
+                                <button class="px-3 py-1 text-sm bg-gray-100 rounded-lg hover:bg-gray-200">月</button>
+                            </div>
+                        </div>
+                        <canvas id="assetChart" height="300"></canvas>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-sm">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-gray-900">收益趋势</h3>
+                            <div class="flex gap-2">
+                                <button class="px-3 py-1 text-sm bg-gray-100 rounded-lg hover:bg-gray-200">日</button>
+                                <button class="px-3 py-1 text-sm bg-indigo-100 text-indigo-600 rounded-lg">周</button>
+                                <button class="px-3 py-1 text-sm bg-gray-100 rounded-lg hover:bg-gray-200">月</button>
+                            </div>
+                        </div>
+                        <canvas id="profitChart" height="300"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Recent Transactions -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-bold text-gray-900">最近交易</h3>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-700">查看全部</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-600">订单号</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-600">资产</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-600">类型</th>
+                                    <th class="text-right py-3 px-4 font-semibold text-gray-600">数量</th>
+                                    <th class="text-right py-3 px-4 font-semibold text-gray-600">价格</th>
+                                    <th class="text-right py-3 px-4 font-semibold text-gray-600">状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="py-3 px-4 text-gray-700">TXN1234567890</td>
+                                    <td class="py-3 px-4 text-gray-700">BTC</td>
+                                    <td class="py-3 px-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">买入</span></td>
+                                    <td class="py-3 px-4 text-right text-gray-700">0.5</td>
+                                    <td class="py-3 px-4 text-right text-gray-700">¥33,617.28</td>
+                                    <td class="py-3 px-4 text-right"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">已完成</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="py-3 px-4 text-gray-700">TXN1234567891</td>
+                                    <td class="py-3 px-4 text-gray-700">ETH</td>
+                                    <td class="py-3 px-4"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">卖出</span></td>
+                                    <td class="py-3 px-4 text-right text-gray-700">2</td>
+                                    <td class="py-3 px-4 text-right text-gray-700">¥6,913.56</td>
+                                    <td class="py-3 px-4 text-right"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">已完成</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="py-3 px-4 text-gray-700">TXN1234567892</td>
+                                    <td class="py-3 px-4 text-gray-700">SOL</td>
+                                    <td class="py-3 px-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">买入</span></td>
+                                    <td class="py-3 px-4 text-right text-gray-700">10</td>
+                                    <td class="py-3 px-4 text-right text-gray-700">¥1,452.30</td>
+                                    <td class="py-3 px-4 text-right"><span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">处理中</span></td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-4 text-gray-700">TXN1234567893</td>
+                                    <td class="py-3 px-4 text-gray-700">AAPL</td>
+                                    <td class="py-3 px-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">买入</span></td>
+                                    <td class="py-3 px-4 text-right text-gray-700">10</td>
+                                    <td class="py-3 px-4 text-right text-gray-700">¥1,789.00</td>
+                                    <td class="py-3 px-4 text-right"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">已完成</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        // Asset Distribution Chart
+        const assetCtx = document.getElementById('assetChart').getContext('2d');
+        new Chart(assetCtx, {
+            type: 'pie',
+            data: {
+                labels: ['BTC', 'ETH', 'SOL', 'AAPL', 'TSLA', '其他'],
+                datasets: [{
+                    data: [45, 25, 10, 10, 5, 5],
+                    backgroundColor: [
+                        '#667eea',
+                        '#764ba2',
+                        '#f093fb',
+                        '#f5576c',
+                        '#4facfe',
+                        '#43e97b'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+        
+        // Profit Trend Chart
+        const profitCtx = document.getElementById('profitChart').getContext('2d');
+        new Chart(profitCtx, {
+            type: 'line',
+            data: {
+                labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                datasets: [{
+                    label: '收益',
+                    data: [1200, 1900, 1500, 2100, 1800, 2300, 2345],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
