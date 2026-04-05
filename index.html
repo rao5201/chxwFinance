@@ -3589,6 +3589,210 @@
         </div>
     </section>
 
+    <!-- MiniMax AI模型 - 用户客户体验中心 -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-3xl font-bold text-dark-800 mb-4">MiniMax AI模型 - 用户客户体验中心</h2>
+                <p class="text-lg text-dark-600 max-w-3xl mx-auto">体验MiniMax AI模型的强大功能，包括文本生成、语音合成、视频生成、音乐创作和图像生成</p>
+            </div>
+            
+            <div class="bg-white rounded-xl p-8 shadow-md animate-fade-in animate-delay-100">
+                <h3 class="text-xl font-semibold text-dark-800 mb-6">AI模型体验</h3>
+                <p class="text-dark-600 mb-6">通过以下功能体验MiniMax AI模型的强大能力，感受AI技术为您带来的便利和创新。</p>
+                
+                <!-- 文本生成 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">文本生成</h4>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label class="block text-dark-600 mb-2">输入提示词</label>
+                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="请输入您的提示词，例如：写一篇关于金融科技的文章"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-dark-600 mb-2">选择模型</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>MiniMax-M2.7</option>
+                                <option>MiniMax-M2.7-highspeed</option>
+                                <option>MiniMax-M2.5</option>
+                                <option>M2-her</option>
+                            </select>
+                        </div>
+                        <button class="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium inline-block hover:bg-blue-600 transition w-full">
+                            生成文本
+                        </button>
+                        <div class="mt-6">
+                            <label class="block text-dark-600 mb-2">生成结果</label>
+                            <div class="w-full p-4 border border-gray-300 rounded-lg min-h-[200px] bg-white">
+                                <!-- 生成结果将显示在这里 -->
+                                生成的文本将显示在这里...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 语音合成 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">语音合成</h4>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label class="block text-dark-600 mb-2">输入文本</label>
+                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3" placeholder="请输入您需要合成语音的文本"></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-dark-600 mb-2">选择模型</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option>speech-2.8-hd</option>
+                                    <option>speech-2.8-turbo</option>
+                                    <option>speech-2.6-hd</option>
+                                    <option>speech-2.6-turbo</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-dark-600 mb-2">选择音色</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option>默认音色</option>
+                                    <option>男声</option>
+                                    <option>女声</option>
+                                    <option>童声</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium inline-block hover:bg-blue-600 transition w-full">
+                            合成语音
+                        </button>
+                        <div class="mt-6">
+                            <label class="block text-dark-600 mb-2">合成结果</label>
+                            <div class="w-full p-4 border border-gray-300 rounded-lg bg-white flex items-center justify-center">
+                                <!-- 音频播放器将显示在这里 -->
+                                <button class="flex items-center space-x-2 bg-gray-100 px-4 py-2 rounded-full">
+                                    <i class="fas fa-play text-blue-500"></i>
+                                    <span>播放语音</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 图像生成 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">图像生成</h4>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label class="block text-dark-600 mb-2">输入描述</label>
+                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3" placeholder="请输入您需要生成图像的描述，例如：一只可爱的猫咪在草地上玩耍"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-dark-600 mb-2">选择模型</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>image-01</option>
+                                <option>image-01-live</option>
+                            </select>
+                        </div>
+                        <button class="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium inline-block hover:bg-blue-600 transition w-full">
+                            生成图像
+                        </button>
+                        <div class="mt-6">
+                            <label class="block text-dark-600 mb-2">生成结果</label>
+                            <div class="w-full p-4 border border-gray-300 rounded-lg bg-white flex items-center justify-center min-h-[200px]">
+                                <!-- 生成的图像将显示在这里 -->
+                                <p class="text-gray-500">生成的图像将显示在这里...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 音乐生成 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">音乐生成</h4>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label class="block text-dark-600 mb-2">输入音乐描述</label>
+                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3" placeholder="请输入您需要生成音乐的描述，例如：一首轻松愉快的钢琴曲"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-dark-600 mb-2">选择模型</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Music-2.5+</option>
+                                <option>Music-2.5</option>
+                                <option>Music-2.0</option>
+                            </select>
+                        </div>
+                        <button class="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium inline-block hover:bg-blue-600 transition w-full">
+                            生成音乐
+                        </button>
+                        <div class="mt-6">
+                            <label class="block text-dark-600 mb-2">生成结果</label>
+                            <div class="w-full p-4 border border-gray-300 rounded-lg bg-white flex items-center justify-center">
+                                <!-- 音频播放器将显示在这里 -->
+                                <button class="flex items-center space-x-2 bg-gray-100 px-4 py-2 rounded-full">
+                                    <i class="fas fa-play text-blue-500"></i>
+                                    <span>播放音乐</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 视频生成 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">视频生成</h4>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label class="block text-dark-600 mb-2">输入视频描述</label>
+                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3" placeholder="请输入您需要生成视频的描述，例如：一只小鸟在森林中飞翔"></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-dark-600 mb-2">选择模型</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option>MiniMax-Hailuo-2.3</option>
+                                    <option>MiniMax-Hailuo-2.3-Fast</option>
+                                    <option>MiniMax-Hailuo-02</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-dark-600 mb-2">分辨率和时长</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option>768P 6s</option>
+                                    <option>768P 10s</option>
+                                    <option>1080P 6s</option>
+                                    <option>512P 6s</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium inline-block hover:bg-blue-600 transition w-full">
+                            生成视频
+                        </button>
+                        <div class="mt-6">
+                            <label class="block text-dark-600 mb-2">生成结果</label>
+                            <div class="w-full p-4 border border-gray-300 rounded-lg bg-white flex items-center justify-center min-h-[200px]">
+                                <!-- 生成的视频将显示在这里 -->
+                                <p class="text-gray-500">生成的视频将显示在这里...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- API密钥配置 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">API密钥配置</h4>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label class="block text-dark-600 mb-2">API密钥</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value="sk-api-Ic0_QHaQI2a1UYaZZRkyByV-LE8DhZ3ucyvbRyeCr8Mr1ChSllXPsT-hM2BgzRicKXd8QRqhahFPFijyfI4pDbqmgimhqmv6MK3e3C-eU7lL0uW180ge11Y" readonly>
+                        </div>
+                        <p class="text-dark-600 mb-4">此API密钥用于调用MiniMax AI模型的API接口，请勿泄露给他人。</p>
+                        <button class="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium inline-block hover:bg-blue-600 transition w-full">
+                            测试API连接
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 核心功能 -->
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
