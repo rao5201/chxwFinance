@@ -1,0 +1,62 @@
+# ==============================================
+# 茶海虾王金融网站 chxwFinance 专用 Git 忽略文件
+# 自动屏蔽：敏感文件、后端代码、本地配置、无用文件
+# ==============================================
+
+# Git 自身
+.git/
+.gitignore
+.github/
+
+# 后端 & 服务端（完全不能上传）
+backend/
+nginx/
+monitoring/
+security/
+temp-clone/
+docker-compose.yml
+init-mongo.js
+
+# 所有账户/权限相关目录（敏感！）
+account-management/
+accounts/
+external-accounts/
+finance-accounts/
+internal-accounts/
+operations-accounts/
+third-party-accounts/
+
+# 本地应用
+TeaSeaShrimpKingApp/
+
+# 日志 & 调试文件
+logs/
+debug.log
+*.log
+
+# 重复图标目录（保留 favicon.ico 即可）
+ico/
+icons/
+网站图标/
+
+# 本地临时文档、报告、清单（全部不上传）
+目录清单.txt
+*测试报告*
+*进度报告*
+*文件汇总*
+*文档汇总*
+项目落实情况检查报告.html
+全面测试报告.html
+
+# 环境与配置
+node_modules/
+.env
+.DS_Store
+Thumbs.db
+
+# 本地编辑器配置
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
