@@ -3351,6 +3351,241 @@
                     </a>
                 </div>
             </div>
+            
+            <!-- MiniMax AI模型 -->
+            <div class="mt-12 bg-white rounded-xl p-8 shadow-md animate-fade-in animate-delay-200">
+                <h3 class="text-xl font-semibold text-dark-800 mb-6">MiniMax AI模型</h3>
+                <p class="text-dark-600 mb-6">MiniMax开放平台提供多种AI模型，包括文本、语音、视频、音乐和图像生成模型，满足不同场景的需求。以下是各模型的定价信息：</p>
+                
+                <!-- 文本模型 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">文本模型</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="py-2 px-4 text-left text-dark-800">模型</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">输入价格 (元/百万 tokens)</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">输出价格 (元/百万 tokens)</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">缓存读取 (元/百万 tokens)</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">缓存写入 (元/百万 tokens)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">MiniMax-M2.7</td>
+                                    <td class="py-2 px-4">2.1</td>
+                                    <td class="py-2 px-4">8.4</td>
+                                    <td class="py-2 px-4">0.42</td>
+                                    <td class="py-2 px-4">2.625</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">MiniMax-M2.7-highspeed</td>
+                                    <td class="py-2 px-4">4.2</td>
+                                    <td class="py-2 px-4">16.8</td>
+                                    <td class="py-2 px-4">0.42</td>
+                                    <td class="py-2 px-4">2.625</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">MiniMax-M2.5</td>
+                                    <td class="py-2 px-4">2.1</td>
+                                    <td class="py-2 px-4">8.4</td>
+                                    <td class="py-2 px-4">0.21</td>
+                                    <td class="py-2 px-4">2.625</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">MiniMax-M2.5-highspeed</td>
+                                    <td class="py-2 px-4">4.2</td>
+                                    <td class="py-2 px-4">16.8</td>
+                                    <td class="py-2 px-4">0.21</td>
+                                    <td class="py-2 px-4">2.625</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">M2-her</td>
+                                    <td class="py-2 px-4">2.1</td>
+                                    <td class="py-2 px-4">8.4</td>
+                                    <td class="py-2 px-4">—</td>
+                                    <td class="py-2 px-4">—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- 语音模型 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">语音模型</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="py-2 px-4 text-left text-dark-800">计费项</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">模型</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">接口说明</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">单价 (元/万字符)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4" rowspan="2">同步语音合成 T2A</td>
+                                    <td class="py-2 px-4">speech-2.8-hd, speech-2.6-hd, speech-02-hd</td>
+                                    <td class="py-2 px-4">支持音量、语调、语速调整和混音功能</td>
+                                    <td class="py-2 px-4">3.5</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">speech-2.8-turbo, speech-2.6-turbo, speech-02-turbo</td>
+                                    <td class="py-2 px-4">支持音量、语调、语速调整和混音功能</td>
+                                    <td class="py-2 px-4">2</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4" rowspan="2">异步长文本语音合成 T2A Async</td>
+                                    <td class="py-2 px-4">speech-2.8-hd, speech-2.6-hd, speech-02-hd</td>
+                                    <td class="py-2 px-4">单次文本生成传输最大支持 100 万字符</td>
+                                    <td class="py-2 px-4">3.5</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">speech-2.8-turbo, speech-2.6-turbo, speech-02-turbo</td>
+                                    <td class="py-2 px-4">单次文本生成传输最大支持 100 万字符</td>
+                                    <td class="py-2 px-4">2</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">音色设计 Voice Design</td>
+                                    <td class="py-2 px-4">所有模型</td>
+                                    <td class="py-2 px-4">基于用户输入的声音描述 prompt 生成音色</td>
+                                    <td class="py-2 px-4">9.9 (元/音色)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">快速复刻 Voice Cloning</td>
+                                    <td class="py-2 px-4">所有模型</td>
+                                    <td class="py-2 px-4">基于大语言模型的音色克隆</td>
+                                    <td class="py-2 px-4">9.9 (元/音色)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- 视频模型 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">视频模型</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="py-2 px-4 text-left text-dark-800">模型</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">功能</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">单价 (元/视频)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4" rowspan="3">MiniMax-Hailuo-2.3-Fast</td>
+                                    <td class="py-2 px-4">图生视频，768P 6s</td>
+                                    <td class="py-2 px-4">1.35</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">图生视频，768P 10s</td>
+                                    <td class="py-2 px-4">2.25</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">图生视频，1080P 6s</td>
+                                    <td class="py-2 px-4">2.31</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4" rowspan="3">MiniMax-Hailuo-2.3, MiniMax-Hailuo-02</td>
+                                    <td class="py-2 px-4">文生视频，图生视频，768P 6s</td>
+                                    <td class="py-2 px-4">2.00</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">文生视频，图生视频，768P 10s</td>
+                                    <td class="py-2 px-4">4.00</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">文生视频，图生视频，1080P 6s</td>
+                                    <td class="py-2 px-4">3.50</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4" rowspan="2">MiniMax-Hailuo-02</td>
+                                    <td class="py-2 px-4">图生视频，512P 6s</td>
+                                    <td class="py-2 px-4">0.60</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">图生视频，512P 10s</td>
+                                    <td class="py-2 px-4">1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- 音乐模型 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">音乐模型</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="py-2 px-4 text-left text-dark-800">模型</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">接口说明</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">单价 (元/首)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">Music-2.5+</td>
+                                    <td class="py-2 px-4">最新音乐生成模型，纯音乐解锁，突破风格边界</td>
+                                    <td class="py-2 px-4">1.0</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">Music-2.5</td>
+                                    <td class="py-2 px-4">全维度突破，指挥细节，定义真实</td>
+                                    <td class="py-2 px-4">1.0</td>
+                                </tr>
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-2 px-4">Music-2.0</td>
+                                    <td class="py-2 px-4">多变音色，丰富乐器表现</td>
+                                    <td class="py-2 px-4">0.25</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">歌词生成</td>
+                                    <td class="py-2 px-4">歌词生成/编辑</td>
+                                    <td class="py-2 px-4">0.05</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- 图像模型 -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-dark-800 mb-4">图像模型</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="py-2 px-4 text-left text-dark-800">模型</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">接口说明</th>
+                                    <th class="py-2 px-4 text-left text-dark-800">单价 (元/张)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2 px-4">image-01, image-01-live</td>
+                                    <td class="py-2 px-4">支持用户通过文本描述或参考图片生成图片</td>
+                                    <td class="py-2 px-4">0.025</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- 访问链接 -->
+                <div class="mt-8">
+                    <a href="https://platform.minimaxi.com/docs/guides/pricing-paygo" target="_blank" class="bg-blue-500 text-white px-6 py-3 rounded-lg font-medium inline-block hover:bg-blue-600 transition">
+                        查看MiniMax定价详情
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
